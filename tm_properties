@@ -1,0 +1,24 @@
+# ~/.tm_properties
+
+# settings
+fontName = "Menlo"
+fontSize = 13
+softWrap = true
+
+# varibles
+PATH = $PATH
+TM_GIT = "/usr/local/bin/git"
+TM_HG = "/usr/local/bin/hg"
+
+# type specfic
+
+[ *.{txt, md, mdown, markdown}, .git/COMMIT_EDITMSG ]
+tabSize = 4
+spellChecking = true
+spellingLanguage = 'en'
+
+[ .scala ]
+tabSize = 2
+
+
+
