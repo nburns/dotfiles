@@ -1,6 +1,6 @@
 ## ~/.nanorc
 
-## enable auto-indentation
+# enable auto-indentation
 set autoindent
 
 # bracket identification
@@ -10,6 +10,9 @@ set quotestr "^([ \t]*[#:>\|}])+"
 
 # Detect word boundaries more accurately by treating punctuation characters  as parts of words.
 set wordbounds
+
+# cut from cursor to end of line
+set cut
 
 # punctuation identification
 set punct "!.?"
@@ -36,16 +39,60 @@ set mouse
 set smooth
 
 # ennable undo
-# set undo
+set undo
 
 # ennable softwrapping of lines
-# set softwrap
+set softwrap
 
 # extended regular expression searches
 set regexp
 
-# display help at bottom of screen
+# do not display help at bottom of screen
 unset nohelp
 
 # remove status messages after 1 keystroke
 set quickblank
+
+# custom keybindings
+bind ^u undo all
+bind ^y uncut all
+
+bind ^s whereis all
+
+bind ^p prevpage all
+bind ^n nextpage all
+
+bind ^e end all
+bind ^a home all
+
+# dont report errors about syntax coloring
+# helpful for portability of this file
+set quiet
+include /usr/local/Cellar/nano/2.2.6/share/nano/asm.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/awk.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/c.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/cmake.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/css.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/debian.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/fortran.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/gentoo.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/groff.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/html.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/java.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/makefile.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/man.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/mgp.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/mutt.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/nanorc.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/objc.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/ocaml.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/patch.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/perl.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/php.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/pov.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/python.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/ruby.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/sh.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/tcl.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/tex.nanorc
+include /usr/local/Cellar/nano/2.2.6/share/nano/xml.nanorc

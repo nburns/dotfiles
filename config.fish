@@ -16,7 +16,7 @@ if status --is-login
 	
 	set -g -x HOMEBREW_NO_EMOJI 1
 	
-	set -g -x LC_CTYPE "utf-8"
+	#set -g -x LC_CTYPE "utf-8"
 
 	set -g -x fish_color_autosuggestion normal
 	set -g -x fish_color_command red
@@ -39,13 +39,8 @@ if status --is-login
 	set -g -x fish_pager_color_prefix red --bright
 	set -g -x fish_pager_color_progress green
 
-	# function java
-	# 	java -enableassertions $argv
-	# end
-
-
 	function fish_prompt
-		printf '%s@%s %s%s%s%s>%s' $USER $current_hostname (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (set_color blue) (set_color normal)
+		printf '[%s] %s@%s %s%s%s%s>%s' $status $USER $current_hostname (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (set_color blue) (set_color normal)
 	end
 
 	function edit_fish
@@ -65,7 +60,7 @@ if status --is-login
     end
         
     function c
-            pbcopy $argv
+        pbcopy $argv
     end
 	
 	function lsblk
@@ -97,6 +92,42 @@ if status --is-login
 	
 	function cd..
 		cd ..
+	end
+	
+	function string_contains
+		if echo $argv[1] | grep $argv[2] > /dev/null
+			return 0
+		else
+			return 1
+		end
+	end
+	
+	function less_than
+		echo "$argv[1] < $argv[2]" | bc
+	end
+	
+	function less_than_or_equal
+		echo "$argv[1] <= $argv[2]" | bc
+	end
+	
+	function equal
+		echo "$argv[1] == $argv[2]" | bc
+	end
+	
+	function greater_than_or_equal
+		echo "$argv[1] >= $argv[2]" | bc
+	end
+	
+	function greater_than
+		echo "$argv[1] > $argv[2]" | bc
+	end
+	
+	function list_tail
+		tail -n +2 $argv
+	end
+	
+	function list_head
+		head -n +1 $argv
 	end
 
 end
