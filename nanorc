@@ -48,7 +48,7 @@ set softwrap
 set regexp
 
 # do not display help at bottom of screen
-unset nohelp
+set nohelp
 
 # remove status messages after 1 keystroke
 set quickblank
