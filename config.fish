@@ -1,54 +1,31 @@
 if status --is-login
-	set -g -x PATH /usr/local/share/python ~/.cabal/bin /Users/nick/bin /usr/local/lib/python2.7/site-packages /usr/local/share/python /usr/local/bin /usr/bin /bin /usr/sbin /sbin /usr/local/Cellar/fish/2.0.0/bin /usr/X11R6/bin /usr/local/texlive/2012/bin/x86_64-darwin /usr/local/Cellar/ruby/2.0.0-p0/bin
-
-
-	set -g -x BROWSER 'open -a Google Chrome'
+	set fish_greeting
+	
+	set -g -x PATH ~/.config/fish/functions
+	setup_path
+	setup_color
+	
 	set -g -x EDITOR 'mate -w'
 	set -g -x VISUAL 'mate -w'
-	set -g -x PAGER less
-	set -g -x default-terminal "xterm"
-	set -g -x CELLAR /usr/local/Cellar
-	#set -g -x MANPATH $HOMEBREWDIR/share/man
-
-	set fish_greeting
+	set -g -x PAGER 'most'
+	
 	set -g -x current_hostname (hostname)
 	set -g -x today (date "+%m-%d")
 	
+	set -g -x CELLAR /usr/local/Cellar
 	set -g -x HOMEBREW_NO_EMOJI 1
-	
-	#set -g -x LC_CTYPE "utf-8"
-
-	set -g -x fish_color_autosuggestion normal
-	set -g -x fish_color_command red
-	set -g -x fish_color_comment normal
-	set -g -x fish_color_cwd green
-	set -g -x fish_color_cwd_root red
-	set -g -x fish_color_error red --bold
-	set -g -x fish_color_escape blue
-	set -g -x fish_color_history_current blue
-	set -g -x fish_color_match red --bold
-	set -g -x fish_color_normal white
-	set -g -x fish_color_operator blue
-	set -g -x fish_color_param yellow
-	set -g -x fish_color_quote cyan
-	set -g -x fish_color_redirection normal
-	set -g -x fish_color_search_match --background=magenta
-	set -g -x fish_color_valid_path --underline
-	set -g -x fish_pager_color_completion normal
-	set -g -x fish_pager_color_description normal
-	set -g -x fish_pager_color_prefix red --bright
-	set -g -x fish_pager_color_progress green
 
 	function fish_prompt
-		printf '[%s] %s@%s %s%s%s%s>%s' $status $USER $current_hostname (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (set_color blue) (set_color normal)
+		if test $status != 0
+			set_color red
+			echo "[$status]"
+			set_color normal
+		end
+		printf '%s@%s %s%s%s%s>%s' $USER $current_hostname (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (set_color blue) (set_color normal)
 	end
 
 	function edit_fish
 		open ~/.config/fish/config.fish
-	end
-
-	function haskell
-		ghci $argv
 	end
 
 	function audio
@@ -63,10 +40,6 @@ if status --is-login
         pbcopy $argv
     end
 	
-	function lsblk
-		diskutil list
-	end
-
     function ip
         set external (curl -s http://ipecho.net/plain)
         set wired (ipconfig getifaddr en0)
@@ -102,26 +75,6 @@ if status --is-login
 		end
 	end
 	
-	function less_than
-		echo "$argv[1] < $argv[2]" | bc
-	end
-	
-	function less_than_or_equal
-		echo "$argv[1] <= $argv[2]" | bc
-	end
-	
-	function equal
-		echo "$argv[1] == $argv[2]" | bc
-	end
-	
-	function greater_than_or_equal
-		echo "$argv[1] >= $argv[2]" | bc
-	end
-	
-	function greater_than
-		echo "$argv[1] > $argv[2]" | bc
-	end
-	
 	function list_tail
 		tail -n +2 $argv
 	end
@@ -129,5 +82,17 @@ if status --is-login
 	function list_head
 		head -n +1 $argv
 	end
+	
+	function new
+		touch $argv
+		open $argv
+	end
+	
+	function arguments
+		for i in (seq (count $argv))
+			echo "$argv[$i]"
+		end
+	end
+		
 
 end

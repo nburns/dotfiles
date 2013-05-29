@@ -1,0 +1,44 @@
+#! /bin/bash
+
+BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+function create_dir(){
+	if [ ! -d $1 ]
+	then
+		mkdir $1
+	fi
+}
+
+function safe_link(){
+	ln -s $1 $2
+}
+
+function single_file_link(){
+	unlink "$HOME/.$1"
+	echo "linked .$1"
+	safe_link "$BASE_DIR/$1" "$HOME/.$1"
+}
+
+
+
+# config directory setup
+create_dir "$HOME/.config"
+
+# fish folder
+create_dir "$HOME/.config/fish"
+
+# fish config
+safe_link "$BASE_DIR/config.fish" "$HOME/.config/fish/config.fish"
+
+# fish functions folder
+safe_link "$BASE_DIR/functions" "$HOME/.config/fish/functions"
+
+single_file_link "nanorc"
+single_file_link "ghci"
+single_file_link "emacs"
+single_file_link "tm_properties"
+single_file_link "vimrc"
+single_file_link "zshrc"
+
+
+
