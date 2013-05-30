@@ -2,8 +2,10 @@ if status --is-login
 	set fish_greeting
 	
 	set -g -x PATH ~/.config/fish/functions
+	
 	setup_path
 	setup_color
+	setup_private
 	
 	set -g -x EDITOR 'mate -w'
 	set -g -x VISUAL 'mate -w'
