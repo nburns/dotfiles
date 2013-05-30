@@ -5,7 +5,10 @@ if status --is-login
 	
 	setup_path
 	setup_color
-	setup_private
+	
+	if test -f ~/.config/fish/functions/setup_private.fish
+		setup_private
+	end
 	
 	set -g -x EDITOR 'mate -w'
 	set -g -x VISUAL 'mate -w'
