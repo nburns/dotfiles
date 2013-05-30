@@ -1,0 +1,70 @@
+presets:
+  tv:
+
+    private_torrents: no
+
+    series:
+      settings:
+        tv:
+          exact: yes
+          propers: 3 days
+          set:
+            path: /home/nick/torrents/watch
+      tv:
+        - Breaking Bad
+        - Dexter
+        - Doctor Who
+        - Downton Abbey
+        - Game of Thrones
+        - How I Met Your Mother
+        - Mad Men
+        - Robot Chicken
+        - South Park
+        - The Simpsons
+        - The Walking Dead
+
+
+    transmission:
+      enabled: yes
+      host: localhost
+      port: 9093
+      username: nick
+      password: Purple!1
+      removewhendone: yes
+
+tasks:
+  bt-chat.com-tv:
+    priority: 1
+    rss: http://rss.bt-chat.com/?group=3
+    preset: tv
+
+  ezrss.it:
+    priority: 2
+    rss: http://ezrss.it/feed/
+    preset: tv
+
+  thepiratebay.org-tv:
+    priority: 3
+    rss: http://rss.thepiratebay.org/208
+    preset: tv
+    verify_ssl_certificates: no
+
+  kat.ph-tv:
+    priority: 4
+    rss: http://kat.ph/tv/?rss=1
+    preset: tv
+
+  extratorrent.com-tv:
+    priority: 5
+    rss: http://extratorrent.com/rss.xml?cid=8
+    preset: tv
+
+  torrentz.eu-tv:
+    priority: 6
+    rss: http://torrentz.eu/feed
+    preset: tv
+
+  showrss.karmorra.info-tv:
+    priority: 7
+    rss: http://showrss.karmorra.info/feeds/all.rss
+    preset: tv

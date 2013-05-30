@@ -10,8 +10,8 @@ if status --is-login
 		setup_private
 	end
 	
-	set -g -x EDITOR 'mate -w'
-	set -g -x VISUAL 'mate -w'
+	set -g -x EDITOR 'nano'
+	set -g -x VISUAL 'nano'
 	set -g -x PAGER 'most'
 	
 	set -g -x current_hostname (hostname)
