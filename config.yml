@@ -29,7 +29,7 @@ presets:
       host: localhost
       port: 9093
       username: nick
-      password: Purple!1
+      password:
       removewhendone: yes
 
 tasks:
