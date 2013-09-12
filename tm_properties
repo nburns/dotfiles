@@ -1,21 +1,34 @@
 # ~/.tm_properties
 
+# varibles
+PATH = /Users/nick/.config/fish/functions:/Users/nick/.cabal/bin:/Users/nick/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/X11R6/bin:/usr/local/texlive/2012/bin/x86_64-darwin:/usr/local/share/npm/bin:/usr/local/mysql/bin
+
+TM_GIT = "/usr/local/bin/git"
+TM_HG = "/usr/local/bin/hg"
+LOG_PATH = "$HOME/Library/Logs"
+
 # settings
 fontName = "Menlo"
 fontSize = 14
-softWrap = true
 
-# varibles
-PATH = $PATH
-TM_GIT = "/usr/local/bin/git"
-TM_HG = "/usr/local/bin/hg"
+spellChecking = true
+spellingLanguage = 'en'
+
+softWrap = true
+wrapColumn = "Use Window Frame"
+
+softTabs = false
+
+showInvisibles = true
+
+windowTitle = "$TM_DISPLAYNAME - $TM_DIRECTORY"
+
+
 
 # type specfic
 
 [ *.{txt, md, mdown, markdown}, .git/COMMIT_EDITMSG ]
 tabSize = 4
-spellChecking = true
-spellingLanguage = 'en'
 
 [ .scala ]
 tabSize = 2

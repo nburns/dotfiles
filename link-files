@@ -39,6 +39,7 @@ single_file_link "emacs"
 single_file_link "tm_properties"
 single_file_link "vimrc"
 single_file_link "zshrc"
+single_file_link "bcrc"
 
 
 

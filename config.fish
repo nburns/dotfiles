@@ -1,42 +1,28 @@
 if status --is-login
-	set fish_greeting
-	
-	set -g -x PATH ~/.config/fish/functions
-	
-	setup_path
-	setup_color
-	
-	if test -f ~/.config/fish/functions/setup_private.fish
-		setup_private
-	end
-	
-	set -g -x EDITOR 'nano'
-	set -g -x VISUAL 'nano'
-	set -g -x PAGER 'most'
-	
+	set -g -x EDITOR "wmate"
+	set -g -x VISUAL "wmate"
+	set -g -x PAGER "most"
+
+	set -g -x BC_ENV_ARGS "$HOME/.bcrc"
+
 	set -g -x current_hostname (hostname)
 	set -g -x today (date "+%m-%d")
 	
-	function fish_prompt
-		if test $status != 0
-			set_color red
-			echo "[$status]"
-			set_color normal
-		end
-		printf '%s@%s %s%s%s%s>%s' $USER $current_hostname (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (set_color blue) (set_color normal)
+	set -g -x BASH_PATH (bash_path)
+
+	set -g -x FUNCTIONS "$HOME/Documents/dotfiles/functions"
+	set -g -x FISH_CONFIG "$HOME/.config/fish/config.fish"
+
+	append_to_path "$HOME/.config/fish/functions"
+
+	setup_path
+	setup_color
+	setup_homebrew
+	
+	if test -f "$HOME/.config/fish/functions/setup_private.fish"
+		setup_private
 	end
 
-	function edit_fish
-		open ~/.config/fish/config.fish
-	end
 
-	function cd..
-		cd ..
-	end
-
-	function new
-		touch $argv
-		open $argv
-	end
 
 end
