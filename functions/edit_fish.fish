@@ -1,4 +1,4 @@
 function edit_fish
-	wmate $FISH_CONFIG
+	edit $FISH_CONFIG
 	reload $FISH_CONFIG
 end
