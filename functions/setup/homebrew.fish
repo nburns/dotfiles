@@ -4,4 +4,5 @@
 # 	set -g -x CACHE /Library/Caches/Homebrew
 # 	set -g -x FORMULA /usr/local/Library/Formula/
 	set -g -x HOMEBREW_NO_EMOJI 1
+	set -g -x HOMEBREW_CASK_OPTS '--appdir=/Applications'
 # end

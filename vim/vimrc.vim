@@ -4,6 +4,7 @@
 " use pathogen
 call pathogen#infect()
 
+
 " printing on OS X
 set printexpr=system('open\ -a\ Preview\ '.v:fname_in)\ .\ +\ v:shell_error
 
@@ -13,12 +14,13 @@ set printexpr=system('open\ -a\ Preview\ '.v:fname_in)\ .\ +\ v:shell_error
 " enable syntax highlighting
 syntax enable
 
-" set light background in gui dark in terminal
+" set light background in gui,  dark in terminal
 if has("gui_running")
-	set guifont=Menlo\ Regular:h13
+	set guifont=DejaVu\ Sans\ Mono:h13
 	let g:solarized_contrast="high"
-    set background=dark
+    set background=light
 	colorscheme solarized
+    set linespace=10
 else
     set background=dark
 	colorscheme solarized
@@ -26,6 +28,9 @@ endif
 
 " highlight search terms
 set hlsearch
+
+" Clear last search highlighting
+map <Space> :noh<cr>
 
 " search incrementally
 set incsearch
@@ -106,10 +111,6 @@ map <leader>ss :setlocal spell!<cr>
 " fix backspace
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
-
-" swap j with k
-noremap j k
-noremap k j
 
 """"""""""""""""""""""""""
 " File Options

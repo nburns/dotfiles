@@ -1,6 +1,6 @@
 if status --is-login
-	set -g -x EDITOR "wmate"
-	set -g -x VISUAL "wmate"
+	set -g -x EDITOR "mvim"
+	set -g -x VISUAL "mvim"
 	set -g -x PAGER "most"
 
 	set -g -x BC_ENV_ARGS "$HOME/.bcrc"
