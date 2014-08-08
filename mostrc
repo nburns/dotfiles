@@ -1,0 +1,29 @@
+%colors
+
+%color normal white black
+color status white cyan
+color underline brightred black
+color overstrike brightblue black
+
+%keys
+
+%% navigation
+
+unsetkey "k"
+setkey up "k"
+unsetkey "j"
+setkey down "j"
+unsetkey "h"
+setkey page_left "h"
+unsetkey "l"
+setkey page_right "l"
+
+%% control
+
+unsetkey "q"
+setkey exit "q"
+
+%% search
+
+unsetkey "/"
+setkey search_forward "/"
