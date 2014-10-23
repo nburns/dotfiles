@@ -1,4 +1,11 @@
 function fish_prompt
 	set -g -x last_status $status
-	printf '%s@%s %s%s%s%s>%s' $USER (hostname) (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (set_color blue) (set_color normal)
+    
+    if set -q VIRTUAL_ENV
+        set -g VENV " "(basename $VIRTUAL_ENV)" "
+    else
+        set -g VENV " "
+    end
+
+    echo -n (whoami)"@"(hostname)$VENV(set_color green)(prompt_pwd)(set_color normal)">"
 end

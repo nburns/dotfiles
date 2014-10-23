@@ -14,17 +14,19 @@ set printexpr=system('open\ -a\ Preview\ '.v:fname_in)\ .\ +\ v:shell_error
 " enable syntax highlighting
 syntax enable
 
+let vimpager_use_gvim = 1
+
 " set light background in gui,  dark in terminal
 if has("gui_running")
-	set guifont=DejaVu\ Sans\ Mono:h13
+	set guifont=Anonymous\ Pro:h14
 	let g:solarized_contrast="high"
-    set background=light
-	colorscheme solarized
+    set background=dark
     set linespace=10
 else
     set background=dark
-	colorscheme solarized
 endif
+
+colorscheme solarized
 
 " highlight search terms
 set hlsearch
@@ -85,6 +87,11 @@ set nofoldenable
 set laststatus=2
 set statusline=\ \ %F%m%r%h%w\ %=%55(%{strftime('%b\%e,\ \%I:%M\ %p')}\ %5l,%-6(%c%V%)\ %)
 
+" highlight chars over 80
+set textwidth=79
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%80v.\+/
+
 """"""""""""""""""""""""""
 " Keyboard Control Options
 """"""""""""""""""""""""""
@@ -95,6 +102,15 @@ if has("mac") || has("macunix")
   vmap <D-j> <M-j>
   vmap <D-k> <M-k>
 endif
+
+" movement in inset mode
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+
+" movement in command-line mode
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+
 
 " delete extra whitespace
 func! DeleteTrailingWS()

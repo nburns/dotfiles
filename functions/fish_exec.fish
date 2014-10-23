@@ -3,6 +3,6 @@ function fish_exec
 	for arg in $argv
 		set execute "$execute $arg"
 	end
-	# echo $execute
+	echo $execute
 	fish -c $execute
 end

@@ -1,5 +1,5 @@
 function ip
-	set external (curl -s http://ipecho.net/plain)
+	set external (curl -s ifconfig.me)
 	set wired (ipconfig getifaddr en0)
 	set wifi (ipconfig getifaddr en1)
 
@@ -17,4 +17,5 @@ function ip
 	else
 		printf '%sEXT  :%s%s%s\n' (set_color red) (set_color green) $external (set_color normal)
 	end
+
 end
