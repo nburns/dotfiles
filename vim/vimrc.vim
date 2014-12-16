@@ -18,7 +18,7 @@ let vimpager_use_gvim = 1
 
 " set light background in gui,  dark in terminal
 if has("gui_running")
-	set guifont=Anonymous\ Pro:h14
+	set guifont=DejaVu\ Sans\ Mono:h12
 	let g:solarized_contrast="high"
     set background=dark
     set linespace=10
@@ -88,13 +88,17 @@ set laststatus=2
 set statusline=\ \ %F%m%r%h%w\ %=%55(%{strftime('%b\%e,\ \%I:%M\ %p')}\ %5l,%-6(%c%V%)\ %)
 
 " highlight chars over 80
-set textwidth=79
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%80v.\+/
+"set textwidth=79
+"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+"match OverLength /\%80v.\+/
 
 """"""""""""""""""""""""""
 " Keyboard Control Options
 """"""""""""""""""""""""""
+let mapleader=","
+set timeout timeoutlen=1500
+
+
 " map command to meta
 if has("mac") || has("macunix")
         nmap <D-j> <M-j>
@@ -102,6 +106,7 @@ if has("mac") || has("macunix")
   vmap <D-j> <M-j>
   vmap <D-k> <M-k>
 endif
+
 
 " movement in inset mode
 inoremap <C-a> <Home>
@@ -131,6 +136,8 @@ set whichwrap+=<,>,h,l
 """"""""""""""""""""""""""
 " File Options
 """"""""""""""""""""""""""
+"filetype plugin on
+
 " convert tabs to spaces
 set expandtab
 

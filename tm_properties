@@ -23,6 +23,8 @@ showInvisibles = true
 
 windowTitle = "$TM_DISPLAYNAME - $TM_DIRECTORY"
 
+softTabs = true
+
 
 
 # type specfic

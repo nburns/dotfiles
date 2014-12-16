@@ -5,17 +5,17 @@ function ip
 
 	if test -z $wired
 	else
-		printf '%sLAN  :%s%s%s\n' (set_color red) (set_color blue) $wired (set_color normal)
+		printf '%sLAN    %s%s%s\n' (set_color red) (set_color blue) $wired (set_color normal)
 	end
 	
 	if test -z $wifi
 	else
-		printf '%sWLAN :%s%s%s\n' (set_color red) (set_color cyan) $wifi (set_color normal)
+		printf '%sWLAN   %s%s%s\n' (set_color red) (set_color cyan) $wifi (set_color normal)
 	end
 	
 	if test -z $external
 	else
-		printf '%sEXT  :%s%s%s\n' (set_color red) (set_color green) $external (set_color normal)
+		printf '%sEXT    %s%s%s\n' (set_color red) (set_color green) $external (set_color normal)
 	end
 
 end

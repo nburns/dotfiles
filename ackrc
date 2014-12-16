@@ -1,9 +1,10 @@
 --smart-case
-#--pager=most
 --color
+--nogroup
+
 --ignore-file=ext:css
 --ignore-file=ext:sql
 --ignore-file=ext:pem
+--ignore-file=ext:log
 --ignore-dir=bower_components
 --ignore-dir=static
-

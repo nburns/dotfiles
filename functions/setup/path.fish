@@ -9,5 +9,4 @@ append_to_path "/usr/sbin"
 append_to_path "/sbin"
 append_to_path "/usr/X11R6/bin"
 append_to_path "/usr/local/texlive/2014/bin/x86_64-darwin"
-append_to_path "/Applications/Postgres.app/Contents/Versions/9.3/bin"
 

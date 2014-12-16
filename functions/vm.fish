@@ -1,5 +1,6 @@
 function vm
-    if string_contains (vboxmanage list runningvms) 'dev' > /dev/null
+    set running (vboxmanage list runningvms)
+    if string_contains "$running" 'dev'
         # nothing, machine is running
     else
 	    vboxmanage startvm dev --type headless
