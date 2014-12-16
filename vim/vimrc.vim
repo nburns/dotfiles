@@ -165,6 +165,9 @@ autocmd BufReadPost *
      \ endif
 set viminfo^=%
 
+" disable netrw
+let g:netrw_dirhistmax=0
+
 " file size helper function
 function! FileSize()
 	let bytes = getfsize(expand("%:p"))
