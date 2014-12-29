@@ -18,7 +18,7 @@ let vimpager_use_gvim = 1
 
 " set light background in gui,  dark in terminal
 if has("gui_running")
-	set guifont=DejaVu\ Sans\ Mono:h12
+	set guifont=DejaVu\ Sans\ Mono:h11
 	let g:solarized_contrast="high"
     set background=dark
     set linespace=10
