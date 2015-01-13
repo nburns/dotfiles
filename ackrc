@@ -2,9 +2,11 @@
 --color
 --nogroup
 
---ignore-file=ext:css
 --ignore-file=ext:sql
+--ignore-file=ext:css
+--ignore-file=ext:orig
 --ignore-file=ext:pem
 --ignore-file=ext:log
 --ignore-dir=bower_components
 --ignore-dir=static
+--ignore-dir=.idea

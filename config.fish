@@ -3,7 +3,6 @@ set -g -x PATH \
 "$HOME/.config/fish/functions" \
 "/usr/local/bin" \
 "$HOME/.cabal/bin" \
-"$HOME/bin" \
 "/usr/bin" \
 "/bin" \
 "/usr/sbin" \
@@ -15,7 +14,7 @@ set -g -x PATH \
 
 set -g -x EDITOR "mvim"
 set -g -x VISUAL "mvim"
-set -g -x PAGER "vimpager"
+set -g -x PAGER "less"
 
 
 # helpful variables
@@ -27,11 +26,12 @@ set -g -x NL (printf \n)
 
 # program configuration
 
-set -g VIRTUALFISH_COMPAT_ALIASES
-
 set -g -x HOMEBREW_NO_EMOJI 1
 set -g -x HOMEBREW_CASK_OPTS '--appdir=/Applications'
 
 set -g VIRTUALFISH_COMPAT_ALIASES
 
 set -g GREP_OPTIONS
+
+set -g -x LESS '-REX'
+set -g -x LESSOPEN '|pygmentize -g'
