@@ -10,7 +10,13 @@ set -g -x PATH \
 "/usr/X11R6/bin" \
 "/usr/local/texlive/2014/bin/x86_64-darwin" \
 
-#source /Users/nick/bin/virtualfish/virtual.fish
+if [ -d ~/.virtualfish ]
+    set -g VIRTUALFISH_COMPAT_ALIASES
+    source ~/.virtualfish/virtual.fish
+    source ~/.virtualfish/auto_activation.fish
+else
+    echo 'could not find ~/.virtualfish'
+end
 
 set -g -x EDITOR "mvim"
 set -g -x VISUAL "mvim"
@@ -29,9 +35,9 @@ set -g -x NL (printf \n)
 set -g -x HOMEBREW_NO_EMOJI 1
 set -g -x HOMEBREW_CASK_OPTS '--appdir=/Applications'
 
-set -g VIRTUALFISH_COMPAT_ALIASES
-
 set -g GREP_OPTIONS
 
-set -g -x LESS '-REX'
+set -g -x LESS '-gFERXP%lB$'
 set -g -x LESSOPEN '|pygmentize -g'
+
+set -g -x ACK_PAGER_COLOR $PAGER
