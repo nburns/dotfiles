@@ -16,7 +16,7 @@ syntax enable
 
 let vimpager_use_gvim = 1
 
-set guifont=DejaVu\ Sans\ Mono:h11
+set guifont=DejaVu\ Sans\ Mono:h10
 let g:solarized_contrast="high"
 set background=dark
 set linespace=10
@@ -40,10 +40,14 @@ set mat=3
 
 " show current position
 set ruler
+set cursorline
+set colorcolumn=81
+set nowrap
 
 " break lines into 100 chars
 " set lbr
 " set tw=100
+set clipboard=unnamed
 
 """"""""""""""""""""""""""
 " Interface  Options
