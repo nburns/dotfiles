@@ -18,6 +18,9 @@ else
     echo 'could not find ~/.virtualfish'
 end
 
+set -g -x LC_ALL 'en_US.UTF-8'
+set -g -x LANG 'en_US.UTF-8'
+
 set -g -x EDITOR "mvim"
 set -g -x VISUAL "mvim"
 set -g -x PAGER "less"

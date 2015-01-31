@@ -1,1 +1,125 @@
-:source /Users/nick/Documents/dotfiles/vim/vimrc.vim
+set shell=bash
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+
+" user bundles
+Plugin 'jisaacks/GitGutter'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-fugitive'
+Plugin 'haya14busa/incsearch.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'Raimondi/delimitMate'
+Plugin 'kien/ctrlp.vim'
+Plugin 'bling/vim-airline'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+syntax enable
+
+let mapleader=","
+let g:netrw_dirhistmax=0 " disable netrw
+let g:airline_powerline_fonts=1 " use powerline fonts
+
+
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h10
+let g:solarized_contrast="high"
+set background=dark
+
+colorscheme solarized
+
+set hlsearch
+map <Space> :noh<cr>
+set incsearch
+
+" show bracket pairing
+set showmatch
+
+set ruler
+set cursorline
+set colorcolumn=81
+set nowrap
+
+set clipboard=unnamed
+
+set tabstop=4
+set shiftwidth=4
+set linespace=2
+
+set mouse=a
+set ttymouse=xterm2
+
+" command bar height
+set cmdheight=1
+
+set number
+
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+
+set magic
+
+set autoindent smartindent
+
+set nofoldenable
+
+" show a nice status line
+set laststatus=2
+"set statusline=\ \ %F%m%r%h%w\ %=%55(%{strftime('%b\%e,\ \%I:%M\ %p')}\ %5l,%-6(%c%V%)\ %)
+
+set timeout timeoutlen=1500
+
+
+" map command to meta
+if has("mac") || has("macunix")
+    nmap <D-j> <M-j>
+    nmap <D-k> <M-k>
+    vmap <D-j> <M-j>
+    vmap <D-k> <M-k>
+endif
+
+
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+
+
+" delete extra whitespace
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+autocmd BufWrite *.py :call DeleteTrailingWS()
+
+map <leader>ss :setlocal spell!<cr>
+
+set backspace=eol,start,indent " fix backspace
+set whichwrap+=<,>,h,l " fix backspace
+set expandtab " convert tabs to spaces
+set smarttab " use smarttabs
+set autoread " update externaly edited files
+set encoding=utf8 " use utf8 text encoding
+set nobackup " disable local backup
+set nowb " disable local backup
+set noswapfile " disable local backup
+set ffs=unix,dos,mac " use unix file format
+
+
+" remember last open position of a buffer
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+set viminfo^=%
+
+
