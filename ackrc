@@ -1,6 +1,9 @@
+--ignore-directory=tags
+
 --smart-case
 --color
 --nogroup
+--break
 
 --ignore-file=ext:sql
 --ignore-file=ext:css
@@ -10,3 +13,4 @@
 --ignore-dir=bower_components
 --ignore-dir=static
 --ignore-dir=.idea
+

@@ -11,11 +11,16 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'jisaacks/GitGutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
-Plugin 'haya14busa/incsearch.vim'
+"Plugin 'haya14busa/incsearch.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'Raimondi/delimitMate'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
+Plugin 'lh-vim-lib'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'alvan/vim-closetag'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -25,14 +30,27 @@ syntax enable
 
 let mapleader=","
 let g:netrw_dirhistmax=0 " disable netrw
+
+let g:airline#extensions#tabline#fnamemod=':t'
+let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1 " use powerline fonts
+let g:jsx_ext_required=0 "JSX in .js files
 
 
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h10
-let g:solarized_contrast="high"
-set background=dark
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h11
+set t_Co=256
+if has("gui_running")
+    let g:solarized_contrast="high"
+    set background=dark
+    colorscheme solarized
+else
+    let g:solarized_contrast="high"
+    set background=dark
+    colorscheme solarized
+endif
 
-colorscheme solarized
+
+
 
 set hlsearch
 map <Space> :noh<cr>
@@ -77,6 +95,8 @@ set laststatus=2
 
 set timeout timeoutlen=1500
 
+set tags=tags;/
+
 
 " map command to meta
 if has("mac") || has("macunix")
@@ -91,6 +111,14 @@ inoremap <C-a> <Home>
 inoremap <C-e> <End>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
+
+nnoremap <C-n> :bnext<CR>
+nnoremap <C-p> :bprevious<CR>
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
+
+inoremap <A-BS> <C-W>
+noremap <Leader>c :!cat %\|pbcopy<CR>
 
 
 " delete extra whitespace
@@ -113,6 +141,7 @@ set nobackup " disable local backup
 set nowb " disable local backup
 set noswapfile " disable local backup
 set ffs=unix,dos,mac " use unix file format
+:au FocusLost * silent! wa
 
 
 " remember last open position of a buffer
@@ -121,5 +150,4 @@ autocmd BufReadPost *
      \   exe "normal! g`\"" |
      \ endif
 set viminfo^=%
-
 
