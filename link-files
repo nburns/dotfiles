@@ -44,4 +44,5 @@ single_file_link "vim"
 single_file_link "ackrc"
 single_file_link "mostrc"
 single_file_link "tmux.conf"
+single_file_link "pylintrc"
 
