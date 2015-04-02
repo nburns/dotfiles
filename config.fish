@@ -34,6 +34,7 @@ set -g -x TAB (printf \t)
 set -g -x NL (printf \n)
 
 # program configuration
+set -g -x PYTHONDONTWRITEBYTECODE 'True'
 
 set -g -x HOMEBREW_NO_EMOJI 1
 set -g -x HOMEBREW_CASK_OPTS '--appdir=/Applications'

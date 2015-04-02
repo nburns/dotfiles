@@ -8,19 +8,15 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " user bundles
-Plugin 'jisaacks/GitGutter'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'tpope/vim-fugitive'
 "Plugin 'haya14busa/incsearch.vim'
-Plugin 'scrooloose/syntastic'
 Plugin 'Raimondi/delimitMate'
-Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
+"Plugin 'xolox/vim-easytags'
 Plugin 'lh-vim-lib'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'alvan/vim-closetag'
+Plugin 'vim-scripts/applescript.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -37,6 +33,10 @@ let g:airline_powerline_fonts=1 " use powerline fonts
 let g:jsx_ext_required=0 "JSX in .js files
 let g:syntastic_python_pylint_args='--rcfile=/Users/nick/.pylintrc'
 
+au FileType python let b:delimitMate_nesting_quotes = ['"']
+
+set spellfile="/Users/nick/Documents/dictionaries/dictionary.dic"
+
 
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h11
 set t_Co=256
@@ -50,53 +50,41 @@ else
     colorscheme solarized
 endif
 
-
-
-
-set hlsearch
-map <Space> :noh<cr>
-set incsearch
-
-" show bracket pairing
-set showmatch
-
-set ruler
-set cursorline
-set colorcolumn=81
-set nowrap
-
-set clipboard=unnamed
-
-set tabstop=4
-set shiftwidth=4
-set linespace=2
-
-set mouse=a
-set ttymouse=xterm2
-
-" command bar height
-set cmdheight=1
-
-set number
-
-set noerrorbells
-set novisualbell
-set t_vb=
-set tm=500
-
-set magic
-
 set autoindent smartindent
-
-set nofoldenable
-
-" show a nice status line
+set autoread " update externaly edited files
+set backspace=eol,start,indent " fix backspace
+set clipboard=unnamed "use system clipboard
+set cmdheight=1
+set colorcolumn=81
+set cursorline
+set encoding=utf8 " use utf8 text encoding
+set expandtab " convert tabs to spaces
+set ffs=unix,dos,mac " use unix file format
+set hlsearch
+set incsearch
 set laststatus=2
-"set statusline=\ \ %F%m%r%h%w\ %=%55(%{strftime('%b\%e,\ \%I:%M\ %p')}\ %5l,%-6(%c%V%)\ %)
-
-set timeout timeoutlen=1500
-
+set linespace=2
+set magic
+set mouse=a
+set nobackup " disable local backup
+set noerrorbells
+set nofoldenable
+set noswapfile " disable local backup
+set novisualbell
+set nowb " disable local backup
+set nowrap
+set number
+set ruler
+set shiftwidth=4
+set showmatch
+set smarttab " use smarttabs
+set t_vb=
+set tabstop=4
 set tags=tags;/
+set timeout timeoutlen=1500
+set tm=500
+set ttymouse=xterm2
+set whichwrap+=<,>,h,l " fix backspace
 
 
 " map command to meta
@@ -118,7 +106,10 @@ nnoremap <C-p> :bprevious<CR>
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
 
-inoremap <A-BS> <C-W>
+" kill word backwards
+inoremap <C-BS> <C-\><C-o>db
+
+" copy the whole file
 noremap <Leader>c :!cat %\|pbcopy<CR>
 
 
@@ -132,18 +123,10 @@ autocmd BufWrite *.py :call DeleteTrailingWS()
 
 map <leader>ss :setlocal spell!<cr>
 
-set backspace=eol,start,indent " fix backspace
-set whichwrap+=<,>,h,l " fix backspace
-set expandtab " convert tabs to spaces
-set smarttab " use smarttabs
-set autoread " update externaly edited files
-set encoding=utf8 " use utf8 text encoding
-set nobackup " disable local backup
-set nowb " disable local backup
-set noswapfile " disable local backup
-set ffs=unix,dos,mac " use unix file format
-:au FocusLost * silent! wa
 
+" relative line numbers for active buffer
+:au FocusLost * :set number
+:au FocusGained * :set relativenumber
 
 " remember last open position of a buffer
 autocmd BufReadPost *
@@ -152,3 +135,5 @@ autocmd BufReadPost *
      \ endif
 set viminfo^=%
 
+" clear highliting with space
+map <Space> :noh<cr>

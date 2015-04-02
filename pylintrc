@@ -1,5 +1,5 @@
 [MESSAGES CONTROL]
-disable=W0621, C0111, CR0201, CW1202, W1202, R0201, R0903, W0622
+disable=W0621, C0111, CR0201, CW1202, W1202, R0201, R0903, W0622, F0401, C0330, W0703, W0212
 
 [BASIC]
 
@@ -9,11 +9,12 @@ good-names=i,j,k,ex,Run,_,e
 const-rgx=(([A-Z_][A-Z0-9_]*)|(__.*__)|[a-z_][a-z0-9_]*)$
 attr-rgx=([a-z_][a-z0-9_]*)$
 argument-rgx=([a-z_][a-z0-9_]*)$
+variable-rgx=[a-z_][a-z0-9_]*$
 
 [FORMAT]
 
 # Maximum number of characters on a single line.
-max-line-length=80
+max-line-length=100
 
 #[SPELLING]
 #
