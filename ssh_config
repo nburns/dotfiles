@@ -1,0 +1,5 @@
+Host dev
+    HostName dev-nburns.instaedu.com
+    User instaedu
+    RequestTTY yes
+    IdentityFile ~/.ssh/instaedu_id_rsa
