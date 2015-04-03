@@ -3,19 +3,19 @@
 BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 function create_dir(){
-	if [ ! -d $1 ]
+	if [ ! -e $1 ]
 	then
 		mkdir $1
 	fi
 }
 
 function safe_link(){
+	echo ln -s $1 $2
 	ln -s $1 $2
+    echo
 }
 
 function single_file_link(){
-	unlink "$HOME/.$1"
-	echo "linked .$1"
 	safe_link "$BASE_DIR/$1" "$HOME/.$1"
 }
 
@@ -46,3 +46,5 @@ single_file_link "mostrc"
 single_file_link "tmux.conf"
 single_file_link "pylintrc"
 
+create_dir "$HOME/.ssh"
+safe_link "$BASE_DIR/ssh_config" "$HOME/.ssh/config"
