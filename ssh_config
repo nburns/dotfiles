@@ -7,4 +7,5 @@ Host dev
 Host feral
     HostName crius.feralhosting.com
     User swimmernick
-    IdentityFile ~/.ssh/feral_rsa
+    RequestTTY yes
+    IdentityFile ~/.ssh/feral_fish_rsa
