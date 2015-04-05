@@ -1,18 +1,19 @@
-switch (uname)
-    case 'Darwin'
-        set -g -x PATH "$HOME/bin"\
-            "$HOME/.config/fish/functions"\
-            "/usr/local/bin"\
-            "$HOME/.cabal/bin"\
-            "/usr/bin"\
-            "/bin"\
-            "/usr/sbin"\
-            "/sbin"\ 
-            "/usr/X11R6/bin"\
-            "/usr/local/texlive/2014/bin/x86_64-darwin"
-    case 'Linux'
-        set -g -x PATH $PATH
-end
+#switch (uname)
+#    case 'Darwin'
+#        set -g -x PATH "$HOME/bin"\
+#            "$HOME/.config/fish/functions"\
+#            "/usr/local/bin"\
+#            "$HOME/.cabal/bin"\
+#            "/usr/bin"\
+#            "/bin"\
+#            "/usr/sbin"\
+#            "/sbin"\ 
+#            "/usr/X11R6/bin"\
+#            "/usr/local/texlive/2014/bin/x86_64-darwin"\
+#            $PATH
+#    case 'Linux'
+#        set -g -x PATH $PATH
+#end
 
 
 if [ -d ~/.virtualfish ]
