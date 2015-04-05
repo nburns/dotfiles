@@ -3,3 +3,8 @@ Host dev
     User instaedu
     RequestTTY yes
     IdentityFile ~/.ssh/id_rsa
+
+Host feral
+    HostName crius.feralhosting.com
+    User swimmernick
+    IdentityFile ~/.ssh/feral_rsa
