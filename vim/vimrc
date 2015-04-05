@@ -9,14 +9,14 @@ Plugin 'gmarik/Vundle.vim'
 
 " user bundles
 Plugin 'altercation/vim-colors-solarized'
-"Plugin 'haya14busa/incsearch.vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'bling/vim-airline'
 Plugin 'xolox/vim-misc'
-"Plugin 'xolox/vim-easytags'
+Plugin 'guns/vim-clojure-static'
 Plugin 'lh-vim-lib'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-scripts/applescript.vim'
+Plugin 'kien/rainbow_parentheses.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
