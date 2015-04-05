@@ -45,6 +45,8 @@ single_file_link "ackrc"
 single_file_link "mostrc"
 single_file_link "tmux.conf"
 single_file_link "pylintrc"
+single_file_link "gitconfig"
+single_file_link "gitignore_global"
 
 create_dir "$HOME/.ssh"
 safe_link "$BASE_DIR/ssh_config" "$HOME/.ssh/config"
