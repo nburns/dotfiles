@@ -3,7 +3,7 @@ BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 function do_link(){
     if [ -e $2 ] || [ -d $2 ]; then
-        echo "$2 already exists, skipping"
+        :
     else
         echo "ln -s $1 $2"
         ln -s $1 $2
@@ -17,6 +17,7 @@ function link_to_home(){
 function create_dir(){
 	if [ ! -e $1 ]
 	then
+        echo "mkdir $1"
 		mkdir $1
 	fi
 }
@@ -32,7 +33,7 @@ do_link "$BASE_DIR/ssh_config" "$HOME/.ssh/config"
 
 create_dir ~/.config
 create_dir ~/.config/fish
-do_link "$BASE_DIR/config.fish" ~/config/fish/config.fish
+do_link "$BASE_DIR/config.fish" "$HOME/.config/fish/config.fish"
 
 
 
