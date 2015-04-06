@@ -4,6 +4,7 @@ Host dev
     RequestTTY yes
     IdentitiesOnly yes
     IdentityFile ~/.ssh/dev_fish_id_rsa
+    ForwardAgent yes
 
 Host dev_sshfs
     HostName dev-nburns.instaedu.com
@@ -17,3 +18,9 @@ Host feral
     RequestTTY yes
     IdentitiesOnly yes
     IdentityFile ~/.ssh/feral_fish_rsa
+
+Host github-instaedu
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/nick_instaedu_id_rsa
+
