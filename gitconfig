@@ -5,7 +5,7 @@
 	email = nick@burns.io
 [core]
 	editor = vim
-	excludesfile = /Users/nick/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [push]
 	default = current
 [filter "media"]

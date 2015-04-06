@@ -1,6 +1,18 @@
-#! /bin/bash
-
+#!/usr/bin/env bash
 BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+function do_link(){
+    if [ -e $2 ] || [ -d $2 ]; then
+        echo "$2 already exists, skipping"
+    else
+        echo "ln -s $1 $2"
+        ln -s $1 $2
+    fi
+}
+
+function link_to_home(){
+    do_link "$BASE_DIR/$1" "$HOME/.$1"
+}
 
 function create_dir(){
 	if [ ! -e $1 ]
@@ -9,44 +21,23 @@ function create_dir(){
 	fi
 }
 
-function safe_link(){
-	echo ln -s $1 $2
-	ln -s $1 $2
-    echo
-}
+link_to_home ackrc
+link_to_home gitconfig
+link_to_home gitignore_global
+link_to_home tmux.conf
+link_to_home vim
+link_to_home vimrc
 
-function single_file_link(){
-	safe_link "$BASE_DIR/$1" "$HOME/.$1"
-}
+do_link "$BASE_DIR/ssh_config" "$HOME/.ssh/config"
+
+create_dir ~/.config
+create_dir ~/.config/fish
+do_link "$BASE_DIR/config.fish" ~/config/fish/config.fish
 
 
 
-# config directory setup
-create_dir "$HOME/.config"
 
-# fish folder
-create_dir "$HOME/.config/fish"
 
-# fish config
-safe_link "$BASE_DIR/config.fish" "$HOME/.config/fish/config.fish"
 
-# fish functions folder
-safe_link "$BASE_DIR/functions" "$HOME/.config/fish/functions"
 
-single_file_link "nanorc"
-single_file_link "ghci"
-single_file_link "emacs"
-single_file_link "tm_properties"
-single_file_link "vimrc"
-single_file_link "zshrc"
-single_file_link "bcrc"
-single_file_link "vim"
-single_file_link "ackrc"
-single_file_link "mostrc"
-single_file_link "tmux.conf"
-single_file_link "pylintrc"
-single_file_link "gitconfig"
-single_file_link "gitignore_global"
 
-create_dir "$HOME/.ssh"
-safe_link "$BASE_DIR/ssh_config" "$HOME/.ssh/config"

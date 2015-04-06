@@ -2,10 +2,18 @@ Host dev
     HostName dev-nburns.instaedu.com
     User instaedu
     RequestTTY yes
-    IdentityFile ~/.ssh/id_rsa
+    IdentitiesOnly yes
+    IdentityFile ~/.ssh/dev_fish_id_rsa
+
+Host dev_sshfs
+    HostName dev-nburns.instaedu.com
+    User instaedu
+    IdentitiesOnly yes
+    IdentityFile ~/.ssh/dev_id_rsa
 
 Host feral
     HostName crius.feralhosting.com
     User swimmernick
     RequestTTY yes
+    IdentitiesOnly yes
     IdentityFile ~/.ssh/feral_fish_rsa

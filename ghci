@@ -1,2 +1,0 @@
-:set prompt "\ESC[34m%s\ESC[m\ESC[31;1m>\ESC[m"
-:set +t
