@@ -106,6 +106,11 @@ nnoremap <C-p> :bprevious<CR>
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
 
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
 " kill word backwards
 inoremap <C-BS> <C-\><C-o>db
 
