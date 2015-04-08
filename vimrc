@@ -17,6 +17,7 @@ Plugin 'lh-vim-lib'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-scripts/applescript.vim'
 Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'dag/vim-fish'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -116,6 +117,9 @@ inoremap <C-BS> <C-\><C-o>db
 
 " copy the whole file
 noremap <Leader>c :!cat %\|pbcopy<CR>
+
+" w!! to write as sudo
+cmap w!! w !sudo tee > /dev/null %
 
 
 " delete extra whitespace
