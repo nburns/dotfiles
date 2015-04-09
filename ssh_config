@@ -18,6 +18,11 @@ Host bastion
     HostName bastion.instaedu.com
     User nburns
 
+Host github-instaedu
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/nick_instaedu_id_rsa
+
 Host feral
     HostName crius.feralhosting.com
     User swimmernick
@@ -25,8 +30,7 @@ Host feral
     IdentitiesOnly yes
     IdentityFile ~/.ssh/feral_fish_rsa
 
-Host github-instaedu
-    HostName github.com
-    User git
-    IdentityFile ~/.ssh/nick_instaedu_id_rsa
-
+Host feral-normal
+    HostName crius.feralhosting.com
+    User swimmernick
+    IdentityFile ~/.ssh/feral_rsa
