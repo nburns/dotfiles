@@ -31,13 +31,13 @@ let g:netrw_dirhistmax=0 " disable netrw
 let g:airline#extensions#tabline#fnamemod=':t'
 let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1 " use powerline fonts
-let g:jsx_ext_required=0 "JSX in .js files
-let g:syntastic_python_pylint_args='--rcfile=/Users/nick/.pylintrc'
+"let g:syntastic_python_pylint_args='--rcfile=/Users/nick/.pylintrc'
 
 au FileType python let b:delimitMate_nesting_quotes = ['"']
 
 set spellfile="/Users/nick/Documents/dictionaries/dictionary.dic"
 
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h11
 set t_Co=256
