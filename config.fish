@@ -33,6 +33,7 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
             if [ (which fish) ]
                 set -g -x SHELL (which fish)
             end
+            alias ls "ls --hide='*.pyc'"
     end
 
     if [ (which mvim) ]
@@ -69,11 +70,11 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
         end
     end
     
-    #function current_branch
-    #    if [ (git branch) ]
-    #        echo -n (git symbolic-ref --short HEAD)" "
-    #    end
-    #end
+    function current_branch
+        if [ (git branch) ]
+            echo -n (git symbolic-ref --short HEAD)" "
+        end
+    end
     
     function virtualenv
         if set -q VIRTUAL_ENV
@@ -90,7 +91,5 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
         old_fish_prompt
     end
 
-    alias ls "ls --hide='*.pyc'"
-    
     set -g -x _SETUPDONE 'true'
 end
