@@ -24,6 +24,15 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
             if [ -e  /Applications/MacVim.app ]
                 set -g -x VIM_APP_DIR (dirname (readlink /Applications/MacVim.app))
             end
+        case 'Linux'
+            if [ -d ~/.linuxbrew ]
+                set -g -x PATH ~/.linuxbrew/bin $PATH
+                set -g -x MANPATH ~/.linuxbrew/share/man $MANPATH
+                set -g -x INFOPATH ~/.linuxbrew/share/info $INFOPATH
+            end
+            if [ (which fish) ]
+                set -g -x SHELL (which fish)
+            end
     end
 
     if [ (which mvim) ]
@@ -80,6 +89,8 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
         virtualenv
         old_fish_prompt
     end
+
+    alias ls "ls --hide='*.pyc'"
     
     set -g -x _SETUPDONE 'true'
 end
