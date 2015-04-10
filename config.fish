@@ -60,11 +60,11 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
         end
     end
     
-    function current_branch
-        if [ -d .git ]; or git rev-parse --git-dir > /dev/null 2>&1
-            echo -n (git symbolic-ref --short HEAD)" "
-        end
-    end
+    #function current_branch
+    #    if [ (git branch) ]
+    #        echo -n (git symbolic-ref --short HEAD)" "
+    #    end
+    #end
     
     function virtualenv
         if set -q VIRTUAL_ENV
@@ -76,7 +76,7 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
 
     function fish_prompt
         status_code
-        current_branch
+        #current_branch
         virtualenv
         old_fish_prompt
     end
