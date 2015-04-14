@@ -6,6 +6,7 @@ Host dev
     IdentityFile ~/.ssh/dev_fish_id_rsa
     ForwardAgent yes
     ForwardX11 yes
+    ForwardX11Timeout 1d
     LocalCommand mount-dev
 
 Host dev_sshfs
