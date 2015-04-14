@@ -71,25 +71,57 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
     end
     
     function current_branch
-        if [ (git branch) ]
-            echo -n (git symbolic-ref --short HEAD)" "
-        end
+        echo (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')" "
     end
     
     function virtualenv
-        if set -q VIRTUAL_ENV
+        if set -q VIRTUAL_ENV 
             echo -n (basename $VIRTUAL_ENV)" "
         end
     end
 
-    functions --copy fish_prompt old_fish_prompt
+    #functions --copy fish_prompt old_fish_prompt
 
-    function fish_prompt
-        status_code
-        #current_branch
-        virtualenv
-        old_fish_prompt
+    #function fish_prompt
+    #    status_code
+    #    #current_branch
+    #    virtualenv
+    #    old_fish_prompt
+    #end
+
+
+    function fish_prompt --description 'Write out the prompt'
+        set _status (status_code)
+    
+        # Just calculate these once, to save a few cycles when displaying the prompt
+        if not set -q __fish_prompt_hostname
+            set -g __fish_prompt_hostname (hostname|cut -d . -f 1)
+        end
+    
+        if not set -q __fish_prompt_normal
+            set -g __fish_prompt_normal (set_color normal)
+        end
+    
+        switch $USER 
+            case root 
+                if not set -q __fish_prompt_cwd
+                    if set -q fish_color_cwd_root
+                        set -g __fish_prompt_cwd (set_color $fish_color_cwd_root)
+                    else
+                        set -g __fish_prompt_cwd (set_color $fish_color_cwd)
+                    end
+                end 
+                echo -n -s "$USER" @ "$__fish_prompt_hostname" ' ' "$__fish_prompt_cwd" (prompt_pwd) "$__fish_prompt_normal" '# '
+    
+            case '*' 
+                if not set -q __fish_prompt_cwd
+                    set -g __fish_prompt_cwd (set_color $fish_color_cwd)
+                end 
+                echo -n -s $_status (current_branch) "$USER" @ "$__fish_prompt_hostname" ' ' "$__fish_prompt_cwd" (prompt_pwd) "$__fish_prompt_normal" '> '
+        end
     end
 
-    set -g -x _SETUPDONE 'true'
+
+
+    set -g _SETUPDONE 'true'
 end
