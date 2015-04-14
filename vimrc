@@ -12,6 +12,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'Raimondi/delimitMate'
 Plugin 'bling/vim-airline'
 Plugin 'xolox/vim-misc'
+Plugin 'kien/ctrlp.vim'
 Plugin 'guns/vim-clojure-static'
 Plugin 'lh-vim-lib'
 Plugin 'scrooloose/nerdcommenter'
@@ -32,6 +33,7 @@ let g:airline#extensions#tabline#fnamemod=':t'
 let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1 " use powerline fonts
 "let g:syntastic_python_pylint_args='--rcfile=/Users/nick/.pylintrc'
+let g:ctrlp_working_path_mode = 0
 
 au FileType python let b:delimitMate_nesting_quotes = ['"']
 
