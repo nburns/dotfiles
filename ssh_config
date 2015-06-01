@@ -7,6 +7,7 @@ Host dev
     ForwardAgent yes
     ForwardX11 yes
     ForwardX11Timeout 1d
+    ServerAliveInterval 60s
     LocalCommand mount-dev
 
 Host dev_sshfs
