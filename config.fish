@@ -1,19 +1,20 @@
 if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
-    function error
+    function error --description echos to stderr
         echo $argv > /dev/stderr
     end
 
     function prepend_to_path
-        for arg in $argv
-            if [ -d $arg ]
-                set -g -x PATH $arg $PATH
+        set valid_paths
+        for path in $argv
+            if [ -d $path ]
+                set valid_paths $valid_paths $path
             end
         end
+        set -g -x PATH $valid_paths $PATH
     end
 
-    prepend_to_path ~/bin /usr/local/bin ~/.cabal/bin /opt/X11/bin\
-                    /usr/local/texlive/2014/bin/x86_64-darwin
-    
+    prepend_to_path ~/bin
+
     switch (uname)
         case 'Darwin'
             set -g -x LC_ALL 'en_US.UTF-8'
