@@ -37,8 +37,6 @@ let g:ctrlp_working_path_mode = 0
 
 au FileType python let b:delimitMate_nesting_quotes = ['"']
 
-set spellfile="/Users/nick/Documents/dictionaries/dictionary.dic"
-
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h11
@@ -47,9 +45,12 @@ if has("gui_running")
     let g:solarized_contrast="high"
     set background=dark
     colorscheme solarized
+    set lines=60
+    set columns=85
 else
+    " iterm2 escape codes
     if &term =~ 'screen'
-        " in tmux/screen
+        " in tmux/screen escape the escapes
         let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
         let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
     else
@@ -59,6 +60,10 @@ else
     let g:solarized_contrast="high"
     set background=dark
     colorscheme solarized
+endif
+
+if filereadable("~/.words.utf-8.add")
+    set spellfile="~/.words.utf-8.add"
 endif
 
 
@@ -98,6 +103,7 @@ set timeout timeoutlen=1500
 set tm=500
 set ttymouse=xterm2
 set whichwrap+=<,>,h,l " fix backspace
+set fileformat=unix
 
 
 " map command to meta
