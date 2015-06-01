@@ -28,6 +28,7 @@ link_to_home gitignore_global
 link_to_home tmux.conf
 link_to_home vim
 link_to_home vimrc
+link_to_home ctags
 
 do_link "$BASE_DIR/ssh_config" "$HOME/.ssh/config"
 
