@@ -8,16 +8,23 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " user bundles
+" color scheme
 Plugin 'altercation/vim-colors-solarized'
+
+" editor enhancements
 Plugin 'Raimondi/delimitMate'
-Plugin 'bling/vim-airline'
-Plugin 'xolox/vim-misc'
-Plugin 'kien/ctrlp.vim'
-Plugin 'guns/vim-clojure-static'
-Plugin 'lh-vim-lib'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'vim-scripts/BufClose.vim'
+
+Plugin 'tpope/vim-rsi' "readline bindings
+Plugin 'kien/ctrlp.vim'
+
+Plugin 'bling/vim-airline'
+"Plugin 'xolox/vim-misc'
+"Plugin 'vim-scripts/lh-vim-lib'
+
+" language plugins
 Plugin 'vim-scripts/applescript.vim'
-Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'dag/vim-fish'
 
 " All of your Plugins must be added before the following line
@@ -66,8 +73,6 @@ if filereadable("~/.words.utf-8.add")
     set spellfile="~/.words.utf-8.add"
 endif
 
-
-
 set autoindent smartindent
 set autoread " update externaly edited files
 set backspace=eol,start,indent " fix backspace
@@ -90,8 +95,8 @@ set nofoldenable
 set noswapfile " disable local backup
 set novisualbell
 set nowb " disable local backup
-set nowrap
-set number
+set nowrap "dont wrap lines
+set number " show line numbers
 set ruler
 set shiftwidth=4
 set showmatch
@@ -139,6 +144,12 @@ noremap <Leader>c :!cat %\|pbcopy<CR>
 " w!! to write as sudo
 cmap w!! w !sudo tee > /dev/null %
 
+"avoids the annoying "Not an editor command: W"
+cabbrev WQ wq
+cabbrev Wq wq
+cabbrev W w
+cabbrev Q q
+
 
 " delete extra whitespace
 func! DeleteTrailingWS()
@@ -150,10 +161,7 @@ autocmd BufWrite *.py :call DeleteTrailingWS()
 
 map <leader>ss :setlocal spell!<cr>
 
-
-" relative line numbers for active buffer
-:au FocusLost * :set number
-:au FocusGained * :set relativenumber
+map <leader>c :BufClose<cr>
 
 " remember last open position of a buffer
 autocmd BufReadPost *
@@ -164,3 +172,4 @@ set viminfo^=%
 
 " clear highliting with space
 map <Space> :noh<cr>
+
