@@ -34,6 +34,7 @@ do_link "$BASE_DIR/ssh_config" "$HOME/.ssh/config"
 
 create_dir ~/.config
 create_dir ~/.config/fish
+create_dir "$BASE_DIR/vim"
 do_link "$BASE_DIR/config.fish" "$HOME/.config/fish/config.fish"
 
 
