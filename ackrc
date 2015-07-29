@@ -6,7 +6,6 @@
 --nogroup
 --break
 
---ignore-file=ext:sql
---ignore-dir=bower_components
---ignore-dir=.idea
+--ignore-dir=pkg
+--type-set=go:match:.+\.go
 
