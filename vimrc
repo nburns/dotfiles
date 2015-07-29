@@ -12,20 +12,21 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 
 " editor enhancements
-Plugin 'Raimondi/delimitMate'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'vim-scripts/BufClose.vim'
+Plugin 'Raimondi/delimitMate' "delimiter autocompletion
+Plugin 'scrooloose/nerdcommenter' "commenting
+Plugin 'vim-scripts/BufClose.vim' " :BufClose closes current buffer
 
 Plugin 'tpope/vim-rsi' "readline bindings
-Plugin 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim' " fuzzy search
 
-Plugin 'bling/vim-airline'
+Plugin 'bling/vim-airline' " statusline
 "Plugin 'xolox/vim-misc'
 "Plugin 'vim-scripts/lh-vim-lib'
 
 " language plugins
-Plugin 'vim-scripts/applescript.vim'
 Plugin 'dag/vim-fish'
+Plugin 'fatih/vim-go'
+Plugin 'vim-scripts/applescript.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -46,7 +47,7 @@ au FileType python let b:delimitMate_nesting_quotes = ['"']
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h11
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
 set t_Co=256
 if has("gui_running")
     let g:solarized_contrast="high"
