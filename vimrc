@@ -15,6 +15,9 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'Raimondi/delimitMate' "delimiter autocompletion
 Plugin 'scrooloose/nerdcommenter' "commenting
 Plugin 'vim-scripts/BufClose.vim' " :BufClose closes current buffer
+Plugin 'mileszs/ack.vim' 
+Plugin 'SirVer/ultisnips' " UltiSnips
+Plugin 'honza/vim-snippets' " snippets
 
 Plugin 'tpope/vim-rsi' "readline bindings
 Plugin 'kien/ctrlp.vim' " fuzzy search
@@ -43,18 +46,28 @@ let g:airline_powerline_fonts=1 " use powerline fonts
 "let g:syntastic_python_pylint_args='--rcfile=/Users/nick/.pylintrc'
 let g:ctrlp_working_path_mode = 0
 
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
 au FileType python let b:delimitMate_nesting_quotes = ['"']
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
+let host=system('hostname -s')
+if host == 'bernoulli'
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h13
+else
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
+endif
+
 set t_Co=256
 if has("gui_running")
     let g:solarized_contrast="high"
     set background=dark
     colorscheme solarized
     set lines=60
-    set columns=85
+    set columns=100
 else
     " iterm2 escape codes
     if &term =~ 'screen'
@@ -80,7 +93,7 @@ set backspace=eol,start,indent " fix backspace
 set clipboard=unnamed "use system clipboard
 set cmdheight=1
 set colorcolumn=81
-set cursorline
+set cursorline " Highlight the screen line of the cursor
 set encoding=utf8 " use utf8 text encoding
 set expandtab " convert tabs to spaces
 set ffs=unix,dos,mac " use unix file format
@@ -99,12 +112,13 @@ set nowb " disable local backup
 set nowrap "dont wrap lines
 set number " show line numbers
 set ruler
-set shiftwidth=4
+set scrolloff=10 " amount of context around the cursor
+set shiftwidth=4 " autoindent columns
 set showmatch
 set smarttab " use smarttabs
 set t_vb=
-set tabstop=4
-set tags=tags;/
+set tabstop=4 " tabs are 4 spaces
+set tags=tags;/ " tagsfile name
 set timeout timeoutlen=1500
 set tm=500
 set ttymouse=xterm2
@@ -150,6 +164,7 @@ cabbrev WQ wq
 cabbrev Wq wq
 cabbrev W w
 cabbrev Q q
+cabbrev Q! q!
 
 
 " delete extra whitespace

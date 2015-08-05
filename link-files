@@ -29,6 +29,7 @@ link_to_home tmux.conf
 link_to_home vim
 link_to_home vimrc
 link_to_home ctags
+link_to_home ideavimrc
 
 do_link "$BASE_DIR/ssh_config" "$HOME/.ssh/config"
 

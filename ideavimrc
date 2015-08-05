@@ -1,0 +1,5 @@
+set scrolloff=15
+set smartcase
+
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>

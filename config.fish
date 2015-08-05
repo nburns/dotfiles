@@ -16,6 +16,13 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
             set -g -x LC_ALL 'en_US.UTF-8'
             set -g -x LANG 'en_US.UTF-8'
     end
+
+    switch (hostname -s)
+        case 'bernoulli'
+            set -g -x GOPATH ~/outbound/outbound/
+            prepend_to_path ~/outbound/outbound/bin
+    end
+            
     
     if [ -e  /Applications/MacVim.app ]
         set -g -x VIM_APP_DIR (dirname (readlink /Applications/MacVim.app))
@@ -36,7 +43,7 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
     if [ -e ~/Documents/dotfiles/homebrew-access-token ]
         source ~/Documents/dotfiles/homebrew-access-token
     end
-    
+
     set -g -x PAGER "less"
     set -g -x TODAY (date "+%m-%d")
     set -g -x TAB (printf \t)
@@ -70,15 +77,6 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
     function virtualenv
         if set -q VIRTUAL_ENV 
             echo -n (basename $VIRTUAL_ENV)" "
-        end
-    end
-
-    function autogo --on-variable PWD --description "check PWD, set GOPATH and PATH"
-        if pwd | grep ~/outbound/outbound  >/dev/null
-            set -g -x GOPATH (pwd)
-            if not echo $PATH | grep ~/outbound/outbound >/dev/null
-                set -g -x PATH ~/outbound/outbound/bin $PATH
-            end
         end
     end
 
