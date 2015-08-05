@@ -3,7 +3,6 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
         set valid_paths
         for path in $argv
             if [ -d $path ]
-                echo $path
                 set valid_paths $valid_paths $path
             end
         end
