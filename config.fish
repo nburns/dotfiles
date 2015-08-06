@@ -21,6 +21,9 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
         case 'bernoulli'
             set -g -x GOPATH ~/outbound/outbound/
             prepend_to_path ~/outbound/outbound/bin
+            
+        case 'curie'
+            set -g -x GOPATH ~/needle-drop
     end
             
     
@@ -55,6 +58,12 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
     set -g -x PYTHONDONTWRITEBYTECODE 'True'
     set -g -x HOMEBREW_NO_EMOJI 1
     set -g -x HOMEBREW_CASK_OPTS '--appdir=/Applications'
+
+    if set -q GOPATH
+        if [ -e "$GOPATH/bin" ]
+            prepend_to_path "$GOPATH/bin"
+        end
+    end
 
 
     function fish_greeting; end
