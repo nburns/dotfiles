@@ -52,7 +52,7 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
     set -g -x TAB (printf \t)
     set -g -x NL (printf \n)
     set -g -x GREP_OPTIONS
-    set -g -x LESS '-gFERXP%lB$'
+    set -g -x LESS '-gFERXP%lB$ -j 10'
     set -g -x LESSOPEN '|pygmentize -g'
     set -g -x ACK_PAGER_COLOR $PAGER # ack output gets paged and is colourful
     set -g -x PYTHONDONTWRITEBYTECODE 'True'
