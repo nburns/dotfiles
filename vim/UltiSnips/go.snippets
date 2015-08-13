@@ -1,0 +1,27 @@
+# Snippets for Go
+
+extends go
+
+
+snippet /^test/ "A new test with testify" r
+func Test${1:}(t *testing.T) \{
+	assert := assert.New(t)
+\}
+endsnippet
+
+snippet /^testfile/ "A new testfile" r
+package ${1:package}
+
+import(
+	"testing"
+)
+
+import (
+	"github.com/stretchr/testify/assert"
+)
+
+func Test${2:}(t *testing.T) \{
+	assert := assert.New(t)
+\}
+endsnippet
+

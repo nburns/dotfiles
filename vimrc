@@ -44,7 +44,7 @@ let g:airline#extensions#tabline#fnamemod=':t'
 let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1 " use powerline fonts
 "let g:syntastic_python_pylint_args='--rcfile=/Users/nick/.pylintrc'
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_working_path_mode = 'r'
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
