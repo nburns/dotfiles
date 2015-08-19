@@ -25,6 +25,13 @@ func Test${2:}(t *testing.T) \{
 \}
 endsnippet
 
-snippet todo "a standardized todo" r
+snippet /^todo/ "a standardized todo" r
 // TODO nick ${1:}
 endsnippet
+
+snippet /dict/ "string interface map" r
+map[string]interface\{\}\{
+${1:}
+\}
+endsnippet
+

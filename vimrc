@@ -19,6 +19,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'SirVer/ultisnips' " UltiSnips
 Plugin 'honza/vim-snippets' " snippets
 
+
 Plugin 'tpope/vim-rsi' "readline bindings
 Plugin 'kien/ctrlp.vim' " fuzzy search
 
@@ -29,6 +30,7 @@ Plugin 'bling/vim-airline' " statusline
 " language plugins
 Plugin 'dag/vim-fish'
 Plugin 'fatih/vim-go'
+Plugin 'undx/vim-gocode'
 Plugin 'vim-scripts/applescript.vim'
 
 " All of your Plugins must be added before the following line
@@ -51,6 +53,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 au FileType python let b:delimitMate_nesting_quotes = ['"']
+let delimitMate_expand_cr = 1
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
@@ -133,6 +136,12 @@ if has("mac") || has("macunix")
     vmap <D-j> <M-j>
     vmap <D-k> <M-k>
 endif
+
+" allows command s saving in terminal
+" first remap command + s to send hex code 0x13
+noremap <C-S> :w<CR>
+vnoremap <C-S> <C-C>:w<CR>
+inoremap <C-S> <C-O>:w<CR>
 
 
 inoremap <C-a> <Home>
