@@ -29,6 +29,7 @@ Plugin 'bling/vim-airline' " statusline
 
 " language plugins
 Plugin 'dag/vim-fish'
+Plugin 'kchmck/vim-coffee-script'
 Plugin 'fatih/vim-go'
 Plugin 'undx/vim-gocode'
 Plugin 'vim-scripts/applescript.vim'
