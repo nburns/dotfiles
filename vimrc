@@ -127,6 +127,8 @@ set tm=500
 set ttymouse=xterm2
 set whichwrap+=<,>,h,l " fix backspace
 set fileformat=unix
+set splitbelow " open new splits below
+set splitright " open new splits to the right
 
 
 " map command to meta
@@ -143,24 +145,31 @@ noremap <C-S> :w<CR>
 vnoremap <C-S> <C-C>:w<CR>
 inoremap <C-S> <C-O>:w<CR>
 
-
+" subset of emacs style movement commands
 inoremap <C-a> <Home>
 inoremap <C-e> <End>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
+" kill word backwards 
+inoremap <C-BS> <C-\><C-o>db 
 
+" change buffer with tab in normal mode
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprevious<CR>
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
 
+" disable arrowkeys
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-" kill word backwards
-inoremap <C-BS> <C-\><C-o>db
+" change buffers with fewer keystrokes
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " copy the whole file
 noremap <Leader>c :!cat %\|pbcopy<CR>
@@ -168,7 +177,7 @@ noremap <Leader>c :!cat %\|pbcopy<CR>
 " w!! to write as sudo
 cmap w!! w !sudo tee > /dev/null %
 
-"avoids the annoying "Not an editor command: W"
+"avoids the annoying 'Not an editor command: W'
 cabbrev WQ wq
 cabbrev Wq wq
 cabbrev W w

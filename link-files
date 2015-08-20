@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+exisitng_links=''
+
 function do_link(){
-    if [ -e $2 ] || [ -d $2 ]; then
-        :
+    if [ -e $2 ] || [ -d $2 ] || [ -L $2 ]; then
+        exisitng_links=$exisitng_links"\nunlink $2"
     else
         echo "ln -s $1 $2"
         ln -s $1 $2
@@ -22,6 +24,7 @@ function create_dir(){
 	fi
 }
 
+
 link_to_home ackrc
 link_to_home gitconfig
 link_to_home gitignore_global
@@ -39,10 +42,9 @@ create_dir ~/.config/fish
 create_dir "$BASE_DIR/vim"
 do_link "$BASE_DIR/config.fish" "$HOME/.config/fish/config.fish"
 
-
-
-
-
-
-
-
+if [ "$exisitng_links" != '' ]; then
+	echo
+	echo "The following config files were found to already exist, you may wish to remove them:"
+	echo -e "$exisitng_links"
+	echo
+fi
