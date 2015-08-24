@@ -37,7 +37,7 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
         set -g -x INFOPATH ~/.linuxbrew/share/info $INFOPATH
     end
 
-    if [ (which mvim) ]
+    if [ (which mvim 2>&1 >/dev/null) ]
         set -g -x VISUAL mvim
     else
         set -g -x VISUAL vim
