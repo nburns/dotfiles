@@ -20,7 +20,10 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
     switch (hostname -s)
         case 'bernoulli'
             set -g -x GOPATH ~/outbound/outbound/
-            prepend_to_path ~/outbound/outbound/bin
+            prepend_to_path ~/outbound/outbound/bin ~/outbound/ops/bin
+            if [ -e ~/.outbound-secrets ]
+                source ~/.outbound-secrets
+            end
             
         case 'curie'
             set -g -x GOPATH ~/needle-drop
@@ -61,7 +64,7 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
 
     if set -q GOPATH
         if [ -e "$GOPATH/bin" ]
-            prepend_to_path "$GOPATH/bin"
+            prepend_to_path "$GOPATH"bin
         end
     end
 

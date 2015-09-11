@@ -18,10 +18,12 @@ Plugin 'vim-scripts/BufClose.vim' " :BufClose closes current buffer
 Plugin 'mileszs/ack.vim' 
 Plugin 'SirVer/ultisnips' " UltiSnips
 Plugin 'honza/vim-snippets' " snippets
+"Plugin 'wookiehangover/jshint.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'airblade/vim-gitgutter' " git
 
 
 Plugin 'tpope/vim-rsi' "readline bindings
-Plugin 'kien/ctrlp.vim' " fuzzy search
 
 Plugin 'bling/vim-airline' " statusline
 "Plugin 'xolox/vim-misc'
@@ -33,6 +35,10 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'fatih/vim-go'
 Plugin 'undx/vim-gocode'
 Plugin 'vim-scripts/applescript.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'sukima/xmledit'
+Plugin 'gregsexton/MatchTag'
+Plugin 'kien/ctrlp.vim' " fuzzy search
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -53,11 +59,22 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
+
+function! Diff(...)
+    if a:0 == 1
+        let g:gitgutter_diff_args=a:1
+    else
+        let g:gitgutter_diff_args=""
+    endif
+    call gitgutter#all()
+endfunction
+let g:gitgutter_eager=1
+command! -nargs=? Diff call Diff(<f-args>)
+
 au FileType python let b:delimitMate_nesting_quotes = ['"']
 let delimitMate_expand_cr = 1
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
 let host=system('hostname -s')
 if host == 'bernoulli'
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h13
@@ -120,7 +137,7 @@ set scrolloff=10 " amount of context around the cursor
 set shiftwidth=4 " autoindent columns
 set showmatch
 set smarttab " use smarttabs
-set t_vb=
+set vb t_vb= " no bell
 set tabstop=4 " tabs are 4 spaces
 set tags=tags;/ " tagsfile name
 set timeout timeoutlen=1500

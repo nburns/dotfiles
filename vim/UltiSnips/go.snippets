@@ -20,6 +20,16 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+import (
+	"outbound/config"
+)
+
+
+func TestMain(m *testing.M){
+	config.Setup(false)
+	m.Run
+}
+
 func Test${2:}(t *testing.T) \{
 	assert := assert.New(t)
 \}
