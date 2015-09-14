@@ -19,7 +19,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'SirVer/ultisnips' " UltiSnips
 Plugin 'honza/vim-snippets' " snippets
 "Plugin 'wookiehangover/jshint.vim'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 Plugin 'airblade/vim-gitgutter' " git
 
 
@@ -58,6 +58,8 @@ let g:ctrlp_working_path_mode = 'r'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+let g:go_fmt_command = "goimports"
 
 
 function! Diff(...)

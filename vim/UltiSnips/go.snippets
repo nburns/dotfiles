@@ -25,10 +25,10 @@ import (
 )
 
 
-func TestMain(m *testing.M){
+func TestMain(m *testing.M)\{
 	config.Setup(false)
-	m.Run
-}
+	m.Run()
+\}
 
 func Test${2:}(t *testing.T) \{
 	assert := assert.New(t)
@@ -42,6 +42,18 @@ endsnippet
 snippet /dict/ "string interface map" r
 map[string]interface\{\}\{
 ${1:}
+\}
+endsnippet
+
+snippet /ifnil/ "check if a var is nil return an err" r
+if ${1:} == nil\{
+	return , errors.New("${2:}")	
+\}
+endsnippet
+
+snippet /iferr/ "check if an error is not nil" r
+if err != nil\{
+	return${2:}
 \}
 endsnippet
 
