@@ -15,30 +15,16 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'Raimondi/delimitMate' "delimiter autocompletion
 Plugin 'scrooloose/nerdcommenter' "commenting
 Plugin 'vim-scripts/BufClose.vim' " :BufClose closes current buffer
-Plugin 'mileszs/ack.vim' 
 Plugin 'SirVer/ultisnips' " UltiSnips
 Plugin 'honza/vim-snippets' " snippets
-"Plugin 'wookiehangover/jshint.vim'
-"Plugin 'scrooloose/syntastic'
 Plugin 'airblade/vim-gitgutter' " git
-
-
 Plugin 'tpope/vim-rsi' "readline bindings
-
-Plugin 'bling/vim-airline' " statusline
-"Plugin 'xolox/vim-misc'
-"Plugin 'vim-scripts/lh-vim-lib'
+Plugin 'kien/ctrlp.vim' " fuzzy search
 
 " language plugins
 Plugin 'dag/vim-fish'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'fatih/vim-go'
-Plugin 'undx/vim-gocode'
 Plugin 'vim-scripts/applescript.vim'
-Plugin 'pangloss/vim-javascript'
 Plugin 'sukima/xmledit'
-Plugin 'gregsexton/MatchTag'
-Plugin 'kien/ctrlp.vim' " fuzzy search
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -49,19 +35,14 @@ syntax enable
 let mapleader=","
 let g:netrw_dirhistmax=0 " disable netrw
 
-let g:airline#extensions#tabline#fnamemod=':t'
-let g:airline#extensions#tabline#enabled=1
-let g:airline_powerline_fonts=1 " use powerline fonts
-"let g:syntastic_python_pylint_args='--rcfile=/Users/nick/.pylintrc'
 let g:ctrlp_working_path_mode = 'r'
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-let g:go_fmt_command = "goimports"
-
-
+" set the diff branch for the gutter
+" call with no args to set to master
 function! Diff(...)
     if a:0 == 1
         let g:gitgutter_diff_args=a:1
@@ -77,20 +58,17 @@ au FileType python let b:delimitMate_nesting_quotes = ['"']
 let delimitMate_expand_cr = 1
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-let host=system('hostname -s')
-if host == 'bernoulli'
-    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h13
-else
-    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
-endif
+
+set guifont=DejaVu\ Sans\ Mono:h13
 
 set t_Co=256
+let g:solarized_contrast="high"
+set background=light
+colorscheme solarized
+
 if has("gui_running")
-    let g:solarized_contrast="high"
-    set background=dark
-    colorscheme solarized
-    set lines=60
-    set columns=100
+    "set lines=70
+    "set columns=100
 else
     " iterm2 escape codes
     if &term =~ 'screen'
@@ -101,9 +79,6 @@ else
         let &t_SI = "\<Esc>]50;CursorShape=1\x7"
         let &t_EI = "\<Esc>]50;CursorShape=0\x7"
     end
-    let g:solarized_contrast="high"
-    set background=dark
-    colorscheme solarized
 endif
 
 if filereadable("~/.words.utf-8.add")
@@ -159,12 +134,6 @@ if has("mac") || has("macunix")
     vmap <D-k> <M-k>
 endif
 
-" allows command s saving in terminal
-" first remap command + s to send hex code 0x13
-noremap <C-S> :w<CR>
-vnoremap <C-S> <C-C>:w<CR>
-inoremap <C-S> <C-O>:w<CR>
-
 " subset of emacs style movement commands
 inoremap <C-a> <Home>
 inoremap <C-e> <End>
@@ -174,22 +143,8 @@ cnoremap <C-e> <End>
 inoremap <C-BS> <C-\><C-o>db 
 
 " change buffer with tab in normal mode
-nnoremap <C-n> :bnext<CR>
-nnoremap <C-p> :bprevious<CR>
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
-
-" disable arrowkeys
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-
-" change buffers with fewer keystrokes
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
 
 " copy the whole file
 noremap <Leader>c :!cat %\|pbcopy<CR>
@@ -200,6 +155,7 @@ cmap w!! w !sudo tee > /dev/null %
 "avoids the annoying 'Not an editor command: W'
 cabbrev WQ wq
 cabbrev Wq wq
+cabbrev wQ wq
 cabbrev W w
 cabbrev Q q
 cabbrev Q! q!
@@ -227,3 +183,13 @@ set viminfo^=%
 " clear highliting with space
 map <Space> :noh<cr>
 
+" statusline
+" column number
+set statusline=\ \ %c
+" end left alignment, begin right alignment
+set statusline+=%=
+" modified flag, file path, limited to 40 chars
+set statusline+=\ %m\ %.40F
+set statusline+=\ 
+" file type
+set statusline+=%y
