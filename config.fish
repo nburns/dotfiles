@@ -82,7 +82,8 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
     
 
     function current_branch
-        echo (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')" "
+        echo (git branch 2>&1 | grep '*' | sed 's/* //g' | sed 's/fatal: Not a git repository (or any of the parent directories): .git//g')" "
+        #echo (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')" "
     end
    
 
