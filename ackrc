@@ -1,11 +1,12 @@
 --ignore-dir=tags
 --ignore-file=is:tags
+--ignore-file=ext:log
 
 --smart-case
 --color
 --nogroup
 --break
+ 
+--type-set=haml:match:.+\.haml
 
---ignore-dir=pkg
---type-set=go:match:.+\.go
-
+--ignore-file=match:test.log
