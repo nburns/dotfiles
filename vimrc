@@ -20,11 +20,18 @@ Plugin 'honza/vim-snippets' " snippets
 Plugin 'airblade/vim-gitgutter' " git
 Plugin 'tpope/vim-rsi' "readline bindings
 Plugin 'kien/ctrlp.vim' " fuzzy search
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " language plugins
 Plugin 'dag/vim-fish'
 Plugin 'vim-scripts/applescript.vim'
 Plugin 'sukima/xmledit'
+Plugin 'tpope/vim-endwise' "ruby end tags
+Plugin 'mxw/vim-jsx'
+Plugin 'tpope/vim-haml'
+Plugin 'vim-scripts/ruby-matchit'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -34,6 +41,11 @@ syntax enable
 
 let mapleader=","
 let g:netrw_dirhistmax=0 " disable netrw
+
+let g:airline_theme="solarized"
+let g:airline#extensions#tabline#fnamemod=':t'
+let g:airline#extensions#tabline#enabled=1
+let g:airline_powerline_fonts=1
 
 let g:ctrlp_working_path_mode = 'r'
 
@@ -59,7 +71,10 @@ let delimitMate_expand_cr = 1
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-set guifont=DejaVu\ Sans\ Mono:h13
+" force jsx highlighting for javascript files
+let g:jsx_ext_required = 0
+
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h13
 
 set t_Co=256
 let g:solarized_contrast="high"
@@ -67,8 +82,8 @@ set background=light
 colorscheme solarized
 
 if has("gui_running")
-    "set lines=70
-    "set columns=100
+    set lines=70
+    set columns=88
 else
     " iterm2 escape codes
     if &term =~ 'screen'
@@ -81,10 +96,6 @@ else
     end
 endif
 
-if filereadable("~/.words.utf-8.add")
-    set spellfile="~/.words.utf-8.add"
-endif
-
 set autoindent smartindent
 set autoread " update externaly edited files
 set backspace=eol,start,indent " fix backspace
@@ -95,6 +106,8 @@ set cursorline " Highlight the screen line of the cursor
 set encoding=utf8 " use utf8 text encoding
 set expandtab " convert tabs to spaces
 set ffs=unix,dos,mac " use unix file format
+set fileformat=unix
+set hidden "hide buffers instead of closing
 set hlsearch
 set incsearch
 set laststatus=2
@@ -114,16 +127,16 @@ set scrolloff=10 " amount of context around the cursor
 set shiftwidth=4 " autoindent columns
 set showmatch
 set smarttab " use smarttabs
-set vb t_vb= " no bell
+set spell
+set splitbelow " open new splits below
+set splitright " open new splits to the right
 set tabstop=4 " tabs are 4 spaces
 set tags=tags;/ " tagsfile name
 set timeout timeoutlen=1500
 set tm=500
 set ttymouse=xterm2
+set vb t_vb= " no bell
 set whichwrap+=<,>,h,l " fix backspace
-set fileformat=unix
-set splitbelow " open new splits below
-set splitright " open new splits to the right
 
 
 " map command to meta
@@ -185,11 +198,15 @@ map <Space> :noh<cr>
 
 " statusline
 " column number
-set statusline=\ \ %c
+"set statusline=\ \ %c
 " end left alignment, begin right alignment
-set statusline+=%=
+"set statusline+=%=
 " modified flag, file path, limited to 40 chars
-set statusline+=\ %m\ %.40F
-set statusline+=\ 
+"set statusline+=\ %m\ %.40F
+"set statusline+=\ 
 " file type
-set statusline+=%y
+"set statusline+=%y
+
+autocmd FileType haml setlocal shiftwidth=2 tabstop=2
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
