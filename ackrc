@@ -1,4 +1,5 @@
 --ignore-dir=tags
+--ignore-dir=tmp
 --ignore-file=is:tags
 --ignore-file=ext:log
 
@@ -8,5 +9,11 @@
 --break
  
 --type-set=haml:match:.+\.haml
+
+--type-set=rb:match:.+\.rb
+
+--type-set=scss:match:.+\.scss
+
+
 
 --ignore-file=match:test.log
