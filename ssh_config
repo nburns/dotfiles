@@ -1,30 +1,3 @@
-Host dev
-    HostName dev-nburns.instaedu.com
-    User instaedu
-    RequestTTY yes
-    IdentitiesOnly yes
-    IdentityFile ~/.ssh/dev_fish_id_rsa
-    ForwardAgent yes
-    ForwardX11 yes
-    ForwardX11Timeout 1d
-    ServerAliveInterval 60s
-    LocalCommand mount-dev
-
-Host dev_sshfs
-    HostName dev-nburns.instaedu.com
-    User instaedu
-    IdentitiesOnly yes
-    IdentityFile ~/.ssh/dev_id_rsa
-
-Host bastion
-    HostName bastion.instaedu.com
-    User nburns
-
-Host github-instaedu
-    HostName github.com
-    User git
-    IdentityFile ~/.ssh/nick_instaedu_id_rsa
-
 Host feral
     HostName crius.feralhosting.com
     User swimmernick
@@ -36,3 +9,17 @@ Host feral-normal
     HostName crius.feralhosting.com
     User swimmernick
     IdentityFile ~/.ssh/feral_rsa
+    
+Host dev
+  HostName 127.0.0.1
+  User vagrant
+  Port 2222
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile "/Users/nick/notion/.vagrant/machines/default/virtualbox/private_key"
+  IdentitiesOnly yes
+  LogLevel FATAL
+  ForwardAgent yes
+  ForwardX11 yes
+

@@ -30,7 +30,6 @@ link_to_home gitconfig
 link_to_home gitignore_global
 link_to_home tmux.conf
 link_to_home ctags
-link_to_home ideavimrc
 
 link_to_home vim
 link_to_home vimrc
@@ -41,6 +40,10 @@ do_link "$BASE_DIR/ssh_config" "$HOME/.ssh/config"
 create_dir ~/.config
 create_dir ~/.config/fish
 do_link "$BASE_DIR/config.fish" "$HOME/.config/fish/config.fish"
+
+link_to_home aspell.EN.pws
+cp "$BASE_DIR/aspell.conf" "$HOME/.aspell.conf"
+echo "extra-dicts $HOME/.aspell.EN.pws" >> "$HOME/.aspell.conf"
 
 if [ "$exisitng_links" != '' ]; then
 	echo

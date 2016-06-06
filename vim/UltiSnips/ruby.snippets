@@ -1,0 +1,17 @@
+# Snippets for Ruby
+
+extends ruby
+
+snippet /init/ "create an init function" r
+def initialize(${1:})
+
+end
+endsnippet
+
+snippet /test/ "create a new test class" r
+require 'test_helper'
+
+class ${1:}Test < ActiveSupport::TestCase
+
+end
+endsnippet
