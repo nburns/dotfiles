@@ -28,7 +28,6 @@ Plugin 'dag/vim-fish'
 Plugin 'vim-scripts/applescript.vim'
 Plugin 'sukima/xmledit'
 Plugin 'tpope/vim-endwise' "ruby end tags
-Plugin 'mxw/vim-jsx'
 Plugin 'tpope/vim-haml'
 Plugin 'vim-scripts/ruby-matchit'
 
@@ -78,13 +77,14 @@ set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h13
 
 set t_Co=256
 let g:solarized_contrast="high"
-set background=light
 colorscheme solarized
 
 if has("gui_running")
     set lines=70
     set columns=88
+    set background=light
 else
+    set background=dark
     " iterm2 escape codes
     if &term =~ 'screen'
         " in tmux/screen escape the escapes
@@ -174,13 +174,15 @@ cabbrev Q q
 cabbrev Q! q!
 
 
-" delete extra whitespace
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
+"" delete extra whitespace
+"func! DeleteTrailingWS()
+"  exe "normal mz"
+"  %s/\s\+$//ge
+"  exe "normal `z"
+"endfunc
+"autocmd BufWrite *.py :call DeleteTrailingWS()
+
+autocmd FileType ruby,haml,javascript,scss autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 map <leader>ss :setlocal spell!<cr>
 
@@ -207,6 +209,6 @@ map <Space> :noh<cr>
 " file type
 "set statusline+=%y
 
-autocmd FileType haml setlocal shiftwidth=2 tabstop=2
-autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType haml setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
