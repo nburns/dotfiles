@@ -3,7 +3,7 @@
 
 [user]
 	name = Nick Burns
-	email = nick@burns.io
+	email = nburns@users.noreply.github.com
 
 [core]
 	editor = vim
@@ -13,4 +13,10 @@
 	default = current
 
 [diff]
-	algorithm = patience
+    algorithm = patience
+    tool = vimdiff
+
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
