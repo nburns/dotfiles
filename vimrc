@@ -19,7 +19,7 @@ Plugin 'SirVer/ultisnips' " UltiSnips
 Plugin 'honza/vim-snippets' " snippets
 Plugin 'airblade/vim-gitgutter' " git
 Plugin 'tpope/vim-rsi' "readline bindings
-Plugin 'kien/ctrlp.vim' " fuzzy search
+Plugin 'ctrlpvim/ctrlp.vim' " fuzzy search
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
@@ -30,6 +30,8 @@ Plugin 'sukima/xmledit'
 Plugin 'tpope/vim-endwise' "ruby end tags
 Plugin 'tpope/vim-haml'
 Plugin 'vim-scripts/ruby-matchit'
+Plugin 'jvirtanen/vim-octave'
+Plugin 'othree/yajs.vim'
 
 
 " All of your Plugins must be added before the following line
@@ -182,7 +184,7 @@ cabbrev Q! q!
 "endfunc
 "autocmd BufWrite *.py :call DeleteTrailingWS()
 
-autocmd FileType ruby,haml,javascript,scss autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType ruby,haml,javascript,scss,yaml autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 map <leader>ss :setlocal spell!<cr>
 
@@ -212,3 +214,4 @@ map <Space> :noh<cr>
 autocmd FileType haml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2

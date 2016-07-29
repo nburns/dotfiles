@@ -3,7 +3,6 @@
 --ignore-file=is:tags
 --ignore-file=ext:log
 
---smart-case
 --color
 --nogroup
 --break

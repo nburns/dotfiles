@@ -15,3 +15,27 @@ class ${1:}Test < ActiveSupport::TestCase
 
 end
 endsnippet
+
+snippet /defs/ "create a module method" r
+def self.${1:}
+
+end
+endsnippet
+
+snippet /dir/ "reversible migration" r
+reversible do |dir|
+  dir.up do
+    ${1:}
+  end
+end
+endsnippet
+
+snippet /hashdo/ "hash with default values and a do block" r
+Hash.new do |h, k|
+  h[k] = ${1:}
+end
+endsnippet
+
+snippet /hash/ "hash with default values and an inline block" r
+Hash.new { |h, k| h[k] = ${1:} }
+endsnippet

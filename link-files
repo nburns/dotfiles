@@ -30,6 +30,7 @@ link_to_home gitconfig
 link_to_home gitignore_global
 link_to_home tmux.conf
 link_to_home ctags
+link_to_home emacs
 
 link_to_home vim
 link_to_home vimrc

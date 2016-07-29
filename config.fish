@@ -17,21 +17,12 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
             set -g -x LANG 'en_US.UTF-8'
     end
 
-    switch (hostname -s)
-        case 'bernoulli'
-            set -g -x GOPATH ~/outbound/outbound/
-            prepend_to_path ~/outbound/outbound/bin ~/outbound/ops/bin
-            if [ -e ~/.outbound-secrets ]
-                source ~/.outbound-secrets
-            end
-            
-        case 'curie'
-            set -g -x GOPATH ~/needle-drop
+    if [ -z "$FONTCONFIG_PATH" -a -d /opt/X11/lib/X11/fontconfig ]
+        set -g -x FONTCONFIG_PATH /opt/X11/lib/X11/fontconfig
     end
-            
     
     if [ -e  /Applications/MacVim.app ]
-        set -g -x VIM_APP_DIR (dirname (readlink /Applications/MacVim.app))
+        set -g -x VIM_APP_DIR /Applications
     end
 
     if [ -d ~/.linuxbrew ]
@@ -52,8 +43,8 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
 
     set -g -x PAGER "less"
     set -g -x TODAY (date "+%m-%d")
-    set -g -x TAB (printf \t)
-    set -g -x NL (printf \n)
+    set -g -x TAB (printf '\t')
+    set -g -x NL (printf '\n')
     set -g -x GREP_OPTIONS
     set -g -x LESS '-gFERXP%lB$ -j 10'
     set -g -x LESSOPEN '|pygmentize -g'
