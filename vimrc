@@ -32,7 +32,7 @@ Plugin 'tpope/vim-haml'
 Plugin 'vim-scripts/ruby-matchit'
 Plugin 'jvirtanen/vim-octave'
 Plugin 'othree/yajs.vim'
-
+Plugin 'keith/swift.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -67,10 +67,13 @@ endfunction
 let g:gitgutter_eager=1
 command! -nargs=? Diff call Diff(<f-args>)
 
+let g:go_fmt_command = "goimports"
+
 au FileType python let b:delimitMate_nesting_quotes = ['"']
 let delimitMate_expand_cr = 1
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufReadPost *.applescript set filetype=applescript
 
 " force jsx highlighting for javascript files
 let g:jsx_ext_required = 0
@@ -174,6 +177,8 @@ cabbrev wQ wq
 cabbrev W w
 cabbrev Q q
 cabbrev Q! q!
+
+nnoremap <Leader>q :BufClose
 
 
 "" delete extra whitespace

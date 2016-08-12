@@ -10,6 +10,7 @@
 --type-set=haml:match:.+\.haml
 
 --type-set=rb:match:.+\.rb
+--type-set=go:match:.+\.go
 
 --type-set=scss:match:.+\.scss
 
