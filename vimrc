@@ -31,7 +31,8 @@ Plugin 'tpope/vim-endwise' "ruby end tags
 Plugin 'tpope/vim-haml'
 Plugin 'vim-scripts/ruby-matchit'
 Plugin 'jvirtanen/vim-octave'
-Plugin 'othree/yajs.vim'
+Plugin 'othree/yajs.vim' "javascript
+Plugin 'mxw/vim-jsx'
 
 
 " All of your Plugins must be added before the following line
