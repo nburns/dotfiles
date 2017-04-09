@@ -18,5 +18,9 @@
     log = diff-highlight | less
 	show = diff-highlight | less
 	diff = diff-highlight | less
+    tool = mvimdiff
 [rerere]
 	enabled = true
+
+[difftool "mvimdiff"]
+    cmd = mvim -f -d \"$LOCAL\" \"$REMOTE\"

@@ -1,7 +1,9 @@
 --ignore-dir=tags
 --ignore-dir=tmp
+--ignore-dir=test/reports
 --ignore-file=is:tags
 --ignore-file=ext:log
+--ignore-file=ext:sql
 
 --color
 --nogroup
