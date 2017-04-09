@@ -1,15 +1,10 @@
 Host feral
-    HostName crius.feralhosting.com
+    HostName aura.feralhosting.com
     User swimmernick
     RequestTTY yes
     IdentitiesOnly yes
-    IdentityFile ~/.ssh/feral_fish_rsa
-
-Host feral-normal
-    HostName crius.feralhosting.com
-    User swimmernick
     IdentityFile ~/.ssh/feral_rsa
-    
+
 Host dev
   HostName 127.0.0.1
   User vagrant
@@ -22,4 +17,3 @@ Host dev
   LogLevel FATAL
   ForwardAgent yes
   ForwardX11 yes
-
