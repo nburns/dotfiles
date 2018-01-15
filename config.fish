@@ -10,6 +10,11 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
     end
 
     prepend_to_path ~/bin
+    prepend_to_path /usr/local/opt/ruby@2.3/bin
+
+    if [ (which yarn) ]
+        prepend_to_path (yarn global bin)
+    end
 
     switch (uname)
         case 'Darwin'

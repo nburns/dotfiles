@@ -45,3 +45,9 @@ endsnippet
 snippet /hash/ "hash with default values and an inline block" r
 Hash.new { |h, k| h[k] = ${1:} }
 endsnippet
+
+snippet /tran/ "open a transaction" r
+ActiveRecord::Base.transaction do
+  ${1:}
+end
+endsnippet

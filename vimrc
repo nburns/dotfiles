@@ -22,18 +22,22 @@ Plugin 'tpope/vim-rsi' "readline bindings
 Plugin 'ctrlpvim/ctrlp.vim' " fuzzy search
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'godlygeek/tabular'
 
 " language plugins
 Plugin 'dag/vim-fish'
-Plugin 'vim-scripts/applescript.vim'
-Plugin 'sukima/xmledit'
+"Plugin 'vim-scripts/applescript.vim'
+"Plugin 'sukima/xmledit'
 Plugin 'tpope/vim-endwise' "ruby end tags
 Plugin 'tpope/vim-haml'
 Plugin 'vim-scripts/ruby-matchit'
-Plugin 'jvirtanen/vim-octave'
-Plugin 'othree/yajs.vim' "javascript
+"Plugin 'jvirtanen/vim-octave'
+Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
-Plugin 'keith/swift.vim'
+"Plugin 'keith/swift.vim'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'ianks/vim-tsx'
+Plugin 'bkad/vim-terraform'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -54,6 +58,8 @@ let g:ctrlp_working_path_mode = 'r'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+"let g:typescript_indent_disable = 1
 
 " set the diff branch for the gutter
 " call with no args to set to master
@@ -108,7 +114,8 @@ set backspace=eol,start,indent " fix backspace
 set clipboard=unnamed "use system clipboard
 set cmdheight=1
 set colorcolumn=81
-set cursorline " Highlight the screen line of the cursor
+set cursorline " Highlight the horizontal line of the cursor
+set cursorcolumn " Highlight vertical column of the cursor
 set encoding=utf8 " use utf8 text encoding
 set expandtab " convert tabs to spaces
 set ffs=unix,dos,mac " use unix file format
@@ -182,7 +189,7 @@ cabbrev Q! q!
 nnoremap <Leader>q :BufClose
 
 
-"" delete extra whitespace
+"" delete strip trailing extra whitespace
 "func! DeleteTrailingWS()
 "  exe "normal mz"
 "  %s/\s\+$//ge
@@ -190,7 +197,7 @@ nnoremap <Leader>q :BufClose
 "endfunc
 "autocmd BufWrite *.py :call DeleteTrailingWS()
 
-autocmd FileType ruby,haml,javascript,scss,yaml autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType ruby,haml,javascript,scss,yaml,python,typescript,typescript.tsx autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 map <leader>ss :setlocal spell!<cr>
 
@@ -221,3 +228,5 @@ autocmd FileType haml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType typescript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType scss setlocal shiftwidth=2 tabstop=2 softtabstop=2

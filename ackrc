@@ -1,20 +1,22 @@
 --ignore-dir=tags
 --ignore-dir=tmp
+--ignore-dir=public/assets
 --ignore-dir=test/reports
 --ignore-file=is:tags
 --ignore-file=ext:log
 --ignore-file=ext:sql
+--ignore-file=ext:backup
 
 --color
 --nogroup
 --break
  
---type-set=haml:match:.+\.haml
-
---type-set=rb:match:.+\.rb
 --type-set=go:match:.+\.go
-
+--type-set=haml:match:.+\.haml
+--type-set=rb:match:.+\.rb
 --type-set=scss:match:.+\.scss
+--type-set=ts:match:.+\.ts
+--type-set=tsx:match:.+\.tsx
 
 
 
