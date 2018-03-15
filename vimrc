@@ -4,6 +4,7 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=/usr/local/opt/fzf
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
@@ -17,9 +18,9 @@ Plugin 'scrooloose/nerdcommenter' "commenting
 Plugin 'vim-scripts/BufClose.vim' " :BufClose closes current buffer
 Plugin 'SirVer/ultisnips' " UltiSnips
 Plugin 'honza/vim-snippets' " snippets
+Plugin 'junegunn/fzf.vim'
 Plugin 'airblade/vim-gitgutter' " git
 Plugin 'tpope/vim-rsi' "readline bindings
-Plugin 'ctrlpvim/ctrlp.vim' " fuzzy search
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'godlygeek/tabular'
