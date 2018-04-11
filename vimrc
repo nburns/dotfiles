@@ -92,12 +92,17 @@ set t_Co=256
 let g:solarized_contrast="high"
 colorscheme solarized
 
+let hour = (strftime('%H'))
+if hour > 17
+    set background=dark
+else
+    set background=light
+endif
+
 if has("gui_running")
     set lines=70
     set columns=88
-    set background=light
 else
-    set background=dark
     " iterm2 escape codes
     if &term =~ 'screen'
         " in tmux/screen escape the escapes
