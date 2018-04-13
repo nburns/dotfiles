@@ -1,3 +1,6 @@
+Host *
+    UseKeychain yes
+
 Host feral
     HostName aura.feralhosting.com
     User swimmernick
