@@ -1,6 +1,7 @@
 Host *
     UseKeychain yes
     AddKeysToAgent yes
+    ForwardAgent yes
 
 Host feral
     HostName aura.feralhosting.com
@@ -9,15 +10,23 @@ Host feral
     IdentitiesOnly yes
     IdentityFile ~/.ssh/feral_rsa
 
-Host dev
-  HostName 127.0.0.1
-  User vagrant
-  Port 2222
-  UserKnownHostsFile /dev/null
-  StrictHostKeyChecking no
-  PasswordAuthentication no
-  IdentityFile "/Users/nick/notion/.vagrant/machines/default/virtualbox/private_key"
-  IdentitiesOnly yes
-  LogLevel FATAL
-  ForwardAgent yes
-  ForwardX11 yes
+Host eu-staging-bastion
+    StrictHostKeyChecking no
+    ForwardAgent yes
+    User ubuntu
+    Hostname ec2-52-49-216-103.eu-west-1.compute.amazonaws.com
+    IdentityFile ~/.ssh/notion_ops.pem
+
+Host eu-prod-bastion
+    StrictHostKeyChecking no
+    ForwardAgent yes
+    User ubuntu
+    Hostname ec2-34-254-99-81.eu-west-1.compute.amazonaws.com
+    IdentityFile ~/.ssh/notion_ops.pem
+
+Host notion-vpn
+    ForwardAgent yes
+    StrictHostKeyChecking no
+    User openvpnas
+    Hostname 52.40.223.126
+    IdentityFile ~/.ssh/notion_ops.pem

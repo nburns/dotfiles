@@ -10,14 +10,14 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
     end
 
     prepend_to_path ~/bin
-    prepend_to_path /usr/local/opt/ruby@2.3/bin
-    prepend_to_path /usr/local/lib/ruby/gems/2.3.0/bin
+    prepend_to_path /usr/local/opt/ruby@2.5/bin
+    prepend_to_path /usr/local/lib/ruby/gems/2.5.0/bin
     prepend_to_path /usr/local/opt/python@2/bin
     prepend_to_path /usr/local/opt/python@2/libexec/bin
+    prepend_to_path /usr/local/opt/node@8/bin
+    prepend_to_path (/usr/libexec/java_home)/bin
 
-    if [ (which yarn) ]
-        prepend_to_path (yarn global bin)
-    end
+    set -g -x JAVA_HOME (/usr/libexec/java_home)
 
     switch (uname)
         case 'Darwin'
@@ -55,7 +55,6 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
     set -g -x NL (printf '\n')
     set -g -x GREP_OPTIONS
     set -g -x LESS '-gFERXP%lB$ -j 10'
-    set -g -x LESSOPEN '|pygmentize -g'
     set -g -x ACK_PAGER_COLOR $PAGER # ack output gets paged and is colourful
     set -g -x PYTHONDONTWRITEBYTECODE 'True'
     set -g -x HOMEBREW_NO_EMOJI 1

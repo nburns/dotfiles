@@ -17,7 +17,7 @@
 --type-set=scss:match:.+\.scss
 --type-set=ts:match:.+\.ts
 --type-set=tsx:match:.+\.tsx
-
+--type-set=jsx:match:.+\.jsx
 
 
 --ignore-file=match:test.log

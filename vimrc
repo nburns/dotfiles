@@ -1,3 +1,7 @@
+if has('python3')
+  silent! python3 1
+endif
+
 set shell=bash
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -11,34 +15,29 @@ Plugin 'gmarik/Vundle.vim'
 " user bundles
 " color scheme
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'jacoborus/tender.vim'
 
 " editor enhancements
 Plugin 'Raimondi/delimitMate' "delimiter autocompletion
-Plugin 'scrooloose/nerdcommenter' "commenting
+Plugin 'tpope/vim-endwise' "ruby end tags
+Plugin 'vim-scripts/ruby-matchit' " % jumps in ruby code
 Plugin 'vim-scripts/BufClose.vim' " :BufClose closes current buffer
 Plugin 'SirVer/ultisnips' " UltiSnips
 Plugin 'honza/vim-snippets' " snippets
-Plugin 'junegunn/fzf.vim'
 Plugin 'airblade/vim-gitgutter' " git
 Plugin 'tpope/vim-rsi' "readline bindings
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plugin 'itchyny/lightline.vim'
 Plugin 'godlygeek/tabular'
 
 " language plugins
 Plugin 'dag/vim-fish'
 "Plugin 'vim-scripts/applescript.vim'
-"Plugin 'sukima/xmledit'
-Plugin 'tpope/vim-endwise' "ruby end tags
 Plugin 'tpope/vim-haml'
-Plugin 'vim-scripts/ruby-matchit'
-"Plugin 'jvirtanen/vim-octave'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
-"Plugin 'keith/swift.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'ianks/vim-tsx'
-Plugin 'bkad/vim-terraform'
+"Plugin 'Glench/Vim-Jinja2-Syntax'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -49,18 +48,11 @@ syntax enable
 let mapleader=","
 let g:netrw_dirhistmax=0 " disable netrw
 
-let g:airline_theme="solarized"
-let g:airline#extensions#tabline#fnamemod=':t'
-let g:airline#extensions#tabline#enabled=1
-let g:airline_powerline_fonts=1
-
 let g:ctrlp_working_path_mode = 'r'
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-"let g:typescript_indent_disable = 1
 
 " set the diff branch for the gutter
 " call with no args to set to master
@@ -75,8 +67,6 @@ endfunction
 let g:gitgutter_eager=1
 command! -nargs=? Diff call Diff(<f-args>)
 
-let g:go_fmt_command = "goimports"
-
 au FileType python let b:delimitMate_nesting_quotes = ['"']
 let delimitMate_expand_cr = 1
 
@@ -86,32 +76,31 @@ autocmd BufNewFile,BufReadPost *.applescript set filetype=applescript
 " force jsx highlighting for javascript files
 let g:jsx_ext_required = 0
 
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h13
+set guifont=DejaVu\ Sans\ Mono:h13
 
 set t_Co=256
-let g:solarized_contrast="high"
-colorscheme solarized
+if (has("termguicolors"))
+ set termguicolors
+endif
 
 let hour = (strftime('%H'))
-if hour > 17
+let night = hour > 17
+
+if night || 1
+    let g:lightline = { 'colorscheme': 'tender' }
+    colorscheme tender
     set background=dark
 else
+    let g:lightline = { 'colorscheme': 'solarized' }
+    let g:solarized_contrast="high"
+    colorscheme solarized
     set background=light
 endif
+
 
 if has("gui_running")
     set lines=70
     set columns=88
-else
-    " iterm2 escape codes
-    if &term =~ 'screen'
-        " in tmux/screen escape the escapes
-        let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-        let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-    else
-        let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-        let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-    end
 endif
 
 set autoindent smartindent
@@ -171,8 +160,8 @@ inoremap <C-a> <Home>
 inoremap <C-e> <End>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
-" kill word backwards 
-inoremap <C-BS> <C-\><C-o>db 
+" kill word backwards
+inoremap <C-BS> <C-\><C-o>db
 
 " change buffer with tab in normal mode
 nnoremap <Tab> :bnext<CR>
@@ -194,16 +183,8 @@ cabbrev Q! q!
 
 nnoremap <Leader>q :BufClose
 
-
-"" delete strip trailing extra whitespace
-"func! DeleteTrailingWS()
-"  exe "normal mz"
-"  %s/\s\+$//ge
-"  exe "normal `z"
-"endfunc
-"autocmd BufWrite *.py :call DeleteTrailingWS()
-
-autocmd FileType ruby,haml,javascript,scss,yaml,python,typescript,typescript.tsx autocmd BufWritePre <buffer> :%s/\s\+$//e
+" delete trailing whitespace
+autocmd FileType * autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 map <leader>ss :setlocal spell!<cr>
 
@@ -219,20 +200,11 @@ set viminfo^=%
 " clear highliting with space
 map <Space> :noh<cr>
 
-" statusline
-" column number
-"set statusline=\ \ %c
-" end left alignment, begin right alignment
-"set statusline+=%=
-" modified flag, file path, limited to 40 chars
-"set statusline+=\ %m\ %.40F
-"set statusline+=\ 
-" file type
-"set statusline+=%y
+autocmd FileType haml,ruby,javascript,yaml,typescript,scss setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType text setlocal linebreak wrap
 
-autocmd FileType haml setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType typescript setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType scss setlocal shiftwidth=2 tabstop=2 softtabstop=2
+" run prettier on save
+autocmd BufWritePost *.js,*.ts,*.tsx,*.jsx silent! !prettier --write --print-width 80 --tab-width 2 --no-semi --single-quote --jsx-bracket-same-line --trailing-comma es5 --parser typescript <afile>
+
+" format xml on save
+autocmd BufWritePost *.xml silent! %!xmllint --format --recover <afile>
