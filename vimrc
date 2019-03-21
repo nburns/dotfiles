@@ -15,7 +15,6 @@ Plugin 'gmarik/Vundle.vim'
 " user bundles
 " color scheme
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'jacoborus/tender.vim'
 
 " editor enhancements
 Plugin 'Raimondi/delimitMate' "delimiter autocompletion
@@ -37,6 +36,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'ianks/vim-tsx'
+Plugin 'hashivim/vim-terraform'
 "Plugin 'Glench/Vim-Jinja2-Syntax'
 
 " All of your Plugins must be added before the following line
@@ -53,6 +53,9 @@ let g:ctrlp_working_path_mode = 'r'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+let g:terraform_fmt_on_save=1
+let g:terraform_align=1
 
 " set the diff branch for the gutter
 " call with no args to set to master
@@ -83,17 +86,15 @@ if (has("termguicolors"))
  set termguicolors
 endif
 
+let g:lightline = { 'colorscheme': 'solarized' }
+let g:solarized_contrast="high"
+colorscheme solarized
+
 let hour = (strftime('%H'))
 let night = hour > 17
-
 if night || 1
-    let g:lightline = { 'colorscheme': 'tender' }
-    colorscheme tender
     set background=dark
 else
-    let g:lightline = { 'colorscheme': 'solarized' }
-    let g:solarized_contrast="high"
-    colorscheme solarized
     set background=light
 endif
 
@@ -122,6 +123,8 @@ set laststatus=2
 set linespace=2
 set magic
 set mouse=a
+set modeline
+set modelines=5
 set nobackup " disable local backup
 set noerrorbells
 set nofoldenable
@@ -133,6 +136,7 @@ set number " show line numbers
 set ruler
 set scrolloff=10 " amount of context around the cursor
 set shiftwidth=4 " autoindent columns
+set showcmd " show command info at bottom of editor
 set showmatch
 set smarttab " use smarttabs
 set spell
@@ -205,6 +209,7 @@ autocmd FileType text setlocal linebreak wrap
 
 " run prettier on save
 autocmd BufWritePost *.js,*.ts,*.tsx,*.jsx silent! !prettier --write --print-width 80 --tab-width 2 --no-semi --single-quote --jsx-bracket-same-line --trailing-comma es5 --parser typescript <afile>
+autocmd BufWritePost *.rb,*.rake silent! !rubocop <afile> --auto-correct
 
 " format xml on save
 autocmd BufWritePost *.xml silent! %!xmllint --format --recover <afile>
