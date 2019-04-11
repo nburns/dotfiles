@@ -86,7 +86,7 @@ autocmd BufNewFile,BufReadPost *.applescript set filetype=applescript
 " force jsx highlighting for javascript files
 let g:jsx_ext_required = 0
 
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h13
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14
 
 set t_Co=256
 let g:solarized_contrast="high"
@@ -156,6 +156,7 @@ set tm=500
 set ttymouse=xterm2
 set vb t_vb= " no bell
 set whichwrap+=<,>,h,l " fix backspace
+set linebreak
 
 
 " map command to meta

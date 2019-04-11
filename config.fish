@@ -10,8 +10,8 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
     end
 
     prepend_to_path ~/bin
-    prepend_to_path /usr/local/opt/ruby@2.3/bin
-    prepend_to_path /usr/local/lib/ruby/gems/2.3.0/bin
+    prepend_to_path /usr/local/opt/ruby/bin
+    prepend_to_path /usr/local/lib/ruby/gems/2.6.0/bin
     prepend_to_path /usr/local/opt/python@2/bin
     prepend_to_path /usr/local/opt/python@2/libexec/bin
 
