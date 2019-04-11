@@ -1,11 +1,15 @@
---ignore-dir=tags
---ignore-dir=tmp
+--ignore-dir=coverage
 --ignore-dir=public/assets
+--ignore-dir=tags
 --ignore-dir=test/reports
---ignore-file=is:tags
+--ignore-dir=tmp
+--ignore-file=ext:backup
 --ignore-file=ext:log
 --ignore-file=ext:sql
---ignore-file=ext:backup
+--ignore-file=is:.rubocop.yml
+--ignore-file=is:tags
+--ignore-file=match:test.log
+--ignore-file=ext:tfstate
 
 --color
 --nogroup
@@ -17,7 +21,6 @@
 --type-set=scss:match:.+\.scss
 --type-set=ts:match:.+\.ts
 --type-set=tsx:match:.+\.tsx
+--type-set=jsx:match:.+\.jsx
 
 
-
---ignore-file=match:test.log

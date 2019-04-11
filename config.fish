@@ -14,10 +14,10 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
     prepend_to_path /usr/local/lib/ruby/gems/2.6.0/bin
     prepend_to_path /usr/local/opt/python@2/bin
     prepend_to_path /usr/local/opt/python@2/libexec/bin
+    prepend_to_path /usr/local/opt/node@10/bin
+    prepend_to_path (/usr/libexec/java_home)/bin
 
-    if [ (which yarn) ]
-        prepend_to_path (yarn global bin)
-    end
+    set -g -x JAVA_HOME (/usr/libexec/java_home)
 
     switch (uname)
         case 'Darwin'
@@ -28,7 +28,7 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
     if [ -z "$FONTCONFIG_PATH" -a -d /opt/X11/lib/X11/fontconfig ]
         set -g -x FONTCONFIG_PATH /opt/X11/lib/X11/fontconfig
     end
-    
+
     if [ -e  /Applications/MacVim.app ]
         set -g -x VIM_APP_DIR /Applications
     end
@@ -55,7 +55,6 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
     set -g -x NL (printf '\n')
     set -g -x GREP_OPTIONS
     set -g -x LESS '-gFERXP%lB$ -j 10'
-    set -g -x LESSOPEN '|pygmentize -g'
     set -g -x ACK_PAGER_COLOR $PAGER # ack output gets paged and is colourful
     set -g -x PYTHONDONTWRITEBYTECODE 'True'
     set -g -x HOMEBREW_NO_EMOJI 1
@@ -78,48 +77,42 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
             set_color normal
         end
     end
-    
+
 
     function current_branch
         echo (git branch 2>&1 | grep '*' | sed 's/* //g' | sed 's/fatal: Not a git repository (or any of the parent directories): .git//g')" "
         #echo (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')" "
     end
-   
 
-    function virtualenv
-        if set -q VIRTUAL_ENV 
-            echo -n (basename $VIRTUAL_ENV)" "
-        end
-    end
 
 
     function fish_prompt --description 'Write out the prompt'
         set _status (status_code)
-    
+
         # Just calculate these once, to save a few cycles when displaying the prompt
         if not set -q __fish_prompt_hostname
             set -g __fish_prompt_hostname (hostname|cut -d . -f 1)
         end
-    
+
         if not set -q __fish_prompt_normal
             set -g __fish_prompt_normal (set_color normal)
         end
-    
-        switch $USER 
-            case root 
+
+        switch $USER
+            case root
                 if not set -q __fish_prompt_cwd
                     if set -q fish_color_cwd_root
                         set -g __fish_prompt_cwd (set_color $fish_color_cwd_root)
                     else
                         set -g __fish_prompt_cwd (set_color $fish_color_cwd)
                     end
-                end 
+                end
                 echo -n -s "$USER" @ "$__fish_prompt_hostname" ' ' "$__fish_prompt_cwd" (prompt_pwd) "$__fish_prompt_normal" '# '
-    
-            case '*' 
+
+            case '*'
                 if not set -q __fish_prompt_cwd
                     set -g __fish_prompt_cwd (set_color $fish_color_cwd)
-                end 
+                end
                 echo -n -s $_status (current_branch) "$USER" @ "$__fish_prompt_hostname" ' ' "$__fish_prompt_cwd" (prompt_pwd) "$__fish_prompt_normal" '> '
         end
     end
