@@ -11,6 +11,16 @@
 --ignore-file=match:test.log
 --ignore-file=ext:tfstate
 
+--ignore-file=ext:iml
+--ignore-file=ext:rptdesign
+--ignore-file=match:.*Data.*\.xml
+--ignore-file=match:.*data.*\.xml
+--ignore-file=match:.*export.*\.xml
+--ignore-dir=dist
+--ignore-file=is:ext-all.css
+--ignore-file=is:ext-all.js
+--ignore-file=is:ext-base.js
+
 --color
 --nogroup
 --break

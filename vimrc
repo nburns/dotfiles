@@ -8,9 +8,9 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=/usr/local/opt/fzf
+set rtp+=/usr/local/bin/fzf
 call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " user bundles
 " color scheme
@@ -36,7 +36,9 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'ianks/vim-tsx'
-Plugin 'hashivim/vim-terraform'
+Plugin 'lepture/vim-velocity'
+"Plugin 'hashivim/vim-terraform'
+"Plugin 'mustache/vim-mustache-handlebars'
 "Plugin 'Glench/Vim-Jinja2-Syntax'
 
 " All of your Plugins must be added before the following line
@@ -60,12 +62,7 @@ let g:terraform_align=1
 " set the diff branch for the gutter
 " call with no args to set to master
 function! Diff(...)
-    if a:0 == 1
-        let g:gitgutter_diff_args=a:1
-    else
-        let g:gitgutter_diff_args=""
-    endif
-    call gitgutter#all()
+    call gitgutter#all(a:1)
 endfunction
 let g:gitgutter_eager=1
 command! -nargs=? Diff call Diff(<f-args>)
@@ -205,12 +202,12 @@ set viminfo^=%
 " clear highliting with space
 map <Space> :noh<cr>
 
-autocmd FileType haml,ruby,javascript,yaml,typescript,scss setlocal shiftwidth=2 tabstop=2 softtabstop=2
+"autocmd FileType haml,ruby,javascript,yaml,typescript,scss setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType text setlocal linebreak wrap
 
 " run prettier on save
-autocmd BufWritePost *.js,*.ts,*.tsx,*.jsx silent! !prettier --write --print-width 80 --tab-width 2 --no-semi --single-quote --jsx-bracket-same-line --trailing-comma es5 --parser typescript <afile>
-autocmd BufWritePost *.rb,*.rake silent! !rubocop <afile> --auto-correct
+autocmd BufWritePost *.js,*.ts,*.tsx,*.jsx silent! !prettier --write --tab-width 4 --bracket-spacing --single-quote <afile>
+"autocmd BufWritePost *.rb,*.rake silent! !rubocop <afile> --auto-correct
 
 " format xml on save
-autocmd BufWritePost *.xml silent! %!xmllint --format --recover <afile>
+"autocmd BufWritePost *.xml silent! %!xmllint --format --recover <afile>

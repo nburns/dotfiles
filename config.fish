@@ -14,7 +14,10 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
     prepend_to_path /usr/local/lib/ruby/gems/2.6.0/bin
     prepend_to_path /usr/local/opt/python@2/bin
     prepend_to_path /usr/local/opt/python@2/libexec/bin
+    prepend_to_path /usr/local/opt/mysql@5.7/bin
+    prepend_to_path /usr/local/opt/maven@3.2/bin
     prepend_to_path /usr/local/opt/node@10/bin
+    prepend_to_path /usr/local/sbin
     prepend_to_path (/usr/libexec/java_home)/bin
 
     set -g -x JAVA_HOME (/usr/libexec/java_home)
@@ -25,21 +28,15 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
             set -g -x LANG 'en_US.UTF-8'
     end
 
-    if [ -z "$FONTCONFIG_PATH" -a -d /opt/X11/lib/X11/fontconfig ]
-        set -g -x FONTCONFIG_PATH /opt/X11/lib/X11/fontconfig
+    if [ -e ~/.env ]
+        source ~/.env
     end
 
     if [ -e  /Applications/MacVim.app ]
         set -g -x VIM_APP_DIR /Applications
     end
 
-    if [ -d ~/.linuxbrew ]
-        set -g -x PATH ~/.linuxbrew/bin $PATH
-        set -g -x MANPATH ~/.linuxbrew/share/man $MANPATH
-        set -g -x INFOPATH ~/.linuxbrew/share/info $INFOPATH
-    end
-
-    if [ (which mvim 2>&1 >/dev/null) ]
+    if [ (which mvim 2>&1 > /dev/null) ]
         set -g -x VISUAL mvim
     else
         set -g -x VISUAL vim
@@ -58,6 +55,8 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
     set -g -x ACK_PAGER_COLOR $PAGER # ack output gets paged and is colourful
     set -g -x PYTHONDONTWRITEBYTECODE 'True'
     set -g -x HOMEBREW_NO_EMOJI 1
+    set -g -x HOMEBREW_NO_AUTO_UPDATE 1
+    set -g -x HOMEBREW_NO_INSTALL_CLEANUP 1
     set -g -x HOMEBREW_CASK_OPTS '--appdir=/Applications'
 
     if set -q GOPATH
