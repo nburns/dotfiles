@@ -32,6 +32,14 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
         source ~/.env
     end
 
+    function bundle_exec
+        set program $argv[1]
+        eval "function $program; bundle exec $program \$argv; end"
+    end
+
+    bundle_exec rails
+    bundle_exec rake
+
     if [ -e  /Applications/MacVim.app ]
         set -g -x VIM_APP_DIR /Applications
     end
@@ -58,13 +66,6 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
     set -g -x HOMEBREW_NO_AUTO_UPDATE 1
     set -g -x HOMEBREW_NO_INSTALL_CLEANUP 1
     set -g -x HOMEBREW_CASK_OPTS '--appdir=/Applications'
-
-    if set -q GOPATH
-        if [ -e "$GOPATH/bin" ]
-            prepend_to_path "$GOPATH"bin
-        end
-    end
-
 
     function fish_greeting; end
 
