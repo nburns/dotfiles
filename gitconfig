@@ -24,3 +24,9 @@
 
 [difftool "mvimdiff"]
     cmd = mvim -f -d \"$LOCAL\" \"$REMOTE\"
+
+[alias]
+	commti = commit
+	chekcout = checkout
+	branches = !branches
+	conflicted = !git-conflicted
