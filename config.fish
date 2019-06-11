@@ -107,7 +107,7 @@ if status --is-interactive; or status --is-login
 
 
     function current_branch
-        echo (git branch 2>&1 | grep '*' | sed 's/* //g' | sed 's/fatal: Not a git repository (or any of the parent directories): .git//g')" "
+        echo (git branch 2>&1 | sed -e '/*/!d' -e 's/* //g' -e '/fatal:/d')" "
         #echo (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')" "
     end
 
