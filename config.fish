@@ -18,9 +18,9 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
     prepend_to_path /usr/local/opt/maven@3.2/bin
     prepend_to_path /usr/local/opt/node@10/bin
     prepend_to_path /usr/local/sbin
-    prepend_to_path (/usr/libexec/java_home)/bin
+    #prepend_to_path (/usr/libexec/java_home)/bin
 
-    set -g -x JAVA_HOME (/usr/libexec/java_home)
+    #set -g -x JAVA_HOME (/usr/libexec/java_home)
 
     switch (uname)
         case 'Darwin'

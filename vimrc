@@ -76,7 +76,8 @@ autocmd BufNewFile,BufReadPost *.applescript set filetype=applescript
 " force jsx highlighting for javascript files
 let g:jsx_ext_required = 0
 
-set guifont=DejaVu\ Sans\ Mono:h15
+set guifont=DejaVu\ Sans\ Mono:15
+set guifont=DejaVu\ Sans\ Mono
 
 set t_Co=256
 if (has("termguicolors"))
