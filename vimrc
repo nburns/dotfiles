@@ -202,12 +202,17 @@ set viminfo^=%
 " clear highliting with space
 map <Space> :noh<cr>
 
-"autocmd FileType haml,ruby,javascript,yaml,typescript,scss setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType text setlocal linebreak wrap
+autocmd FileType haml,ruby,javascript,yaml,typescript,scss setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType text,markdown setlocal linebreak wrap
 
-" run prettier on save
-autocmd BufWritePost *.js,*.ts,*.tsx,*.jsx silent! !prettier --write --tab-width 4 --bracket-spacing --single-quote <afile>
-"autocmd BufWritePost *.rb,*.rake silent! !rubocop <afile> --auto-correct
+
+" format on save
+autocmd BufWritePost *.js,*.ts,*.tsx,*.jsx silent! !prettier --write <afile>
+autocmd BufWritePost *.rb,*.rake silent! !rubocop <afile> --auto-correct
+
+autocmd FileType python
+    \ autocmd BufWritePost * silent! !autopep8 --in-place --aggressive --aggressive <afile>
+
 
 " format xml on save
 "autocmd BufWritePost *.xml silent! %!xmllint --format --recover <afile>

@@ -9,7 +9,6 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
         set -g -x PATH $valid_paths $PATH
     end
 
-    prepend_to_path ~/bin
     prepend_to_path /usr/local/opt/ruby/bin
     prepend_to_path /usr/local/lib/ruby/gems/2.6.0/bin
     prepend_to_path /usr/local/opt/python@2/bin
@@ -19,6 +18,7 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
     prepend_to_path /usr/local/opt/node@10/bin
     prepend_to_path /usr/local/sbin
     prepend_to_path (/usr/libexec/java_home)/bin
+    prepend_to_path ~/bin
 
     set -g -x JAVA_HOME (/usr/libexec/java_home)
 
@@ -44,9 +44,11 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
         set -g -x VIM_APP_DIR /Applications
     end
 
-    if [ (which mvim 2>&1 > /dev/null) ]
-        set -g -x VISUAL mvim
+    if [ (which mvim) ]
+        set -g -x EDITOR 'mvim -f'
+        set -g -x VISUAL 'mvim -f'
     else
+        set -g -x EDITOR vim
         set -g -x VISUAL vim
     end
 
