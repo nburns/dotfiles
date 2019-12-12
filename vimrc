@@ -210,8 +210,7 @@ autocmd FileType text,markdown setlocal linebreak wrap
 autocmd BufWritePost *.js,*.ts,*.tsx,*.jsx silent! !prettier --write <afile>
 autocmd BufWritePost *.rb,*.rake silent! !rubocop <afile> --auto-correct
 
-autocmd FileType python
-    \ autocmd BufWritePost * silent! !autopep8 --in-place --aggressive --aggressive <afile>
+autocmd BufWritePost *.py silent! !autopep8 --in-place --aggressive --aggressive <afile>
 
 
 " format xml on save
