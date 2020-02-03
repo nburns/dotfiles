@@ -1,7 +1,6 @@
 Host *
     UseKeychain yes
     AddKeysToAgent yes
-    IdentityFile ~/.ssh/id_rsa_jama
 
 Host feral
     HostName aura.feralhosting.com
@@ -10,23 +9,4 @@ Host feral
     IdentitiesOnly yes
     IdentityFile ~/.ssh/feral_rsa
 
-Host eu-staging-bastion
-    StrictHostKeyChecking no
-    ForwardAgent yes
-    User ubuntu
-    Hostname ec2-52-49-216-103.eu-west-1.compute.amazonaws.com
-    IdentityFile ~/.ssh/notion_ops.pem
 
-Host eu-prod-bastion
-    StrictHostKeyChecking no
-    ForwardAgent yes
-    User ubuntu
-    Hostname ec2-34-254-99-81.eu-west-1.compute.amazonaws.com
-    IdentityFile ~/.ssh/notion_ops.pem
-
-Host notion-vpn
-    ForwardAgent yes
-    StrictHostKeyChecking no
-    User openvpnas
-    Hostname 52.40.223.126
-    IdentityFile ~/.ssh/notion_ops.pem
