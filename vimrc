@@ -1,6 +1,7 @@
-if has('python3')
-  silent! python3 1
-endif
+" https://github.com/vim/vim/issues/3117
+"if has('python3')
+"  silent! python3 1
+"endif
 
 set shell=bash
 set nocompatible              " be iMproved, required
