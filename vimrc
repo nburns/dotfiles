@@ -27,19 +27,17 @@ Plugin 'airblade/vim-gitgutter' " git
 Plugin 'tpope/vim-rsi' "readline bindings
 Plugin 'itchyny/lightline.vim'
 Plugin 'godlygeek/tabular'
+Plugin 'editorconfig/editorconfig-vim'
 
 " language plugins
 Plugin 'dag/vim-fish'
-"Plugin 'vim-scripts/applescript.vim'
+Plugin 'elixir-editors/vim-elixir'
+Plugin 'vim-scripts/applescript.vim'
 Plugin 'tpope/vim-haml'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'ianks/vim-tsx'
-Plugin 'lepture/vim-velocity'
-"Plugin 'hashivim/vim-terraform'
-"Plugin 'mustache/vim-mustache-handlebars'
-"Plugin 'Glench/Vim-Jinja2-Syntax'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -76,7 +74,7 @@ autocmd BufNewFile,BufReadPost *.applescript set filetype=applescript
 " force jsx highlighting for javascript files
 let g:jsx_ext_required = 0
 
-set guifont=DejaVu\ Sans\ Mono:h15
+set guifont=DejaVu\ Sans\ Mono:h12
 
 set t_Co=256
 if (has("termguicolors"))
@@ -158,12 +156,22 @@ if has("mac") || has("macunix")
 endif
 
 " subset of emacs style movement commands
-inoremap <C-a> <Home>
-inoremap <C-e> <End>
 cnoremap <C-a> <Home>
+inoremap <C-a> <Home>
+nnoremap <C-a> <Home>
+
 cnoremap <C-e> <End>
+inoremap <C-e> <End>
+nnoremap <C-e> <End>
+
 " kill word backwards
 inoremap <C-BS> <C-\><C-o>db
+
+" kill to end of line
+inoremap <C-k> <C-o>C
+cnoremap <C-k> <C-o>C
+nnoremap <C-k> C
+
 
 " change buffer with tab in normal mode
 nnoremap <Tab> :bnext<CR>
@@ -202,15 +210,16 @@ set viminfo^=%
 " clear highliting with space
 map <Space> :noh<cr>
 
-autocmd FileType haml,ruby,javascript,yaml,typescript,scss setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType haml,ruby,javascript,yaml,typescript.tsx,scss setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType text,markdown setlocal linebreak wrap
 
+autocmd FileType typescript.tsx setlocal nospell
 
 " format on save
 autocmd BufWritePost *.js,*.ts,*.tsx,*.jsx silent! !prettier --write <afile>
 autocmd BufWritePost *.rb,*.rake silent! !rubocop <afile> --auto-correct
-
 autocmd BufWritePost *.py silent! !autopep8 --in-place --aggressive --aggressive <afile>
+autocmd BufWritePost *.ex,*.exs silent! !mix format <afile>
 
 
 " format xml on save
