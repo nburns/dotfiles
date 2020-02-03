@@ -1,4 +1,4 @@
-if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
+if status --is-interactive; or status --is-login
     function prepend_to_path
         set valid_paths
         for path in $argv
@@ -9,18 +9,12 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
         set -g -x PATH $valid_paths $PATH
     end
 
-    prepend_to_path /usr/local/opt/ruby/bin
-    prepend_to_path /usr/local/lib/ruby/gems/2.6.0/bin
-    prepend_to_path /usr/local/opt/python@2/bin
-    prepend_to_path /usr/local/opt/python@2/libexec/bin
-    prepend_to_path /usr/local/opt/mysql@5.7/bin
-    prepend_to_path /usr/local/opt/maven@3.2/bin
-    prepend_to_path /usr/local/opt/node@10/bin
-    prepend_to_path /usr/local/sbin
-    prepend_to_path (/usr/libexec/java_home)/bin
-    prepend_to_path ~/bin
+    #prepend_to_path /usr/local/opt/python@2/bin
+    #prepend_to_path /usr/local/opt/python@2/libexec/bin
 
-    set -g -x JAVA_HOME (/usr/libexec/java_home)
+    prepend_to_path /usr/local/opt/python/libexec/bin
+    prepend_to_path /usr/local/sbin
+    prepend_to_path ~/bin
 
     switch (uname)
         case 'Darwin'
@@ -28,17 +22,30 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
             set -g -x LANG 'en_US.UTF-8'
     end
 
+    if [ -e /usr/libexec/java_home ]
+        set -g -x JAVA_HOME (/usr/libexec/java_home)
+        prepend_to_path "$JAVA_HOME"/bin
+    end
+
+    if [ (which rbenv) ]
+        status --is-interactive; and source (rbenv init -|psub)
+    end
+
+    function always_bundle_exec
+        alias $argv[1]="bundle exec $argv[1]"
+    end
+
+    always_bundle_exec rails
+    always_bundle_exec rake
+    always_bundle_exec rspec
+    always_bundle_exec papers
+
     if [ -e ~/.env ]
-        source ~/.env
+        function reload_env
+            source ~/.env
+        end
+        reload_env
     end
-
-    function bundle_exec
-        set program $argv[1]
-        eval "function $program; bundle exec $program \$argv; end"
-    end
-
-    bundle_exec rails
-    bundle_exec rake
 
     if [ -e  /Applications/MacVim.app ]
         set -g -x VIM_APP_DIR /Applications
@@ -56,14 +63,24 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
         source ~/Documents/dotfiles/homebrew-access-token
     end
 
+    if [ -e ~/.agignore ]
+        alias ag="ag --case-sensitive --path-to-ignore ~/.agignore"
+    else
+        alias ag="ag --case-sensitive"
+    end
+
     set -g -x PAGER "less"
     set -g -x TODAY (date "+%m-%d")
     set -g -x TAB (printf '\t')
     set -g -x NL (printf '\n')
     set -g -x GREP_OPTIONS
     set -g -x LESS '-gFERXP%lB$ -j 10'
-    set -g -x ACK_PAGER_COLOR $PAGER # ack output gets paged and is colourful
+
+    set -g -x ACK_PAGER cat
+    set -g -x ACK_PAGER_COLOR cat
+
     set -g -x PYTHONDONTWRITEBYTECODE 'True'
+
     set -g -x HOMEBREW_NO_EMOJI 1
     set -g -x HOMEBREW_NO_AUTO_UPDATE 1
     set -g -x HOMEBREW_NO_INSTALL_CLEANUP 1
@@ -71,7 +88,7 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
 
     function fish_greeting; end
 
-    function status_code
+    function print_status_code
         set last $status
         if [ $last -ne 0 ]
             set_color red
@@ -89,7 +106,7 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
 
 
     function fish_prompt --description 'Write out the prompt'
-        set _status (status_code)
+        set _status (print_status_code)
 
         # Just calculate these once, to save a few cycles when displaying the prompt
         if not set -q __fish_prompt_hostname
@@ -118,8 +135,4 @@ if [ "$_SETUPDONE" != 'true' ] ; or status --is-login
                 echo -n -s $_status (current_branch) "$USER" @ "$__fish_prompt_hostname" ' ' "$__fish_prompt_cwd" (prompt_pwd) "$__fish_prompt_normal" '> '
         end
     end
-
-
-
-    set -g _SETUPDONE 'true'
 end
