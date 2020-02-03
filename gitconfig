@@ -1,11 +1,6 @@
 [credential]
 	helper = osxkeychain
 
-[user]
-	name = Nick Burns
-	email = nburns@jamasoftware.com
-	signingkey = 3AA5C34371567BD2
-
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore_global
