@@ -11,6 +11,7 @@ Plugin 'VundleVim/Vundle.vim'
 " user bundles
 " color scheme
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'nburns/bbedit-vim-colors'
 
 " editor enhancements
 Plugin 'Raimondi/delimitMate' "delimiter autocompletion
@@ -34,6 +35,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'ianks/vim-tsx'
+Plugin 'fatih/vim-go'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -53,6 +55,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:terraform_fmt_on_save=1
 let g:terraform_align=1
 
+"let g:go_fmt_command = "goimports"
+
 " set the diff branch for the gutter
 " call with no args to set to master
 function! Diff(...)
@@ -70,28 +74,31 @@ autocmd BufNewFile,BufReadPost *.applescript set filetype=applescript
 " force jsx highlighting for javascript files
 let g:jsx_ext_required = 0
 
-set guifont=DejaVu\ Sans\ Mono:h12
+set guifont=DejaVu\ Sans\ Mono:h14
 
 set t_Co=256
 if (has("termguicolors"))
  set termguicolors
 endif
 
-let g:lightline = { 'colorscheme': 'solarized' }
-let g:solarized_contrast="high"
-colorscheme solarized
 
-let hour = (strftime('%H'))
-let night = hour > 17
-if night || 1
-    set background=dark
-else
-    set background=light
-endif
+function! ColorScheme()
+    if (strftime('%H')) > 17 " is it night time?
+        let g:solarized_contrast="high"
+        colorscheme solarized
+        set background=dark
+        let g:lightline = { 'colorscheme': 'solarized' }
+    else
+        colorscheme BBEdit
+        set background=light
+        let g:lightline = { 'colorscheme': 'PaperColor' }
+    endif
+endfunction
+call ColorScheme()
 
 
 if has("gui_running")
-    set lines=70
+    set lines=73
     set columns=88
 endif
 
@@ -115,13 +122,12 @@ set linespace=2
 set magic
 set mouse=a
 set modeline
-set modelines=5
+set modelines=2
 set nobackup " disable local backup
 set noerrorbells
 set nofoldenable
-set noswapfile " disable local backup
+set noswapfile nowb " disable local backup
 set novisualbell
-set nowb " disable local backup
 set nowrap "dont wrap lines
 set number " show line numbers
 set ruler
@@ -206,16 +212,17 @@ set viminfo^=%
 " clear highliting with space
 map <Space> :noh<cr>
 
-autocmd FileType haml,ruby,javascript,yaml,typescript.tsx,scss setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType haml,ruby,javascript,yaml,typescript.tsx,typescript,scss setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType text,markdown setlocal linebreak wrap
 
 autocmd FileType typescript.tsx setlocal nospell
 
 " format on save
 autocmd BufWritePost *.js,*.ts,*.tsx,*.jsx silent! !prettier --write <afile>
-autocmd BufWritePost *.rb,*.rake silent! !rubocop <afile> --auto-correct
+autocmd BufWritePost *[^y].rb,*.rake silent! !rubocop <afile> --auto-correct
 autocmd BufWritePost *.py silent! !autopep8 --in-place --aggressive --aggressive <afile>
 autocmd BufWritePost *.ex,*.exs silent! !mix format <afile>
+autocmd BufWritePost *.sql silent! !pg_format <afile> --output <afile>
 
 
 " format xml on save
