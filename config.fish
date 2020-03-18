@@ -1,4 +1,6 @@
 if status --is-interactive; or status --is-login
+    set GOPATH ~/go
+
     function prepend_to_path
         set valid_paths
         for path in $argv
@@ -11,6 +13,7 @@ if status --is-interactive; or status --is-login
 
     #prepend_to_path /usr/local/opt/python@2/bin
     #prepend_to_path /usr/local/opt/python@2/libexec/bin
+    prepend_to_path $GOPATH/bin
 
     prepend_to_path /usr/local/opt/python/libexec/bin
     prepend_to_path /usr/local/sbin
@@ -22,6 +25,7 @@ if status --is-interactive; or status --is-login
             set -g -x LANG 'en_US.UTF-8'
     end
 
+
     if [ -e /usr/libexec/java_home ]
         set -g -x JAVA_HOME (/usr/libexec/java_home)
         prepend_to_path "$JAVA_HOME"/bin
@@ -32,13 +36,17 @@ if status --is-interactive; or status --is-login
     end
 
     function always_bundle_exec
-        alias $argv[1]="bundle exec $argv[1]"
+        alias "$argv[1]" "bundle exec $argv[1]"
     end
 
     always_bundle_exec rails
     always_bundle_exec rake
-    always_bundle_exec rspec
     always_bundle_exec papers
+    alias rspec "bundle exec rspec --no-profile"
+
+    function gem-paths
+        gem env | yaml --json | jq -r '.["RubyGems Environment"] | add | .["GEM PATHS"] | .[]'
+    end
 
     if [ -e ~/.env ]
         function reload_env
