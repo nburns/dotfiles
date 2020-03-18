@@ -265,3 +265,5 @@ onAuthDomainClick
 writeQuery
 popd
 pushd
+context
+describe
