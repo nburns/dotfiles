@@ -5,3 +5,4 @@ test/fixtures
 *.min*
 *.log
 *.map*
+package-lock.json
