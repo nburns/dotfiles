@@ -65,11 +65,8 @@ endfunction
 let g:gitgutter_eager=1
 command! -nargs=? Diff call Diff(<f-args>)
 
-au FileType python let b:delimitMate_nesting_quotes = ['"']
+au FileType python let b:delimitMate_nesting_quotes = ['"\'']
 let delimitMate_expand_cr = 1
-
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-autocmd BufNewFile,BufReadPost *.applescript set filetype=applescript
 
 " force jsx highlighting for javascript files
 let g:jsx_ext_required = 0
@@ -213,17 +210,17 @@ set viminfo^=%
 map <Space> :noh<cr>
 
 autocmd FileType haml,ruby,javascript,yaml,typescript.tsx,typescript,scss setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType typescript.tsx setlocal nospell
+
 autocmd FileType text,markdown setlocal linebreak wrap
 
-autocmd FileType typescript.tsx setlocal nospell
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufReadPost *.applescript set filetype=applescript
 
 " format on save
 autocmd BufWritePost *.js,*.ts,*.tsx,*.jsx silent! !prettier --write <afile>
 autocmd BufWritePost *[^y].rb,*.rake silent! !rubocop <afile> --auto-correct
-autocmd BufWritePost *.py silent! !autopep8 --in-place --aggressive --aggressive <afile>
+autocmd BufWritePost *.py silent! %!autopep8 --aggressive --aggressive <afile>
 autocmd BufWritePost *.ex,*.exs silent! !mix format <afile>
-autocmd BufWritePost *.sql silent! !pg_format <afile> --output <afile>
-
-
-" format xml on save
-"autocmd BufWritePost *.xml silent! %!xmllint --format --recover <afile>
+autocmd BufWritePost *.sql silent! %!pg_format <afile> | sed \$d
+autocmd BufWritePost *.xml silent! %!xmllint --format --recover <afile>

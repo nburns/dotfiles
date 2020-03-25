@@ -267,3 +267,4 @@ popd
 pushd
 context
 describe
+AuditEventInserter
