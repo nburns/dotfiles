@@ -9,6 +9,15 @@ Style/StringLiterals:
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/FirstHashElementIndentation:
+ EnforcedStyle: consistent
+
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
 Naming/RescuedExceptionsVariableName:
   Enabled: false
 
@@ -27,3 +36,9 @@ Style/TrailingCommaInHashLiteral:
 
 Style/NumericLiterals:
   Enabled: false
+
+Style/Lambda:
+  Enabled: false
+
+Style/RescueStandardError:
+  EnforcedStyle: implicit

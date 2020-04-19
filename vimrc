@@ -65,7 +65,7 @@ endfunction
 let g:gitgutter_eager=1
 command! -nargs=? Diff call Diff(<f-args>)
 
-au FileType python let b:delimitMate_nesting_quotes = ['"\'']
+au FileType python let b:delimitMate_nesting_quotes = ['"']
 let delimitMate_expand_cr = 1
 
 " force jsx highlighting for javascript files
@@ -218,9 +218,10 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.applescript set filetype=applescript
 
 " format on save
+autocmd BufWritePost *.c silent! !clang-format -i <afile>
 autocmd BufWritePost *.js,*.ts,*.tsx,*.jsx silent! !prettier --write <afile>
 autocmd BufWritePost *[^y].rb,*.rake silent! !rubocop <afile> --auto-correct
-autocmd BufWritePost *.py silent! %!autopep8 --aggressive --aggressive <afile>
+autocmd FileType python autocmd BufWritePost * silent! %!autopep8 --aggressive --aggressive <afile>
 autocmd BufWritePost *.ex,*.exs silent! !mix format <afile>
 autocmd BufWritePost *.sql silent! %!pg_format <afile> | sed \$d
 autocmd BufWritePost *.xml silent! %!xmllint --format --recover <afile>
