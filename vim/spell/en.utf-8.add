@@ -268,3 +268,5 @@ pushd
 context
 describe
 AuditEventInserter
+associate
+osascript

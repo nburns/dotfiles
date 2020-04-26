@@ -1,4 +1,5 @@
-set shell=bash
+"set shell=bash
+"let $PATH .= ':/usr/local/bin'
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
