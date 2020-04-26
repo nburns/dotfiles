@@ -9,10 +9,10 @@ set rtp+=/usr/local/bin/fzf
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
-" user bundles
 " color scheme
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'lifepillar/vim-solarized8'
 Plugin 'nburns/bbedit-vim-colors'
+Plugin 'nburns/vim-auto-light-dark'
 
 " editor enhancements
 Plugin 'Raimondi/delimitMate' "delimiter autocompletion
@@ -66,39 +66,20 @@ endfunction
 let g:gitgutter_eager=1
 command! -nargs=? Diff call Diff(<f-args>)
 
-au FileType python let b:delimitMate_nesting_quotes = ['"']
+au FileType python let b:delimitMate_nesting_quotes = ['"\''']
 let delimitMate_expand_cr = 1
 
 " force jsx highlighting for javascript files
 let g:jsx_ext_required = 0
 
-set guifont=DejaVu\ Sans\ Mono:h14
-
-set t_Co=256
-if (has("termguicolors"))
- set termguicolors
-endif
-
-
-function! ColorScheme()
-    if (strftime('%H')) > 17 " is it night time?
-        let g:solarized_contrast="high"
-        colorscheme solarized
-        set background=dark
-        let g:lightline = { 'colorscheme': 'solarized' }
-    else
-        colorscheme BBEdit
-        set background=light
-        let g:lightline = { 'colorscheme': 'PaperColor' }
-    endif
-endfunction
-call ColorScheme()
-
-
 if has("gui_running")
-    set lines=73
-    set columns=88
-endif
+    set guifont=DejaVu\ Sans\ Mono:h15
+end
+
+"set t_Co=256
+set termguicolors
+
+
 
 set autoindent smartindent
 set autoread " update externaly edited files
@@ -106,6 +87,7 @@ set backspace=eol,start,indent " fix backspace
 set clipboard=unnamed "use system clipboard
 set cmdheight=1
 set colorcolumn=81
+hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 set cursorline " Highlight the horizontal line of the cursor
 set cursorcolumn " Highlight vertical column of the cursor
 set encoding=utf8 " use utf8 text encoding
@@ -145,6 +127,22 @@ set ttymouse=xterm2
 set vb t_vb= " no bell
 set whichwrap+=<,>,h,l " fix backspace
 set linebreak
+
+
+function DarkMode()
+    let g:solarized_contrast="high"
+    colorscheme solarized8_high
+    set background=dark
+    let g:lightline = { 'colorscheme': 'solarized' }
+    let g:interface_mode = "dark"
+endfunction
+
+function LightMode()
+    colorscheme BBEdit
+    set background=light
+    let g:lightline = { 'colorscheme': 'PaperColor' }
+    let g:interface_mode = "light"
+endfunction
 
 
 " map command to meta
@@ -210,7 +208,7 @@ set viminfo^=%
 " clear highliting with space
 map <Space> :noh<cr>
 
-autocmd FileType haml,ruby,javascript,yaml,typescript.tsx,typescript,scss setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType haml,ruby,javascript,yaml,typescript.tsx,typescript,scss,c setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType typescript.tsx setlocal nospell
 
 autocmd FileType text,markdown setlocal linebreak wrap
@@ -221,7 +219,7 @@ autocmd BufNewFile,BufReadPost *.applescript set filetype=applescript
 " format on save
 autocmd BufWritePost *.c silent! !clang-format -i <afile>
 autocmd BufWritePost *.js,*.ts,*.tsx,*.jsx silent! !prettier --write <afile>
-autocmd BufWritePost *[^y].rb,*.rake silent! !rubocop <afile> --auto-correct
+autocmd FileType ruby autocmd BufWritePost *[^y].rb,*.rake,* silent! !rubocop <afile> --auto-correct
 autocmd FileType python autocmd BufWritePost * silent! %!autopep8 --aggressive --aggressive <afile>
 autocmd BufWritePost *.ex,*.exs silent! !mix format <afile>
 autocmd BufWritePost *.sql silent! %!pg_format <afile> | sed \$d
