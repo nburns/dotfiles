@@ -26,3 +26,6 @@
 	chekcout = checkout
 	branches = !branches
 	conflicted = !git-conflicted
+[user]
+	name = Nick Burns
+	email = nick@burns.io
