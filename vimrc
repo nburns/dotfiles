@@ -138,7 +138,7 @@ function DarkMode()
 endfunction
 
 function LightMode()
-    colorscheme BBEdit
+    colorscheme bbedit
     set background=light
     let g:lightline = { 'colorscheme': 'PaperColor' }
     let g:interface_mode = "light"
