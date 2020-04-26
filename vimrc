@@ -130,18 +130,15 @@ set linebreak
 
 
 function DarkMode()
-    let g:solarized_contrast="high"
     colorscheme solarized8_high
     set background=dark
     let g:lightline = { 'colorscheme': 'solarized' }
-    let g:interface_mode = "dark"
 endfunction
 
 function LightMode()
     colorscheme bbedit
     set background=light
     let g:lightline = { 'colorscheme': 'PaperColor' }
-    let g:interface_mode = "light"
 endfunction
 
 
