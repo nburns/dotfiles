@@ -99,7 +99,6 @@ if status --is-interactive; or status --is-login
 
     function current_branch
         echo (git branch 2>&1 | sed -e '/*/!d' -e 's/* //g' -e '/fatal:/d')" "
-        #echo (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')" "
     end
 
 
