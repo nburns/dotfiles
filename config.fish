@@ -18,6 +18,7 @@ if status --is-interactive; or status --is-login
     prepend_to_path /usr/local/opt/python/libexec/bin
     prepend_to_path /usr/local/sbin
     prepend_to_path ~/bin
+    prepend_to_path ~/.local/bin
 
     switch (uname)
         case 'Darwin'
