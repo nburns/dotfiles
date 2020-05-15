@@ -2,17 +2,11 @@ if status --is-interactive; or status --is-login
     set GOPATH ~/go
 
     function prepend_to_path
-        set valid_paths
-        for path in $argv
-            if [ -d $path ]
-                set valid_paths $valid_paths $path
-            end
+        if [ -d $argv ]
+            set -g -x PATH $argv $PATH
         end
-        set -g -x PATH $valid_paths $PATH
     end
 
-    #prepend_to_path /usr/local/opt/python@2/bin
-    #prepend_to_path /usr/local/opt/python@2/libexec/bin
     prepend_to_path $GOPATH/bin
 
     prepend_to_path /usr/local/opt/python/libexec/bin
@@ -44,10 +38,6 @@ if status --is-interactive; or status --is-login
     always_bundle_exec rake
     always_bundle_exec papers
     alias rspec "bundle exec rspec --no-profile"
-
-    function gem-paths
-        gem env | yaml --json | jq -r '.["RubyGems Environment"] | add | .["GEM PATHS"] | .[]'
-    end
 
     if [ -e ~/.env ]
         function reload_env
