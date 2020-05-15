@@ -8,18 +8,10 @@ if status --is-interactive; or status --is-login
     end
 
     prepend_to_path $GOPATH/bin
-
     prepend_to_path /usr/local/opt/python/libexec/bin
     prepend_to_path /usr/local/sbin
     prepend_to_path ~/bin
     prepend_to_path ~/.local/bin
-
-    switch (uname)
-        case 'Darwin'
-            set -g -x LC_ALL 'en_US.UTF-8'
-            set -g -x LANG 'en_US.UTF-8'
-    end
-
 
     if [ -e /usr/libexec/java_home ]
         set -g -x JAVA_HOME (/usr/libexec/java_home)
@@ -40,10 +32,7 @@ if status --is-interactive; or status --is-login
     alias rspec "bundle exec rspec --no-profile"
 
     if [ -e ~/.env ]
-        function reload_env
-            source ~/.env
-        end
-        reload_env
+        source ~/.env
     end
 
     if [ -e  /Applications/MacVim.app ]
@@ -63,9 +52,9 @@ if status --is-interactive; or status --is-login
     end
 
     if [ -e ~/.agignore ]
-        alias ag="ag --case-sensitive --path-to-ignore ~/.agignore"
+        alias ag "ag --case-sensitive --path-to-ignore ~/.agignore"
     else
-        alias ag="ag --case-sensitive"
+        alias ag "ag --case-sensitive"
     end
 
     set -g -x PAGER "less"
@@ -96,12 +85,9 @@ if status --is-interactive; or status --is-login
         end
     end
 
-
     function current_branch
         echo (git branch 2>&1 | sed -e '/*/!d' -e 's/* //g' -e '/fatal:/d')" "
     end
-
-
 
     function fish_prompt --description 'Write out the prompt'
         set _status (print_status_code)
