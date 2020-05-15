@@ -1,0 +1,27 @@
+#!/usr/bin/env duti
+# osascript -e 'id of app "Macvim"'
+org.vim.Macvim  c	    all
+org.vim.Macvim  cpp	    all
+org.vim.Macvim  dot	    all
+org.vim.Macvim  erb	    all
+org.vim.Macvim  go	    all
+org.vim.Macvim  h	    all
+org.vim.Macvim  haml	all
+org.vim.Macvim  js	    all
+org.vim.Macvim  json	all
+org.vim.Macvim  jsx	    all
+org.vim.Macvim  md	    all
+org.vim.Macvim  nfo	    all
+org.vim.Macvim  pgsql	all
+org.vim.Macvim  py	    all
+org.vim.Macvim  rake	all
+org.vim.Macvim  rb	    all
+org.vim.Macvim  sql	    all
+org.vim.Macvim  tex	    all
+org.vim.Macvim  ts	    all
+org.vim.Macvim  tsx	    all
+org.vim.Macvim  txt	    all
+org.vim.Macvim  yml	    all
+org.vim.Macvim  markdown	all
+org.vim.Macvim  snippets	all
+org.vim.Macvim  public.unix-executable all
