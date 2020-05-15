@@ -25,7 +25,7 @@ Plugin 'airblade/vim-gitgutter' " git
 Plugin 'tpope/vim-rsi' "readline bindings
 Plugin 'itchyny/lightline.vim'
 Plugin 'godlygeek/tabular'
-Plugin 'editorconfig/editorconfig-vim'
+Plugin 'ap/vim-css-color'
 
 " language plugins
 Plugin 'dag/vim-fish'
@@ -216,7 +216,7 @@ autocmd BufNewFile,BufReadPost *.applescript set filetype=applescript
 " format on save
 autocmd BufWritePost *.c silent! !clang-format -i <afile>
 autocmd BufWritePost *.js,*.ts,*.tsx,*.jsx silent! !prettier --write <afile>
-autocmd FileType ruby autocmd BufWritePost *[^y].rb,*.rake,* silent! !rubocop <afile> --auto-correct
+autocmd FileType ruby autocmd BufWritePost * silent! !rubocop <afile> --auto-correct
 autocmd FileType python autocmd BufWritePost * silent! %!autopep8 --aggressive --aggressive <afile>
 autocmd BufWritePost *.ex,*.exs silent! !mix format <afile>
 autocmd BufWritePost *.sql silent! %!pg_format <afile> | sed \$d
