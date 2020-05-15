@@ -18,6 +18,9 @@ Layout/FirstHashElementIndentation:
 Layout/FirstArrayElementIndentation:
   EnforcedStyle: consistent
 
+Layout/HeredocArgumentClosingParenthesis:
+  Enabled: true
+
 Naming/RescuedExceptionsVariableName:
   Enabled: false
 
