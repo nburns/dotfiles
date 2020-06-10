@@ -6,3 +6,4 @@ test/fixtures
 *.log
 *.map*
 package-lock.json
+bootsnap-load-path-cache
