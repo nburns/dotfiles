@@ -217,7 +217,7 @@ autocmd BufNewFile,BufReadPost *.applescript set filetype=applescript
 autocmd BufWritePost *.c silent! !clang-format -i <afile>
 autocmd BufWritePost *.js,*.ts,*.tsx,*.jsx silent! !prettier --write <afile>
 autocmd FileType ruby autocmd BufWritePost * silent! !rubocop <afile> --auto-correct
-autocmd FileType python autocmd BufWritePost * silent! %!autopep8 --aggressive --aggressive <afile>
+autocmd FileType python autocmd BufWritePost * silent! !autopep8 --aggressive --aggressive --in-place <afile>
 autocmd BufWritePost *.ex,*.exs silent! !mix format <afile>
 autocmd BufWritePost *.sql silent! %!pg_format <afile> | sed \$d
 autocmd BufWritePost *.xml silent! %!xmllint --format --recover <afile>
