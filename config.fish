@@ -18,8 +18,8 @@ if status --is-interactive; or status --is-login
         prepend_to_path "$JAVA_HOME"/bin
     end
 
-    if [ (which rbenv) ]
-        status --is-interactive; and source (rbenv init -|psub)
+    if which rbenv > /dev/null
+        status --is-interactive; and source (rbenv init - | psub)
     end
 
     function always_bundle_exec
@@ -39,9 +39,9 @@ if status --is-interactive; or status --is-login
         set -g -x VIM_APP_DIR /Applications
     end
 
-    if [ (which mvim) ]
-        set -g -x EDITOR 'mvim -f'
-        set -g -x VISUAL 'mvim -f'
+    if which mvim > /dev/null
+        set -g -x EDITOR mvim -f
+        set -g -x VISUAL mvim -f
     else
         set -g -x EDITOR vim
         set -g -x VISUAL vim
