@@ -2,6 +2,9 @@ Host *
     UseKeychain yes
     AddKeysToAgent yes
 
+Host source.datanerd.us
+    ConnectTimeout 1
+
 Host feral
     HostName aura.feralhosting.com
     User swimmernick
