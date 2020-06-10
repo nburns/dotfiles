@@ -12,6 +12,12 @@ Layout/MultilineMethodCallIndentation:
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
 
+#Layout/EmptyLinesAroundAttributeAccessor:
+#  Enabled: true
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
 Layout/FirstHashElementIndentation:
  EnforcedStyle: consistent
 
@@ -30,6 +36,19 @@ Style/SymbolArray:
 Style/WordArray:
   Enabled: false
 
+Style/HashSyntax:
+  Enabled: true
+  EnforcedStyle: no_mixed_keys
+
+Style/HashEachMethods:
+  Enabled: false
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
 Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: comma
 
@@ -45,3 +64,15 @@ Style/Lambda:
 
 Style/RescueStandardError:
   EnforcedStyle: implicit
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Style/ExponentialNotation:
+  Enabled: true
+
+  #Style/SlicingWithRange:
+  #  Enabled: true
