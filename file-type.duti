@@ -2,7 +2,9 @@
 # osascript -e 'id of app "Macvim"'
 org.vim.Macvim  c	    all
 org.vim.Macvim  cpp	    all
+org.vim.Macvim  csv	    all
 org.vim.Macvim  dot	    all
+org.vim.Macvim  duti    all
 org.vim.Macvim  erb	    all
 org.vim.Macvim  go	    all
 org.vim.Macvim  h	    all
