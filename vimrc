@@ -29,14 +29,14 @@ Plugin 'ap/vim-css-color'
 
 " language plugins
 Plugin 'dag/vim-fish'
-Plugin 'elixir-editors/vim-elixir'
-Plugin 'vim-scripts/applescript.vim'
-Plugin 'tpope/vim-haml'
+"Plugin 'elixir-editors/vim-elixir'
+"Plugin 'vim-scripts/applescript.vim'
+"Plugin 'tpope/vim-haml'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'ianks/vim-tsx'
-Plugin 'fatih/vim-go'
+"Plugin 'fatih/vim-go'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

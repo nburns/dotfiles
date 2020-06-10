@@ -20,6 +20,10 @@ if status --is-interactive; or status --is-login
 
     if which rbenv > /dev/null
         status --is-interactive; and source (rbenv init - | psub)
+
+        if which brew > /dev/null
+            set -g -x RUBY_CONFIGURE_OPTS "--with-openssl-dir="(brew --prefix openssl@1.1)
+        end
     end
 
     function always_bundle_exec
