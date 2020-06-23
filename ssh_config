@@ -12,4 +12,20 @@ Host feral
     IdentitiesOnly yes
     IdentityFile ~/.ssh/feral_rsa
 
+Host nas.local
+    User nick
 
+Host null.local
+    User nick
+
+Host desk.local
+    User pi
+
+Host bathroom.local
+    User pi
+
+Host pie.local
+    User pi
+
+Host garage.local
+    User pi
