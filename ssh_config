@@ -2,6 +2,9 @@ Host *
     UseKeychain yes
     AddKeysToAgent yes
 
+Host github.com
+    IdentityFile ~/.ssh/gh
+
 Host source.datanerd.us
     IdentityFile ~/.ssh/ghe
     ConnectTimeout 1
