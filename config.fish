@@ -1,9 +1,17 @@
 if status --is-interactive; or status --is-login
     set GOPATH ~/go
 
-    function prepend_to_path
+    function prepend_to_path --description 'check path before adding to PATH'
         if [ -d $argv ]
             set -g -x PATH $argv $PATH
+        end
+    end
+
+    function set_once --description 'caches expensive calls in universal var'
+        set name $argv[1]
+        set command $argv[2]
+        if not set -q $name
+            set -U -x $name (eval $command)
         end
     end
 
@@ -22,7 +30,8 @@ if status --is-interactive; or status --is-login
         status --is-interactive; and source (rbenv init - | psub)
 
         if which brew > /dev/null
-            set -g -x RUBY_CONFIGURE_OPTS "--with-openssl-dir="(brew --prefix openssl@1.1)
+            set_once OPEN_SSL_DIR "brew --prefix openssl@1.1"
+            set -g -x RUBY_CONFIGURE_OPTS "--with-openssl-dir=$OPEN_SSL_DIR"
         end
     end
 
@@ -39,8 +48,11 @@ if status --is-interactive; or status --is-login
         source ~/.env
     end
 
-    if [ -e  /Applications/MacVim.app ]
-        set -g -x VIM_APP_DIR /Applications
+    if which osascript > /dev/null
+            set_once VIM_APP_DIR "(dirname (osascript
+                -e 'tell application \"Finder\"' \
+                -e 'POSIX path of (application file id (id of app \"Macvim\") as alias)' \
+                -e 'end tell' 2> /dev/null) 2> /dev/null)"
     end
 
     if which mvim > /dev/null
@@ -63,8 +75,6 @@ if status --is-interactive; or status --is-login
 
     set -g -x PAGER "less"
     set -g -x TODAY (date "+%m-%d")
-    set -g -x TAB (printf '\t')
-    set -g -x NL (printf '\n')
     set -g -x GREP_OPTIONS
     set -g -x LESS '-gFERXP%lB$ -j 10'
 
@@ -84,7 +94,7 @@ if status --is-interactive; or status --is-login
         set last $status
         if [ $last -ne 0 ]
             set_color red
-            echo -n $last" "
+            printf $last" "
             set_color normal
         end
     end
