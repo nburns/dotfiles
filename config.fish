@@ -44,8 +44,8 @@ if status --is-interactive; or status --is-login
     end
 
     if which mvim > /dev/null
-        set -g -x EDITOR mvim -f
-        set -g -x VISUAL mvim -f
+        set -g -x EDITOR mvim
+        set -g -x VISUAL mvim
     else
         set -g -x EDITOR vim
         set -g -x VISUAL vim

@@ -11,6 +11,7 @@ org.vim.Macvim  duti    all
 org.vim.Macvim  erb	    all
 org.vim.Macvim  go	    all
 org.vim.Macvim  gradle  all
+org.vim.Macvim  graphql all
 org.vim.Macvim  h	    all
 org.vim.Macvim  haml	all
 org.vim.Macvim  js	    all

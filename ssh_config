@@ -3,6 +3,7 @@ Host *
     AddKeysToAgent yes
 
 Host source.datanerd.us
+    IdentityFile ~/.ssh/ghe
     ConnectTimeout 1
 
 Host feral
@@ -12,20 +13,26 @@ Host feral
     IdentitiesOnly yes
     IdentityFile ~/.ssh/feral_rsa
 
-Host nas.local
+Host nas
+    HostName nas.local
     User nick
 
-Host null.local
+Host null
+    HostName null.local
     User nick
 
-Host desk.local
+Host desk
+    HostName desk.local
     User pi
 
-Host bathroom.local
+Host bathroom
+    HostName bathroom.local
     User pi
 
-Host pie.local
+Host pie
+    HostName pie.local
     User pi
 
-Host garage.local
+Host garage
+    HostName garage.local
     User pi
