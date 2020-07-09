@@ -31,4 +31,8 @@ org.vim.Macvim  txt	    all
 org.vim.Macvim  yml	    all
 org.vim.Macvim  markdown	all
 org.vim.Macvim  snippets	all
+
 org.vim.Macvim  public.unix-executable all
+
+com.prusa3d.slic3r/ stl all
+org.vim.Macvim gcode all
