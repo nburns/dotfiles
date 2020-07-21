@@ -49,10 +49,7 @@ if status --is-interactive; or status --is-login
     end
 
     if which osascript > /dev/null
-            set_once VIM_APP_DIR "(dirname (osascript
-                -e 'tell application \"Finder\"' \
-                -e 'POSIX path of (application file id (id of app \"Macvim\") as alias)' \
-                -e 'end tell' 2> /dev/null) 2> /dev/null)"
+        set_once VIM_APP_DIR "realpath (brew --prefix macvim)"
     end
 
     if which mvim > /dev/null
