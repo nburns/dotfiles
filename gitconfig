@@ -36,6 +36,6 @@
 [pull]
     rebase = true
 
-[http]
-    lowSpeedLimit = 1
-    lowSpeedTime = 2
+#[http]
+#    lowSpeedLimit = 1
+#    lowSpeedTime = 2
