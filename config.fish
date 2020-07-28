@@ -48,7 +48,7 @@ if status --is-interactive; or status --is-login
         source ~/.env
     end
 
-    if which osascript > /dev/null
+    if which brew > /dev/null
         set_once VIM_APP_DIR "realpath (brew --prefix macvim)"
     end
 
