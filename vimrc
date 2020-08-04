@@ -29,7 +29,7 @@ Plugin 'ap/vim-css-color'
 
 " language plugins
 Plugin 'dag/vim-fish'
-"Plugin 'elixir-editors/vim-elixir'
+Plugin 'elixir-editors/vim-elixir'
 "Plugin 'vim-scripts/applescript.vim'
 "Plugin 'tpope/vim-haml'
 Plugin 'pangloss/vim-javascript'

@@ -15,9 +15,13 @@ if status --is-interactive; or status --is-login
         end
     end
 
+    if which brew > /dev/null
+        set_once BREW_SHELL_ENV 'brew shellenv'
+        eval $BREW_SHELL_ENV
+    end
+
     prepend_to_path $GOPATH/bin
     prepend_to_path /usr/local/opt/python/libexec/bin
-    prepend_to_path /usr/local/sbin
     prepend_to_path ~/bin
     prepend_to_path ~/.local/bin
 
@@ -29,20 +33,16 @@ if status --is-interactive; or status --is-login
     if which rbenv > /dev/null
         status --is-interactive; and source (rbenv init - | psub)
 
+        alias papers 'bundle exec papers'
+        alias rails 'bundle exec rails'
+        alias rake 'bundle exec rake'
+        alias rspec 'bundle exec rspec --no-profile'
+
         if which brew > /dev/null
             set_once OPEN_SSL_DIR "brew --prefix openssl@1.1"
             set -g -x RUBY_CONFIGURE_OPTS "--with-openssl-dir=$OPEN_SSL_DIR"
         end
     end
-
-    function always_bundle_exec
-        alias "$argv[1]" "bundle exec $argv[1]"
-    end
-
-    always_bundle_exec rails
-    always_bundle_exec rake
-    always_bundle_exec papers
-    alias rspec "bundle exec rspec --no-profile"
 
     if [ -e ~/.env ]
         source ~/.env
