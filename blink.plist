@@ -6,14 +6,14 @@
     <string>blink</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/usr/bin/osascript</string>
+      <string>/usr/bin/osascript</string>
       <string>-e</string>
       <string>display notification "Blink your eyes! 👀" with title "Blink"</string>
-
     </array>
     <key>RunAtLoad</key>
     <true/>
     <key>StartInterval</key>
+    <!-- 5 min * 60 sec/min -->
     <integer>1200</integer>
   </dict>
 </plist>
