@@ -212,6 +212,8 @@ autocmd FileType text,markdown setlocal linebreak wrap
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.applescript set filetype=applescript
+autocmd BufNewFile,BufReadPost *.har set filetype=json
+
 
 " format on save
 autocmd BufWritePost *.c silent! !clang-format -i <afile>
@@ -220,4 +222,4 @@ autocmd FileType ruby autocmd BufWritePost * silent! !rubocop <afile> --auto-cor
 autocmd FileType python autocmd BufWritePost * silent! !autopep8 --aggressive --aggressive --in-place <afile>
 autocmd BufWritePost *.ex,*.exs silent! !mix format <afile>
 autocmd BufWritePost *.sql silent! %!pg_format <afile> | sed \$d
-autocmd BufWritePost *.xml silent! %!xmllint --format --recover <afile>
+autocmd FileType xml autocmd BufWritePost * silent! %!xmllint --format --recover <afile>
