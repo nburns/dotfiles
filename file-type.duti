@@ -6,20 +6,25 @@
 org.vim.Macvim  c	    all
 org.vim.Macvim  cpp	    all
 org.vim.Macvim  csv	    all
+org.vim.Macvim  ddl     all
 org.vim.Macvim  dot	    all
 org.vim.Macvim  duti    all
 org.vim.Macvim  erb	    all
+org.vim.Macvim  ex      all
+org.vim.Macvim  exs     all
 org.vim.Macvim  go	    all
 org.vim.Macvim  gradle  all
 org.vim.Macvim  graphql all
 org.vim.Macvim  h	    all
 org.vim.Macvim  haml	all
+org.vim.Macvim  har	    all
 org.vim.Macvim  js	    all
 org.vim.Macvim  json	all
 org.vim.Macvim  jsx	    all
 org.vim.Macvim  md	    all
 org.vim.Macvim  nfo	    all
 org.vim.Macvim  pgsql	all
+org.vim.Macvim  plist	all
 org.vim.Macvim  py	    all
 org.vim.Macvim  rake	all
 org.vim.Macvim  rb	    all
@@ -29,6 +34,7 @@ org.vim.Macvim  ts	    all
 org.vim.Macvim  tsx	    all
 org.vim.Macvim  txt	    all
 org.vim.Macvim  yml	    all
+org.vim.Macvim  xml	    all
 org.vim.Macvim  markdown	all
 org.vim.Macvim  snippets	all
 
