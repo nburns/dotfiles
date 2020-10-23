@@ -44,6 +44,11 @@ if status --is-interactive; or status --is-login
         end
     end
 
+    if which asdf >/dev/null
+        set_once ASDF_INIT "echo (brew --prefix asdf)/asdf.fish"
+        source $ASDF_INIT
+    end
+
     if [ -e ~/.env ]
         source ~/.env
     end
