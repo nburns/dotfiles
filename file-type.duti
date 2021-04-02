@@ -14,6 +14,7 @@ org.vim.Macvim  ex      all
 org.vim.Macvim  exs     all
 org.vim.Macvim  go	    all
 org.vim.Macvim  gradle  all
+org.vim.Macvim  groovy  all
 org.vim.Macvim  graphql all
 org.vim.Macvim  h	    all
 org.vim.Macvim  haml	all
@@ -30,6 +31,7 @@ org.vim.Macvim  rake	all
 org.vim.Macvim  rb	    all
 org.vim.Macvim  sql	    all
 org.vim.Macvim  tex	    all
+org.vim.Macvim  tf      all
 org.vim.Macvim  ts	    all
 org.vim.Macvim  tsx	    all
 org.vim.Macvim  txt	    all

@@ -72,9 +72,9 @@ if status --is-interactive; or status --is-login
     end
 
     if [ -e ~/.agignore ]
-        alias ag "ag --case-sensitive --path-to-ignore ~/.agignore"
+        alias ag "ag --case-sensitive --follow --path-to-ignore ~/.agignore"
     else
-        alias ag "ag --case-sensitive"
+        alias ag "ag --case-sensitive --follow"
     end
 
     set -g -x PAGER "less"

@@ -39,6 +39,8 @@ link_to_home psqlrc
 link_to_home vim
 link_to_home vimrc
 
+touch ~/.hushlogin
+
 create_dir ~/.ssh
 do_link "$BASE_DIR/ssh_config" "$HOME/.ssh/config"
 

@@ -24,6 +24,7 @@
 --color
 --nogroup
 --break
+--follow
  
 --type-set=go:match:.+\.go
 --type-set=haml:match:.+\.haml

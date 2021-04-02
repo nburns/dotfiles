@@ -37,6 +37,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'ianks/vim-tsx'
 "Plugin 'fatih/vim-go'
+Plugin 'hashivim/vim-terraform'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -54,7 +55,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 let g:terraform_fmt_on_save=1
-let g:terraform_align=1
+let g:terraform_align=0
 
 "let g:go_fmt_command = "goimports"
 
@@ -218,7 +219,7 @@ autocmd BufNewFile,BufReadPost *.har set filetype=json
 " format on save
 autocmd BufWritePost *.c silent! !clang-format -i <afile>
 autocmd BufWritePost *.js,*.ts,*.tsx,*.jsx silent! !prettier --write <afile>
-autocmd FileType ruby autocmd BufWritePost * silent! !rubocop <afile> --auto-correct
+"autocmd FileType ruby autocmd BufWritePost * silent! !rubocop <afile> --auto-correct
 autocmd FileType python autocmd BufWritePost * silent! !autopep8 --aggressive --aggressive --in-place <afile>
 autocmd BufWritePost *.ex,*.exs silent! !mix format <afile>
 autocmd BufWritePost *.sql silent! %!pg_format <afile> | sed \$d

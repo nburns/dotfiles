@@ -12,6 +12,12 @@ Layout/MultilineMethodCallIndentation:
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
 
+Layout/HashAlignment:
+  EnforcedColonStyle: key
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
 #Layout/EmptyLinesAroundAttributeAccessor:
 #  Enabled: true
 
@@ -38,6 +44,7 @@ Style/WordArray:
 
 Style/HashSyntax:
   Enabled: true
+  #EnforcedStyle: ruby19_no_mixed_keys
   EnforcedStyle: no_mixed_keys
 
 Style/HashEachMethods:

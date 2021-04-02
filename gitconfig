@@ -39,3 +39,5 @@
 #[http]
 #    lowSpeedLimit = 1
 #    lowSpeedTime = 2
+[branch "master"]
+	pushRemote = push_not_allowed_on_master
