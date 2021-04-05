@@ -25,8 +25,8 @@ if status --is-interactive; or status --is-login
     prepend_to_path ~/bin
     prepend_to_path ~/.local/bin
 
-    if [ -e /usr/libexec/java_home ]
-        if /usr/libexec/java_home 2> /dev/null
+    if which /usr/libexec/java_home > /dev/null
+        if /usr/libexec/java_home 2>&1 > /dev/null
             set -g -x JAVA_HOME (/usr/libexec/java_home)
             prepend_to_path "$JAVA_HOME"/bin
         end
