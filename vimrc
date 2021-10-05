@@ -212,6 +212,7 @@ autocmd FileType typescript.tsx setlocal nospell
 autocmd FileType text,markdown setlocal linebreak wrap
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufReadPost *.mdx set filetype=markdown
 autocmd BufNewFile,BufReadPost *.applescript set filetype=applescript
 autocmd BufNewFile,BufReadPost *.har set filetype=json
 

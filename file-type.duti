@@ -23,10 +23,12 @@ org.vim.Macvim  js	    all
 org.vim.Macvim  json	all
 org.vim.Macvim  jsx	    all
 org.vim.Macvim  md	    all
+org.vim.Macvim  mdx	    all
 org.vim.Macvim  nfo	    all
 org.vim.Macvim  pgsql	all
 org.vim.Macvim  plist	all
 org.vim.Macvim  py	    all
+org.vim.Macvim  rdoc    all
 org.vim.Macvim  rake	all
 org.vim.Macvim  rb	    all
 org.vim.Macvim  sql	    all
@@ -41,6 +43,10 @@ org.vim.Macvim  markdown	all
 org.vim.Macvim  snippets	all
 
 org.vim.Macvim  public.unix-executable all
+
+com.ridiculousfish.HexFiend rom all
+com.ridiculousfish.HexFiend ROM all
+com.ridiculousfish.HexFiend bin all
 
 com.prusa3d.slic3r/ stl all
 org.vim.Macvim gcode all

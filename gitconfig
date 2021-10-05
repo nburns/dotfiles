@@ -40,4 +40,4 @@
 #    lowSpeedLimit = 1
 #    lowSpeedTime = 2
 [branch "master"]
-	pushRemote = push_not_allowed_on_master
+	pushRemote = no_push_on_master
