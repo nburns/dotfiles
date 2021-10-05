@@ -24,6 +24,7 @@ if status --is-interactive; or status --is-login
     prepend_to_path /usr/local/opt/python/libexec/bin
     prepend_to_path ~/bin
     prepend_to_path ~/.local/bin
+    prepend_to_path /usr/local/opt/python@3.9/libexec/bin
 
     if which /usr/libexec/java_home > /dev/null
         if /usr/libexec/java_home 2>&1 > /dev/null
