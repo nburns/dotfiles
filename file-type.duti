@@ -12,6 +12,7 @@ org.vim.Macvim  duti    all
 org.vim.Macvim  erb	    all
 org.vim.Macvim  ex      all
 org.vim.Macvim  exs     all
+org.vim.Macvim  fish    all
 org.vim.Macvim  go	    all
 org.vim.Macvim  gradle  all
 org.vim.Macvim  groovy  all
