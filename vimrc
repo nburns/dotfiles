@@ -74,7 +74,11 @@ let delimitMate_expand_cr = 1
 let g:jsx_ext_required = 0
 
 if has("gui_running")
-    set guifont=DejaVu\ Sans\ Mono:h15
+    if has("mac") || has("macunix")
+        set guifont=DejaVu\ Sans\ Mono:h15
+    else
+        set guifont=DejaVu\ Sans\ Mono\ 10
+    end
 end
 
 "set t_Co=256
