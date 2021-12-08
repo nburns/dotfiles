@@ -19,6 +19,7 @@ if which brew > /dev/null
     eval $BREW_SHELL_ENV
 end
 
+prepend_to_path ~/.cargo/bin
 prepend_to_path $GOPATH/bin
 prepend_to_path /usr/local/opt/python/libexec/bin
 prepend_to_path ~/bin
