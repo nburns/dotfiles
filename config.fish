@@ -25,6 +25,7 @@ prepend_to_path /usr/local/opt/python/libexec/bin
 prepend_to_path ~/bin
 prepend_to_path ~/.local/bin
 prepend_to_path /usr/local/opt/python@3.9/libexec/bin
+prepend_to_path /usr/local/opt/ruby/bin
 
 if which rbenv > /dev/null
     status --is-interactive; and source (rbenv init - | psub)

@@ -38,6 +38,7 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'ianks/vim-tsx'
 "Plugin 'fatih/vim-go'
 Plugin 'hashivim/vim-terraform'
+Plugin 'bfrg/vim-cpp-modern'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

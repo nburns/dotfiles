@@ -40,3 +40,19 @@ Host pie
 Host garage
     HostName garage.local
     User pi
+
+Host basement
+    HostName basement.local
+    User pi
+
+Host leopard
+    HostName leopard.local
+    User nick
+    HostKeyAlgorithms +ssh-rsa
+
+Host indigo
+    HostName indigo.local
+    User nick
+    KexAlgorithms +diffie-hellman-group1-sha1
+    HostKeyAlgorithms +ssh-rsa
+    Ciphers +aes256-cbc

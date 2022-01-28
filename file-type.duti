@@ -43,6 +43,7 @@ org.vim.Macvim  markdown	all
 org.vim.Macvim  snippets	all
 
 org.vim.Macvim  public.unix-executable all
+org.vim.Macvim com.apple.property-list all
 
 com.ridiculousfish.HexFiend rom all
 com.ridiculousfish.HexFiend ROM all
@@ -50,3 +51,5 @@ com.ridiculousfish.HexFiend bin all
 
 com.prusa3d.slic3r/ stl all
 org.vim.Macvim gcode all
+
+org.videolan.vlc mp4 all

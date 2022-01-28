@@ -36,8 +36,11 @@
 [pull]
     rebase = true
 
-#[http]
-#    lowSpeedLimit = 1
-#    lowSpeedTime = 2
 [branch "master"]
-	pushRemote = no_push_on_master
+    pushRemote = no_pushy_for_you
+
+[branch "main"]
+    pushRemote = no_pushy_for_you
+
+[init]
+	defaultBranch = main
