@@ -45,6 +45,10 @@ Host basement
     HostName basement.local
     User pi
 
+Host camera
+    HostName camera.local
+    User pi
+
 Host leopard
     HostName leopard.local
     User nick
