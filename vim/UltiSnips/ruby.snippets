@@ -8,13 +8,11 @@ def initialize(${1:})
 end
 endsnippet
 
-#snippet /test/ "create a new test class" r
-#require 'test_helper'
-#
-#class ${1:}Test < ActiveSupport::TestCase
-#
-#end
-#endsnippet
+snippet /test/ "create a new test class" r
+require 'rails_helper'
+describe do
+end
+endsnippet
 
 snippet /controller/ "create a new controller" r
 class ${1:}Controller < ApplicationController
@@ -64,4 +62,8 @@ endsnippet
 
 snippet /exe/ "execute sql" r
 ActiveRecord::Base.connection.execute(${1:})
+endsnippet
+
+snippet /log/ "log to stdout" r
+ActiveRecord::Base.logger = Logger.new(STDOUT)
 endsnippet

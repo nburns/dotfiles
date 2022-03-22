@@ -4,6 +4,7 @@ test/fixtures
 *.response*
 *.min*
 *.log
+*.svg
 *.map*
 package-lock.json
 bootsnap-load-path-cache
