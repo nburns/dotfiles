@@ -73,6 +73,10 @@ else
     alias ag "ag --case-sensitive --follow"
 end
 
+if [ -e ~/.tvnamer-config.json ]
+    alias tvnamer "tvnamer -c ~/.tvnamer-config.json"
+end
+
 set -g -x PAGER "less"
 set -g -x TODAY (date "+%m-%d")
 set -g -x GREP_OPTIONS
