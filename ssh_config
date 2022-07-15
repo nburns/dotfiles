@@ -20,6 +20,8 @@ Host feral
 Host nas
     HostName nas.local
     User nick
+    RequestTTY yes
+    RemoteCommand tmux new -A -s ssh
 
 Host null
     HostName null.local
