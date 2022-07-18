@@ -1,5 +1,3 @@
-set GOPATH ~/go
-
 function prepend_to_path --description 'check path before adding to PATH'
     if [ -d $argv ]
         set -g -x PATH $argv $PATH
@@ -9,8 +7,19 @@ end
 function set_once --description 'caches expensive calls in universal var'
     set name $argv[1]
     set command $argv[2]
+
+    set -U -x SET_ONCE_VAR_NAMES $SET_ONCE_VAR_NAMES $name
+    set -U -x SET_ONCE_VAR_NAMES (echo $SET_ONCE_VAR_NAMES | tr ' ' \n | sort -u | tr \n ' ')
+
     if not set -q $name
         set -U -x $name (eval $command)
+    end
+end
+
+function set_once_clear --description 'clear all stored values from `set_once`'
+    for var in (echo $SET_ONCE_VAR_NAMES | tr ' ' \n | sort -u | awk NF)
+        echo clearing $var, value was: $$var
+        set -e $var
     end
 end
 
@@ -19,36 +28,20 @@ if which brew > /dev/null
     eval $BREW_SHELL_ENV
 end
 
+prepend_to_path /opt/homebrew/opt/mysql@5.7/bin
+prepend_to_path /opt/homebrew/bin
 prepend_to_path /usr/libexec
 prepend_to_path ~/.cargo/bin
-prepend_to_path $GOPATH/bin
-prepend_to_path /usr/local/opt/python/libexec/bin
 prepend_to_path ~/bin
 prepend_to_path ~/.local/bin
-prepend_to_path /usr/local/opt/python@3.9/libexec/bin
-prepend_to_path /usr/local/opt/ruby/bin
-
-if which rbenv > /dev/null
-    status --is-interactive; and source (rbenv init - | psub)
-
-    alias papers 'bundle exec papers'
-    alias rails 'bundle exec rails'
-    alias rake 'bundle exec rake'
-    alias rspec 'bundle exec rspec --no-profile'
-
-    if which brew > /dev/null
-        set_once OPEN_SSL_DIR "brew --prefix openssl@1.1"
-        set -g -x RUBY_CONFIGURE_OPTS "--with-openssl-dir=$OPEN_SSL_DIR"
-    end
-end
 
 if which asdf >/dev/null
     set_once ASDF_INIT "echo (brew --prefix asdf)/asdf.fish"
     source $ASDF_INIT
 end
 
-if [ -e ~/.env ]
-    source ~/.env
+if [ -e ~/.env.fish ]
+    source ~/.env.fish
 end
 
 if which brew > /dev/null
@@ -69,6 +62,10 @@ end
 
 if [ -e ~/.agignore ]
     alias ag "ag --case-sensitive --follow --path-to-ignore ~/.agignore"
+
+    if which fd > /dev/null
+        set -g -x FZF_DEFAULT_COMMAND 'fd --ignore-file ~/.agignore --no-ignore-vcs'
+    end
 else
     alias ag "ag --case-sensitive --follow"
 end
@@ -76,6 +73,9 @@ end
 if [ -e ~/.tvnamer-config.json ]
     alias tvnamer "tvnamer -c ~/.tvnamer-config.json"
 end
+
+alias pytest 'pytest --log-cli-level=CRITICAL -sv'
+
 
 set -g -x PAGER "less"
 set -g -x TODAY (date "+%m-%d")
@@ -86,6 +86,13 @@ set -g -x ACK_PAGER cat
 set -g -x ACK_PAGER_COLOR cat
 
 set -g -x PYTHONDONTWRITEBYTECODE 'True'
+set -g -x PYTHONWARNINGS "ignore"
+
+
+if which pip > /dev/null; and pip freeze &| grep ipdb > /dev/null
+    # pip install ipdb
+    set -g -x PYTHONBREAKPOINT ipdb.set_trace
+end
 
 set -g -x HOMEBREW_NO_EMOJI 1
 set -g -x HOMEBREW_NO_AUTO_UPDATE 1
