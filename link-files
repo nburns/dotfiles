@@ -41,13 +41,13 @@ link_to_home vimrc
 
 touch ~/.hushlogin
 
-create_dir ~/.ssh
+mkdir -p ~/.ssh
 do_link "$BASE_DIR/ssh_config" "$HOME/.ssh/config"
 
-create_dir ~/.config/fish
+mkdir -p ~/.config/fish
 do_link "$BASE_DIR/config.fish" "$HOME/.config/fish/config.fish"
 
-create_dir ~/.ipython/profile_default
+mkdir -p "$HOME/.ipython/profile_default"
 do_link "$BASE_DIR/ipython_config.py" "$HOME/.ipython/profile_default/ipython_config.py"
 
 link_to_home aspell.EN.pws

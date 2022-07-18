@@ -12,32 +12,33 @@ Plugin 'VundleVim/Vundle.vim'
 " color scheme
 Plugin 'lifepillar/vim-solarized8'
 Plugin 'nburns/bbedit-vim-colors'
-Plugin 'nburns/vim-auto-light-dark'
+"Plugin 'nburns/vim-auto-light-dark'
 
 " editor enhancements
-Plugin 'Raimondi/delimitMate' "delimiter autocompletion
-Plugin 'tpope/vim-endwise' "ruby end tags
-Plugin 'vim-scripts/ruby-matchit' " % jumps in ruby code
-Plugin 'vim-scripts/BufClose.vim' " :BufClose closes current buffer
+" Plugin 'Raimondi/delimitMate' "delimiter autocompletion
+"Plugin 'tpope/vim-endwise' "ruby end tags
+"Plugin 'vim-scripts/ruby-matchit' " % jumps in ruby code
+"Plugin 'vim-scripts/BufClose.vim' " :BufClose closes current buffer
 Plugin 'SirVer/ultisnips' " UltiSnips
-Plugin 'honza/vim-snippets' " snippets
+Plugin 'honza/vim-snippets'
 Plugin 'airblade/vim-gitgutter' " git
 Plugin 'tpope/vim-rsi' "readline bindings
 Plugin 'itchyny/lightline.vim'
-Plugin 'godlygeek/tabular'
-Plugin 'ap/vim-css-color'
+"Plugin 'godlygeek/tabular'
+"Plugin 'ap/vim-css-color'
 
 " language plugins
 Plugin 'dag/vim-fish'
-Plugin 'elixir-editors/vim-elixir'
+"Plugin 'elixir-editors/vim-elixir'
 "Plugin 'vim-scripts/applescript.vim'
 "Plugin 'tpope/vim-haml'
+Plugin 'lepture/vim-jinja'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'ianks/vim-tsx'
+"Plugin 'leafgarland/typescript-vim'
+"Plugin 'ianks/vim-tsx'
 "Plugin 'fatih/vim-go'
-Plugin 'hashivim/vim-terraform'
+"Plugin 'hashivim/vim-terraform'
 Plugin 'bfrg/vim-cpp-modern'
 
 " All of your Plugins must be added before the following line
@@ -141,11 +142,11 @@ function DarkMode()
     let g:lightline = { 'colorscheme': 'solarized' }
 endfunction
 
-function LightMode()
+"function LightMode()
     colorscheme bbedit
     set background=light
     let g:lightline = { 'colorscheme': 'PaperColor' }
-endfunction
+"endfunction
 
 
 " map command to meta
@@ -226,7 +227,9 @@ autocmd BufNewFile,BufReadPost *.har set filetype=json
 autocmd BufWritePost *.c silent! !clang-format -i <afile>
 autocmd BufWritePost *.js,*.ts,*.tsx,*.jsx silent! !prettier --write <afile>
 "autocmd FileType ruby autocmd BufWritePost * silent! !rubocop <afile> --auto-correct
-autocmd FileType python autocmd BufWritePost * silent! !autopep8 --aggressive --aggressive --in-place <afile>
+"autocmd FileType python autocmd BufWritePost * silent! !autopep8 --aggressive --aggressive --in-place <afile>
+"autocmd FileType python autocmd BufWritePost * silent! !black <afile>
 autocmd BufWritePost *.ex,*.exs silent! !mix format <afile>
-autocmd BufWritePost *.sql silent! %!pg_format <afile> | sed \$d
+"autocmd BufWritePost *.sql silent! %!pg_format <afile> | sed \$d
+"autocmd BufWritePost *.sql silent! !prettier --write <afile>; sed -i '' -e '$a\' <afile>
 autocmd FileType xml autocmd BufWritePost * silent! %!xmllint --format --recover <afile>

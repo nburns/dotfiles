@@ -6,8 +6,9 @@ Host *
 Host github.com
     IdentityFile ~/.ssh/gh
 
-Host source.datanerd.us
-    IdentityFile ~/.ssh/ghe
+Host workstep
+    HostName 10.138.0.3
+    IdentityFile ~/.ssh/workstep
     ConnectTimeout 1
 
 Host feral

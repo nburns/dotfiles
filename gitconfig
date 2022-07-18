@@ -7,6 +7,10 @@
 
 [push]
     default = current
+    autoSetupRemote = true
+
+[pull]
+    rebase = true
 
 [diff]
     algorithm = patience
@@ -24,17 +28,17 @@
 
 [alias]
     commti = commit
+    commmit = commit
     dif = diff
     chekcout = checkout
     branches = !branches
-    conflicted = !git-conflicted
+    conflicted = !git diff --name-only --diff-filter=U --relative | tr '\n' '\t'
+    upstream-to-origin = !git branch --set-upstream-to origin/$(git rev-parse --abbrev-ref HEAD) $(git rev-parse --abbrev-ref HEAD)
+	add-fork = !git remote add fork $(git remote get-url origin | perl -p -e "s#:.+/#:nburns/#g")
 
 [user]
     name = Nick Burns
     email = nick@burns.io
-
-[pull]
-    rebase = true
 
 [branch "master"]
     pushRemote = no_pushy_for_you
