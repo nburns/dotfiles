@@ -5,6 +5,9 @@ test/fixtures
 *.min*
 *.log
 *.map*
+*.svg
+retain-demo.json
 package-lock.json
 bootsnap-load-path-cache
 public/maps
+jquery-ui.js
