@@ -4,6 +4,7 @@
 # Get content types:
 # mdls -name kMDItemContentTypeTree
 org.vim.Macvim  c	    all
+org.vim.Macvim  cnf	    all
 org.vim.Macvim  cpp	    all
 org.vim.Macvim  csv	    all
 org.vim.Macvim  ddl     all
@@ -12,6 +13,7 @@ org.vim.Macvim  duti    all
 org.vim.Macvim  erb	    all
 org.vim.Macvim  ex      all
 org.vim.Macvim  exs     all
+org.vim.Macvim  fish    all
 org.vim.Macvim  go	    all
 org.vim.Macvim  gradle  all
 org.vim.Macvim  groovy  all
@@ -19,18 +21,22 @@ org.vim.Macvim  graphql all
 org.vim.Macvim  h	    all
 org.vim.Macvim  haml	all
 org.vim.Macvim  har	    all
+org.vim.Macvim  jinja	all
 org.vim.Macvim  js	    all
 org.vim.Macvim  json	all
 org.vim.Macvim  jsx	    all
+org.vim.Macvim  log	    all
 org.vim.Macvim  md	    all
 org.vim.Macvim  mdx	    all
 org.vim.Macvim  nfo	    all
 org.vim.Macvim  pgsql	all
 org.vim.Macvim  plist	all
 org.vim.Macvim  py	    all
+org.vim.Macvim  pyi	    all
 org.vim.Macvim  rdoc    all
 org.vim.Macvim  rake	all
 org.vim.Macvim  rb	    all
+org.vim.Macvim  service all
 org.vim.Macvim  sql	    all
 org.vim.Macvim  tex	    all
 org.vim.Macvim  tf      all
@@ -39,11 +45,16 @@ org.vim.Macvim  tsx	    all
 org.vim.Macvim  txt	    all
 org.vim.Macvim  yml	    all
 org.vim.Macvim  xml	    all
+org.vim.Macvim  Dockerfile  all
 org.vim.Macvim  markdown	all
 org.vim.Macvim  snippets	all
+org.vim.Macvim  Pipfile     all
 
+
+org.vim.Macvim  com.apple.property-list all
+org.vim.Macvim  public.make-source all
 org.vim.Macvim  public.unix-executable all
-org.vim.Macvim com.apple.property-list all
+org.vim.Macvim  public.data all
 
 com.ridiculousfish.HexFiend rom all
 com.ridiculousfish.HexFiend ROM all
