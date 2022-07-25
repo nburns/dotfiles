@@ -10,6 +10,8 @@ Host workstep
     HostName 10.138.0.3
     IdentityFile ~/.ssh/workstep
     ConnectTimeout 1
+    RequestTTY yes
+    RemoteCommand tmux new -A -s ssh
 
 Host feral
     HostName aura.feralhosting.com
