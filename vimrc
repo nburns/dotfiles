@@ -83,7 +83,10 @@ if has("gui_running")
     end
 end
 
-"set t_Co=256
+" make tmux have colors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
 set termguicolors
 
 

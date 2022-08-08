@@ -40,6 +40,11 @@ if which asdf >/dev/null
     source $ASDF_INIT
 end
 
+if which docker > /dev/null; and uname | grep -i darwin > /dev/null
+    set -g -x DOCKER_BUILDKIT 0
+    set -g -x COMPOSE_DOCER_CLI_BUILD 0
+end
+
 if [ -e ~/.env.fish ]
     source ~/.env.fish
 end
