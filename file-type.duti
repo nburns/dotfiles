@@ -31,11 +31,13 @@ org.vim.Macvim  mdx	    all
 org.vim.Macvim  nfo	    all
 org.vim.Macvim  pgsql	all
 org.vim.Macvim  plist	all
+org.vim.Macvim  proto	all
 org.vim.Macvim  py	    all
 org.vim.Macvim  pyi	    all
 org.vim.Macvim  rdoc    all
 org.vim.Macvim  rake	all
 org.vim.Macvim  rb	    all
+org.vim.Macvim  rts     all
 org.vim.Macvim  service all
 org.vim.Macvim  sql	    all
 org.vim.Macvim  tex	    all
