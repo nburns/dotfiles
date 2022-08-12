@@ -35,6 +35,13 @@ prepend_to_path ~/.cargo/bin
 prepend_to_path ~/bin
 prepend_to_path ~/.local/bin
 
+if not which python > /dev/null
+    if which brew > /dev/null
+        set_once PY_LIBEXEC "realpath (brew --prefix python)/libexec/bin"
+        prepend_to_path $PY_LIBEXEC
+    end
+end
+
 if which asdf >/dev/null
     set_once ASDF_INIT "echo (brew --prefix asdf)/asdf.fish"
     source $ASDF_INIT
@@ -94,9 +101,11 @@ set -g -x PYTHONDONTWRITEBYTECODE 'True'
 set -g -x PYTHONWARNINGS "ignore"
 
 
-if which pip > /dev/null; and pip freeze &| grep ipdb > /dev/null
-    # pip install ipdb
-    set -g -x PYTHONBREAKPOINT ipdb.set_trace
+if which pip > /dev/null
+    set_once PIP_PACKAGES 'pip freeze'
+    if echo $PIP_PACKAGES | grep ipdb > /dev/null
+        set -g -x PYTHONBREAKPOINT ipdb.set_trace
+    end
 end
 
 set -g -x HOMEBREW_NO_EMOJI 1
