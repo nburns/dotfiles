@@ -5,6 +5,19 @@ function prepend_to_path --description 'check path before adding to PATH'
 end
 
 function set_once --description 'caches expensive calls in universal var'
+    if echo $argv[1] | grep -e '--clear' > /dev/null
+        if not set -q SET_ONCE_VAR_NAMES
+            return
+        end
+
+        for var in (echo $SET_ONCE_VAR_NAMES | tr ' ' \n | sort -u | awk NF)
+            echo -e "clearing $var, value was:\\n\\t$$var"
+            set -e $var
+        end
+        set -e SET_ONCE_VAR_NAMES
+        return
+    end
+
     set name $argv[1]
     set command $argv[2]
 
@@ -13,13 +26,6 @@ function set_once --description 'caches expensive calls in universal var'
 
     if not set -q $name
         set -U -x $name (eval $command)
-    end
-end
-
-function set_once_clear --description 'clear all stored values from `set_once`'
-    for var in (echo $SET_ONCE_VAR_NAMES | tr ' ' \n | sort -u | awk NF)
-        echo clearing $var, value was: $$var
-        set -e $var
     end
 end
 
