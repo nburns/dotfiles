@@ -12,20 +12,23 @@ Plugin 'VundleVim/Vundle.vim'
 " color scheme
 Plugin 'lifepillar/vim-solarized8'
 Plugin 'nburns/bbedit-vim-colors'
-"Plugin 'nburns/vim-auto-light-dark'
+Plugin 'nburns/vim-auto-light-dark'
 
 " editor enhancements
 " Plugin 'Raimondi/delimitMate' "delimiter autocompletion
 "Plugin 'tpope/vim-endwise' "ruby end tags
 "Plugin 'vim-scripts/ruby-matchit' " % jumps in ruby code
 "Plugin 'vim-scripts/BufClose.vim' " :BufClose closes current buffer
+Plugin 'tyru/open-browser.vim' " req for open-browser-github
+Plugin 'tyru/open-browser-github.vim' " open files on github
 Plugin 'SirVer/ultisnips' " UltiSnips
 Plugin 'honza/vim-snippets'
 Plugin 'airblade/vim-gitgutter' " git
 Plugin 'tpope/vim-rsi' "readline bindings
 Plugin 'itchyny/lightline.vim'
 "Plugin 'godlygeek/tabular'
-"Plugin 'ap/vim-css-color'
+Plugin 'ap/vim-css-color'
+Plugin 'editorconfig/editorconfig-vim'
 
 " language plugins
 Plugin 'dag/vim-fish'
@@ -145,11 +148,11 @@ function DarkMode()
     let g:lightline = { 'colorscheme': 'solarized' }
 endfunction
 
-"function LightMode()
+function LightMode()
     colorscheme bbedit
     set background=light
     let g:lightline = { 'colorscheme': 'PaperColor' }
-"endfunction
+endfunction
 
 
 " map command to meta

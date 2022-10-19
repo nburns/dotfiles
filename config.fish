@@ -106,13 +106,8 @@ set -g -x ACK_PAGER_COLOR cat
 set -g -x PYTHONDONTWRITEBYTECODE 'True'
 set -g -x PYTHONWARNINGS "ignore"
 
-
-if which pip > /dev/null
-    set_once PIP_PACKAGES 'pip freeze'
-    if echo $PIP_PACKAGES | grep ipdb > /dev/null
-        set -g -x PYTHONBREAKPOINT ipdb.set_trace
-    end
-end
+# pip install ipdb
+set -g -x PYTHONBREAKPOINT ipdb.set_trace
 
 set -g -x HOMEBREW_NO_EMOJI 1
 set -g -x HOMEBREW_NO_AUTO_UPDATE 1
