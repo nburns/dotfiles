@@ -55,7 +55,6 @@ org.vim.Macvim  markdown	all
 org.vim.Macvim  snippets	all
 org.vim.Macvim  Pipfile     all
 
-
 org.vim.Macvim  com.apple.property-list all
 org.vim.Macvim  public.make-source all
 org.vim.Macvim  public.unix-executable all
@@ -68,4 +67,8 @@ com.ridiculousfish.HexFiend bin all
 com.prusa3d.slic3r/ stl all
 org.vim.Macvim gcode all
 
-org.videolan.vlc mp4 all
+com.colliderli.iina avi all
+com.colliderli.iina mkv all
+com.colliderli.iina mp4 all
+
+com.apple.QuickTimePlayerX mp3 all

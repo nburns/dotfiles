@@ -17,6 +17,7 @@ Host feral
     HostName aura.feralhosting.com
     User swimmernick
     RequestTTY yes
+    RemoteCommand /media/689d/swimmernick/.linuxbrew/bin/tmux new -A -s ssh
     IdentitiesOnly yes
     IdentityFile ~/.ssh/feral_rsa
 
