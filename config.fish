@@ -5,6 +5,15 @@ function prepend_to_path --description 'check path before adding to PATH'
 end
 
 function set_once --description 'caches expensive calls in universal var'
+    if echo $argv[1] | grep -e '--list' > /dev/null
+        if not set -q SET_ONCE_VAR_NAMES
+            return
+        end
+
+        echo $SET_ONCE_VAR_NAMES | tr ' ' \n | sort -u | awk NF
+        return
+    end
+
     if echo $argv[1] | grep -e '--clear' > /dev/null
         if not set -q SET_ONCE_VAR_NAMES
             return
@@ -14,7 +23,7 @@ function set_once --description 'caches expensive calls in universal var'
             echo -e "clearing $var, value was:\\n\\t$$var"
             set -e $var
         end
-        set -e SET_ONCE_VAR_NAMES
+        set -U SET_ONCE_VAR_NAMES ''
         return
     end
 
@@ -49,7 +58,7 @@ if not which python > /dev/null
 end
 
 if which asdf >/dev/null
-    set_once ASDF_INIT "echo (brew --prefix asdf)/asdf.fish"
+    set_once ASDF_INIT "echo (brew --prefix asdf)/libexec/asdf.fish"
     source $ASDF_INIT
 end
 
