@@ -6,13 +6,6 @@ Host *
 Host github.com
     IdentityFile ~/.ssh/gh
 
-Host workstep
-    HostName 10.138.0.3
-    IdentityFile ~/.ssh/workstep
-    ConnectTimeout 5
-    RequestTTY yes
-    RemoteCommand tmux new -A -s ssh
-
 Host feral
     HostName aura.feralhosting.com
     User swimmernick

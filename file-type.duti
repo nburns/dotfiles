@@ -3,6 +3,8 @@
 # osascript -e 'id of app "Macvim"'
 # Get content types:
 # mdls -name kMDItemContentTypeTree
+org.vim.Macvim  awk         all
+org.vim.Macvim  dockerignore    all
 org.vim.Macvim  Dockerfile  all
 org.vim.Macvim  Gemfile     all
 org.vim.Macvim  Pipfile     all
@@ -16,24 +18,30 @@ org.vim.Macvim  csv	        all
 org.vim.Macvim  ddl         all
 org.vim.Macvim  dot	        all
 org.vim.Macvim  duti        all
+org.vim.Macvim  env	        all
 org.vim.Macvim  erb	        all
 org.vim.Macvim  ex          all
 org.vim.Macvim  exs         all
 org.vim.Macvim  fish        all
 org.vim.Macvim  go	        all
+org.vim.Macvim  gql         all
 org.vim.Macvim  gradle      all
 org.vim.Macvim  graphql     all
 org.vim.Macvim  groovy      all
 org.vim.Macvim  h	        all
 org.vim.Macvim  haml	    all
+#org.vim.Macvim  html	    all
 org.vim.Macvim  har	        all
+org.vim.Macvim  hcl	        all
 org.vim.Macvim  ino	        all
 org.vim.Macvim  jinja	    all
 org.vim.Macvim  js	        all
 org.vim.Macvim  json	    all
 org.vim.Macvim  jsx	        all
+org.vim.Macvim  less	    all
 org.vim.Macvim  lock	    all
 org.vim.Macvim  log	        all
+org.vim.Macvim  mako	    all
 org.vim.Macvim  markdown	all
 org.vim.Macvim  md	        all
 org.vim.Macvim  mdx	        all
@@ -41,6 +49,7 @@ org.vim.Macvim  nfo	        all
 org.vim.Macvim  pgsql	    all
 org.vim.Macvim  plist	    all
 org.vim.Macvim  proto	    all
+org.vim.Macvim  pub         all
 org.vim.Macvim  py	        all
 org.vim.Macvim  pyi	        all
 org.vim.Macvim  rake	    all
@@ -57,8 +66,11 @@ org.vim.Macvim  sql	        all
 org.vim.Macvim  svg         all
 org.vim.Macvim  tex	        all
 org.vim.Macvim  tf          all
+org.vim.Macvim  tftpl       all
+org.vim.Macvim  tfvars      all
 org.vim.Macvim  toml	    all
 org.vim.Macvim  ts	        all
+org.vim.Macvim  tsv	        all
 org.vim.Macvim  tsx	        all
 org.vim.Macvim  txt	        all
 org.vim.Macvim  xml	        all

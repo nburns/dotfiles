@@ -13,7 +13,7 @@
     rebase = true
 
 [diff]
-    algorithm = patience
+    algorithm = minimal
     compactionHeuristic = true
     log = diff-highlight | less
     show = diff-highlight | less
@@ -34,7 +34,8 @@
     branches = !branches
     conflicted = !git diff --name-only --diff-filter=U --relative | tr '\n' '\t'
     upstream-to-origin = !git branch --set-upstream-to origin/$(git rev-parse --abbrev-ref HEAD) $(git rev-parse --abbrev-ref HEAD)
-	add-fork = !git remote add fork $(git remote get-url origin | perl -p -e "s#:.+/#:nburns/#g")
+    add-fork = !git remote add fork $(git remote get-url origin | perl -p -e "s#:.+/#:nburns/#g")
+    p = !git push --force-with-lease
 
 [user]
     name = Nick Burns
@@ -47,4 +48,7 @@
     pushRemote = no_pushy_for_you
 
 [init]
-	defaultBranch = main
+    defaultBranch = main
+
+[absorb]
+    autoStageIfNothingStaged = true
