@@ -43,6 +43,9 @@ if which brew > /dev/null
     eval $BREW_SHELL_ENV
 end
 
+set -g -x GOPATH ~/.go
+prepend_to_path "$GOPATH/bin"
+prepend_to_path ~/.gem/ruby/3.0.0/bin
 prepend_to_path /opt/homebrew/opt/mysql@5.7/bin
 prepend_to_path /opt/homebrew/bin
 prepend_to_path /usr/libexec
@@ -117,6 +120,8 @@ set -g -x PYTHONWARNINGS "ignore"
 
 # pip install ipdb
 set -g -x PYTHONBREAKPOINT ipdb.set_trace
+
+
 
 set -g -x HOMEBREW_NO_EMOJI 1
 set -g -x HOMEBREW_NO_AUTO_UPDATE 1
