@@ -43,6 +43,8 @@ Plugin 'mxw/vim-jsx'
 "Plugin 'fatih/vim-go'
 "Plugin 'hashivim/vim-terraform'
 Plugin 'bfrg/vim-cpp-modern'
+Plugin 'vim-crystal/vim-crystal'
+Plugin 'sirtaj/vim-openscad'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
