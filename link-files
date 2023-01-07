@@ -54,6 +54,8 @@ link_to_home aspell.EN.pws
 cp "$BASE_DIR/aspell.conf" "$HOME/.aspell.conf"
 echo "extra-dicts $HOME/.aspell.EN.pws" >> "$HOME/.aspell.conf"
 
+do_link "$BASE_DIR/newsyslog-services.conf" /etc/newsyslog.d/services.conf
+
 if [ "$exisitng_links" != '' ]; then
 	echo
 	echo "The following config files were found to already exist, you may wish to remove them:"
