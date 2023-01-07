@@ -52,6 +52,8 @@ prepend_to_path /usr/libexec
 prepend_to_path ~/.cargo/bin
 prepend_to_path ~/bin
 prepend_to_path ~/.local/bin
+prepend_to_path /opt/local/bin
+prepend_to_path /opt/local/sbin
 
 if not which python > /dev/null
     if which brew > /dev/null
