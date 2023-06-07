@@ -32,6 +32,7 @@ Plugin 'editorconfig/editorconfig-vim'
 
 " language plugins
 Plugin 'dag/vim-fish'
+Plugin 'stevearc/vim-arduino'
 "Plugin 'elixir-editors/vim-elixir'
 "Plugin 'vim-scripts/applescript.vim'
 "Plugin 'tpope/vim-haml'
@@ -43,8 +44,8 @@ Plugin 'mxw/vim-jsx'
 "Plugin 'fatih/vim-go'
 "Plugin 'hashivim/vim-terraform'
 Plugin 'bfrg/vim-cpp-modern'
-Plugin 'vim-crystal/vim-crystal'
-Plugin 'sirtaj/vim-openscad'
+"Plugin 'vim-crystal/vim-crystal'
+"Plugin 'sirtaj/vim-openscad'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -220,7 +221,7 @@ set viminfo^=%
 " clear highliting with space
 map <Space> :noh<cr>
 
-autocmd FileType haml,ruby,javascript,yaml,typescript.tsx,typescript,scss,c setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType haml,ruby,javascript,yaml,typescript.tsx,typescript,scss,c,arduino setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType typescript.tsx setlocal nospell
 
 autocmd FileType text,markdown setlocal linebreak wrap
@@ -232,7 +233,7 @@ autocmd BufNewFile,BufReadPost *.har set filetype=json
 
 
 " format on save
-autocmd BufWritePost *.c silent! !clang-format -i <afile>
+autocmd BufWritePost *.c,*.ino silent! !clang-format -i <afile>
 autocmd BufWritePost *.js,*.ts,*.tsx,*.jsx silent! !prettier --write <afile>
 "autocmd FileType ruby autocmd BufWritePost * silent! !rubocop <afile> --auto-correct
 "autocmd FileType python autocmd BufWritePost * silent! !autopep8 --aggressive --aggressive --in-place <afile>

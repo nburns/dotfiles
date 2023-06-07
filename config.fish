@@ -43,6 +43,8 @@ if which brew > /dev/null
     eval $BREW_SHELL_ENV
 end
 
+alias middleman 'bundle exec middleman'
+
 set -g -x GOPATH ~/.go
 prepend_to_path "$GOPATH/bin"
 prepend_to_path ~/.gem/ruby/3.0.0/bin
@@ -51,9 +53,11 @@ prepend_to_path /opt/homebrew/bin
 prepend_to_path /usr/libexec
 prepend_to_path ~/.cargo/bin
 prepend_to_path ~/bin
+prepend_to_path ~/.bin
 prepend_to_path ~/.local/bin
 prepend_to_path /opt/local/bin
 prepend_to_path /opt/local/sbin
+prepend_to_path /opt/homebrew/opt/postgresql@15/bin
 
 if not which python > /dev/null
     if which brew > /dev/null
@@ -81,8 +85,8 @@ if which brew > /dev/null
 end
 
 if which mvim > /dev/null
-    set -g -x EDITOR mvim
-    set -g -x VISUAL mvim
+    set -g -x EDITOR mvim-wait
+    set -g -x VISUAL mvim-wait
 else
     set -g -x EDITOR vim
     set -g -x VISUAL vim

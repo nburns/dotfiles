@@ -6,6 +6,7 @@
 org.vim.Macvim  Dockerfile  all
 org.vim.Macvim  Gemfile     all
 org.vim.Macvim  Pipfile     all
+org.vim.Macvim  builder     all
 org.vim.Macvim  c	        all
 org.vim.Macvim  cnf	        all
 org.vim.Macvim  cpp	        all
@@ -26,6 +27,7 @@ org.vim.Macvim  groovy      all
 org.vim.Macvim  h	        all
 org.vim.Macvim  haml	    all
 org.vim.Macvim  har	        all
+org.vim.Macvim  ino	        all
 org.vim.Macvim  jinja	    all
 org.vim.Macvim  js	        all
 org.vim.Macvim  json	    all
@@ -52,6 +54,7 @@ org.vim.Macvim  service     all
 org.vim.Macvim  sh          all
 org.vim.Macvim  snippets	all
 org.vim.Macvim  sql	        all
+org.vim.Macvim  svg         all
 org.vim.Macvim  tex	        all
 org.vim.Macvim  tf          all
 org.vim.Macvim  toml	    all
