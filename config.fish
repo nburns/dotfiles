@@ -48,6 +48,7 @@ prepend_to_path "$GOPATH/bin"
 prepend_to_path ~/.gem/ruby/3.0.0/bin
 prepend_to_path /opt/homebrew/opt/mysql@5.7/bin
 prepend_to_path /opt/homebrew/bin
+prepend_to_path /opt/homebrew/sbin
 prepend_to_path /usr/libexec
 prepend_to_path ~/.cargo/bin
 prepend_to_path ~/bin
@@ -80,13 +81,8 @@ if which brew > /dev/null
     set_once VIM_APP_DIR "realpath (brew --prefix macvim)"
 end
 
-if which mvim > /dev/null
-    set -g -x EDITOR mvim
-    set -g -x VISUAL mvim
-else
-    set -g -x EDITOR vim
-    set -g -x VISUAL vim
-end
+set -g -x EDITOR vim
+set -g -x VISUAL vim
 
 if [ -e ~/Documents/dotfiles/homebrew-access-token ]
     source ~/Documents/dotfiles/homebrew-access-token
@@ -118,7 +114,7 @@ set -g -x ACK_PAGER cat
 set -g -x ACK_PAGER_COLOR cat
 
 set -g -x PYTHONDONTWRITEBYTECODE 'True'
-set -g -x PYTHONWARNINGS "ignore"
+#set -g -x PYTHONWARNINGS "ignore"
 
 # pip install ipdb
 set -g -x PYTHONBREAKPOINT ipdb.set_trace

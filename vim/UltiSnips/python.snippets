@@ -17,3 +17,13 @@ endsnippet
 snippet /b/ "debugger" r
 breakpoint()
 endsnippet
+
+snippet /ct/ "controller test file" r
+from tests import build_app_response
+from pony.orm import flush
+from models import User, Company
+from ${1:}.app import wsgi_application
+from functools import partial
+
+request = partial(build_app_response, app=wsgi_application, path="")
+endsnippet

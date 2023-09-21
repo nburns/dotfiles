@@ -7,9 +7,9 @@ Host github.com
     IdentityFile ~/.ssh/gh
 
 Host workstep
-    HostName 10.138.0.3
+    HostName 10.138.0.60
     IdentityFile ~/.ssh/workstep
-    ConnectTimeout 5
+    ConnectTimeout 15
     RequestTTY yes
     RemoteCommand tmux new -A -s ssh
 
