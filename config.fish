@@ -1,6 +1,10 @@
 function prepend_to_path --description 'check path before adding to PATH'
     if [ -d $argv ]
-        set -g -x PATH $argv $PATH
+        if echo $PATH | grep $argv > /dev/null
+            # pass
+        else
+            set -g -x PATH $argv $PATH
+        end
     end
 end
 
@@ -48,8 +52,8 @@ alias middleman 'bundle exec middleman'
 set -g -x GOPATH ~/.go
 prepend_to_path "$GOPATH/bin"
 prepend_to_path ~/.gem/ruby/3.0.0/bin
-prepend_to_path /opt/homebrew/opt/mysql@5.7/bin
 prepend_to_path /opt/homebrew/bin
+prepend_to_path /opt/homebrew/sbin
 prepend_to_path /usr/libexec
 prepend_to_path ~/.cargo/bin
 prepend_to_path ~/bin
@@ -59,21 +63,24 @@ prepend_to_path /opt/local/bin
 prepend_to_path /opt/local/sbin
 prepend_to_path /opt/homebrew/opt/postgresql@15/bin
 
-if not which python > /dev/null
-    if which brew > /dev/null
-        set_once PY_LIBEXEC "realpath (brew --prefix python)/libexec/bin"
-        prepend_to_path $PY_LIBEXEC
-    end
+# ASDF
+# # ASDF configuration code
+if test -z $ASDF_DATA_DIR
+    set _asdf_shims "$HOME/.asdf/shims"
+else
+    set _asdf_shims "$ASDF_DATA_DIR/shims"
 end
 
-if which asdf >/dev/null
-    set_once ASDF_INIT "echo (brew --prefix asdf)/libexec/asdf.fish"
-    source $ASDF_INIT
+if not contains $_asdf_shims $PATH
+    set -gx --prepend PATH $_asdf_shims
 end
+set --erase _asdf_shims
+# END ASDF
 
 if which docker > /dev/null; and uname | grep -i darwin > /dev/null
     set -g -x DOCKER_BUILDKIT 0
     set -g -x COMPOSE_DOCER_CLI_BUILD 0
+    set -g -x DOCKER_CLI_HINTS false
 end
 
 if [ -e ~/.env.fish ]
@@ -84,13 +91,8 @@ if which brew > /dev/null
     set_once VIM_APP_DIR "realpath (brew --prefix macvim)"
 end
 
-if which mvim > /dev/null
-    set -g -x EDITOR mvim-wait
-    set -g -x VISUAL mvim-wait
-else
-    set -g -x EDITOR vim
-    set -g -x VISUAL vim
-end
+set -g -x EDITOR vim
+set -g -x VISUAL vim
 
 if [ -e ~/Documents/dotfiles/homebrew-access-token ]
     source ~/Documents/dotfiles/homebrew-access-token
@@ -122,7 +124,8 @@ set -g -x ACK_PAGER cat
 set -g -x ACK_PAGER_COLOR cat
 
 set -g -x PYTHONDONTWRITEBYTECODE 'True'
-set -g -x PYTHONWARNINGS "ignore"
+set -g -x PYTHONASYNCIODEBUG '1'
+#set -g -x PYTHONWARNINGS "ignore"
 
 # pip install ipdb
 set -g -x PYTHONBREAKPOINT ipdb.set_trace

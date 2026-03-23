@@ -10,4 +10,6 @@ retain-demo.json
 package-lock.json
 bootsnap-load-path-cache
 public/maps
+public/dist
+public/kiosk
 jquery-ui.js

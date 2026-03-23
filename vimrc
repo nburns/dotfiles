@@ -31,21 +31,21 @@ Plugin 'ap/vim-css-color'
 Plugin 'editorconfig/editorconfig-vim'
 
 " language plugins
-Plugin 'dag/vim-fish'
-Plugin 'stevearc/vim-arduino'
-"Plugin 'elixir-editors/vim-elixir'
-"Plugin 'vim-scripts/applescript.vim'
-"Plugin 'tpope/vim-haml'
-Plugin 'lepture/vim-jinja'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-"Plugin 'leafgarland/typescript-vim'
-"Plugin 'ianks/vim-tsx'
-"Plugin 'fatih/vim-go'
-"Plugin 'hashivim/vim-terraform'
 Plugin 'bfrg/vim-cpp-modern'
-"Plugin 'vim-crystal/vim-crystal'
-"Plugin 'sirtaj/vim-openscad'
+Plugin 'dag/vim-fish'
+Plugin 'elixir-editors/vim-elixir'
+Plugin 'fatih/vim-go'
+Plugin 'hashivim/vim-terraform'
+Plugin 'ianks/vim-tsx'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'lepture/vim-jinja'
+Plugin 'mxw/vim-jsx'
+Plugin 'pangloss/vim-javascript'
+Plugin 'sirtaj/vim-openscad'
+Plugin 'stevearc/vim-arduino'
+Plugin 'tpope/vim-haml'
+Plugin 'vim-crystal/vim-crystal'
+Plugin 'vim-scripts/applescript.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -64,6 +64,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 let g:terraform_fmt_on_save=1
 let g:terraform_align=0
+"let g:terraform_binary_path="tofu"
 
 "let g:go_fmt_command = "goimports"
 
