@@ -23,14 +23,15 @@ require("lazy").setup({
         'lewis6991/gitsigns.nvim',
         opts = {
             signs = {
-                add          = { text = '┃' },
-                change       = { text = '┃' },
-                delete       = { text = '_' },
-                topdelete    = { text = '‾' },
+                add          = { text = '+' },
+                change       = { text = '~' },
+                delete       = { text = '-' },
+                topdelete    = { text = '-' },
                 changedelete = { text = '~' },
-                untracked    = { text = '┆' },
+                untracked    = { text = '|' },
             },
             signcolumn = true,
+
             watch_gitdir = { interval = 1000 },
         }
     },
@@ -214,4 +215,6 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
-vim.opt.signcolumn = "yes"
+vim.api.nvim_set_hl(0, "GitSignsAdd",    { fg = "#00D700", bold = true }) -- Vibrant Green
+vim.api.nvim_set_hl(0, "GitSignsChange", { fg = "#FFD700", bold = true }) -- Bright Yellow
+vim.api.nvim_set_hl(0, "GitSignsDelete", { fg = "#FF005F", bold = true }) -- Deep Pink/Red
