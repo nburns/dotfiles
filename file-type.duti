@@ -79,11 +79,6 @@ org.vim.Macvim  txt	        all
 org.vim.Macvim  xml	        all
 org.vim.Macvim  yml	        all
 
-org.vim.Macvim  com.apple.property-list all
-org.vim.Macvim  public.make-source all
-org.vim.Macvim  public.unix-executable all
-org.vim.Macvim  public.data all
-
 com.ridiculousfish.HexFiend rom all
 com.ridiculousfish.HexFiend ROM all
 com.ridiculousfish.HexFiend bin all
