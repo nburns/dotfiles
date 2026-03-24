@@ -21,14 +21,15 @@ Plugin 'nburns/vim-auto-light-dark'
 "Plugin 'vim-scripts/BufClose.vim' " :BufClose closes current buffer
 Plugin 'tyru/open-browser.vim' " req for open-browser-github
 Plugin 'tyru/open-browser-github.vim' " open files on github
-Plugin 'SirVer/ultisnips' " UltiSnips
-Plugin 'honza/vim-snippets'
+"Plugin 'SirVer/ultisnips' " UltiSnips
+"Plugin 'honza/vim-snippets'
 Plugin 'airblade/vim-gitgutter' " git
 Plugin 'tpope/vim-rsi' "readline bindings
 Plugin 'itchyny/lightline.vim'
 "Plugin 'godlygeek/tabular'
 Plugin 'ap/vim-css-color'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'github/copilot.vim'
 
 " language plugins
 Plugin 'bfrg/vim-cpp-modern'
@@ -85,6 +86,7 @@ let g:jsx_ext_required = 0
 if has("gui_running")
     if has("mac") || has("macunix")
         set guifont=DejaVu\ Sans\ Mono:h15
+        set macmeta
     else
         set guifont=DejaVu\ Sans\ Mono\ 10
     end
@@ -243,3 +245,8 @@ autocmd BufWritePost *.ex,*.exs silent! !mix format <afile>
 "autocmd BufWritePost *.sql silent! %!pg_format <afile> | sed \$d
 "autocmd BufWritePost *.sql silent! !prettier --write <afile>; sed -i '' -e '$a\' <afile>
 autocmd FileType xml autocmd BufWritePost * silent! %!xmllint --format --recover <afile>
+
+
+let g:copilot_filetypes = {
+        \ 'python': v:true
+\}
