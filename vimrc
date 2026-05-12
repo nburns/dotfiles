@@ -30,6 +30,7 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'ap/vim-css-color'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'github/copilot.vim'
+Plugin 'madox2/vim-ai'
 
 " language plugins
 Plugin 'bfrg/vim-cpp-modern'
@@ -250,7 +251,15 @@ autocmd BufWritePost *.swift silent! !swift format --in-place <afile>
 "autocmd BufWritePost *.sql silent! !prettier --write <afile>; sed -i '' -e '$a\' <afile>
 autocmd FileType xml autocmd BufWritePost * silent! %!xmllint --format --recover <afile>
 
+highlight CopilotSuggestion guifg=#555555 guibg=#ffffff gui=italic
 
-let g:copilot_filetypes = {
-        \ 'python': v:true
+let g:copilot_no_tab_map = v:true
+imap <Tab> <Plug>(copilot-accept-word)
+imap <S-Tab> <Plug>(copilot-accept-line)
+
+let g:vim_ai_chat = {
+\  "options": {
+\    "endpoint_url": "http://127.0.0.1:11434/v1/chat/completions",
+\    "auth_type": "none",
+\  }
 \}

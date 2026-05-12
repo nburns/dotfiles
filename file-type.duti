@@ -55,6 +55,7 @@ org.vim.Macvim  pub         all
 org.vim.Macvim  py	        all
 org.vim.Macvim  pyi	        all
 org.vim.Macvim  rake	    all
+org.vim.Macvim  R           all
 org.vim.Macvim  rb	        all
 org.vim.Macvim  rdoc        all
 org.vim.Macvim  rs	        all
@@ -78,6 +79,11 @@ org.vim.Macvim  tsx	        all
 org.vim.Macvim  txt	        all
 org.vim.Macvim  xml	        all
 org.vim.Macvim  yml	        all
+
+org.vim.Macvim  com.apple.property-list all
+org.vim.Macvim  public.make-source all
+org.vim.Macvim  public.unix-executable all
+org.vim.Macvim  public.data all
 
 com.ridiculousfish.HexFiend rom all
 com.ridiculousfish.HexFiend ROM all

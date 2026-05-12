@@ -55,26 +55,21 @@ require("lazy").setup({
       })
     end,
   },
-{
+  {
     "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "main",
     dependencies = {
       { "zbirenbaum/copilot.lua" },
       { "nvim-lua/plenary.nvim" },
     },
-    build = "make tiktoken",
+    build = "make install", -- Only needed if using specialized tiktoken builds
     opts = {
-      window = {
-        layout = 'vertical', -- This creates the sidebar
-        width = 0.4,         -- 40% of the screen
-        relative = 'editor',
-        side = 'right',
-      },
-      show_help = true,
+      debug = false,
     },
     keys = {
-      -- Toggle the chat sidebar
-      { "<D-S-c>", "<cmd>CopilotChatToggle<cr>", desc = "CopilotChat - Toggle", mode = {"n", "i", "v"} },
+      -- Shortcut to generate tests for the current selection or function
+      { "<leader>ct", "<cmd>CopilotChatTests<cr>", desc = "CopilotChat - Generate Tests" },
+      -- Open chat window
+      { "<leader>cc", "<cmd>CopilotChatToggle<cr>", desc = "CopilotChat - Toggle" },
     },
   },
 })
@@ -168,8 +163,8 @@ if vim.g.neovide then
     vim.g.neovide_cursor_animation_length = 0
     vim.g.neovide_cursor_trail_size = 0
     vim.g.neovide_cursor_vfx_mode = ""
-    vim.g.neovide_scroll_animation_length = 0.05
-    vim.g.neovide_cursor_scroll_acceleration = 1.0
+    vim.g.neovide_scroll_animation_length = 0
+    vim.g.neovide_cursor_scroll_acceleration = 0
 
     -- Use system clipboard for copy/paste operations
     vim.g.neovide_input_use_substitutions = true
@@ -188,8 +183,24 @@ if vim.g.neovide then
 
     -- Cmd+s to Save and stay in insert mode
     vim.keymap.set('i', '<D-s>', '<Esc>:w<CR>i', { noremap = true, silent = true })
+
+    local function open_buffer_in_new_window()
+        local file_path = vim.fn.expand('%:p') -- Get absolute path of current file
+        if file_path ~= "" then
+            -- Launch a new Neovide instance with that file
+            vim.fn.jobstart({'neovide', file_path}, {detach = true})
+            -- Optional: Close the buffer in the current window after moving
+            -- vim.cmd('bd')
+        else
+            print("Buffer has no file path!")
+        end
+    end
+
+    -- Cmd+Shift+n to open current buffer in new OS window
+    vim.keymap.set('n', '<D-S-n>', open_buffer_in_new_window, { desc = "Move buffer to new OS window" })
+
 end
-	
+
 
 
 vim.api.nvim_create_autocmd("FileType", {
