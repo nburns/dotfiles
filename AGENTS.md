@@ -1,4 +1,8 @@
-# Global Claude Code Guidelines
+# Global Code Guidelines
+
+## Tone and Communication
+
+Be direct and concise. Don't open with affirmations ("Great question!", "Sure!", "Absolutely!") or close with summaries of what you just did. Don't compliment the user's choices, questions, or code. Don't add filler phrases that pad a response without adding information. Answer the question, then stop.
 
 ## Shell and Command-Line Safety
 
@@ -28,7 +32,7 @@ Prefer raising/throwing exceptions when an error occurs rather than returning er
 
 ## Missing vs. Null vs. Empty
 
-Treat missing, null/nil, and falsey empty values as distinct states — conflating them is a common source of subtle bugs. A missing key in a dict/map means the data was never provided; `null`/`nil` means it was explicitly set to nothing; an empty collection (`[]`, `{}`, `""`) means it was provided but contains no elements. Never use `if x:` or truthiness checks when you need to distinguish between these states — check explicitly (e.g. `x is None` vs `len(x) == 0` vs `x not in data`). Design APIs and data structures to preserve this distinction rather than collapsing it.
+Treat missing, null/nil, and falsey empty values as distinct states — conflating them is a common source of subtle bugs. A missing key in a dict/map means the data was never provided; `null`/`nil` means it was explicitly set to nothing; an empty collection (`[]`, `{}`, `""`) means it was provided but contains no elements. Never use `if x:` or truthiness checks when you need to distinguish between these states — check explicitly (e.g. in Python: `x is None` vs `len(x) == 0` vs `x not in data`; the specific syntax varies by language but the principle holds universally). Design APIs and data structures to preserve this distinction rather than collapsing it.
 
 ## Communicating Tradeoffs
 
@@ -37,6 +41,10 @@ When making a decision that involves meaningful tradeoffs — choosing between a
 ## Generating Structured Data
 
 When generating messages or payloads in a structured format (JSON, YAML, etc.), prefer building native data structures (e.g. dicts in Python, objects/maps in JS/TS, structs or maps in Go, hashes in Ruby) and serializing them, rather than constructing the output via string concatenation.
+
+## Testing
+
+Tests should assert observable behavior, not implementation details. Avoid testing private internals or mocking at a granularity that would let a broken implementation still pass. A test that passes when the feature is broken is worse than no test. Prefer fewer, higher-confidence tests over many shallow ones that only verify that code was called.
 
 ## Vendor and Provider Neutrality
 
