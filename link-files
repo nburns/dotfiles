@@ -54,6 +54,9 @@ link_to_home aspell.EN.pws
 cp "$BASE_DIR/aspell.conf" "$HOME/.aspell.conf"
 echo "extra-dicts $HOME/.aspell.EN.pws" >> "$HOME/.aspell.conf"
 
+mkdir -p ~/.claude
+do_link "$BASE_DIR/AGENTS.md" "$HOME/.claude/CLAUDE.md"
+
 do_link "$BASE_DIR/newsyslog-services.conf" /etc/newsyslog.d/services.conf
 
 if [ "$exisitng_links" != '' ]; then
