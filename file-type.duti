@@ -37,6 +37,7 @@ org.vim.Macvim  ino	        all
 org.vim.Macvim  jinja	    all
 org.vim.Macvim  js	        all
 org.vim.Macvim  json	    all
+org.vim.Macvim  jsonl       all
 org.vim.Macvim  jsx	        all
 org.vim.Macvim  less	    all
 org.vim.Macvim  lock	    all
@@ -46,6 +47,7 @@ org.vim.Macvim  markdown	all
 org.vim.Macvim  md	        all
 org.vim.Macvim  mdx	        all
 org.vim.Macvim  nfo	        all
+org.vim.Macvim  ovpn	    all
 org.vim.Macvim  pgsql	    all
 org.vim.Macvim  plist	    all
 org.vim.Macvim  proto	    all
@@ -64,6 +66,7 @@ org.vim.Macvim  sh          all
 org.vim.Macvim  snippets	all
 org.vim.Macvim  sql	        all
 org.vim.Macvim  svg         all
+org.vim.Macvim  swift       all
 org.vim.Macvim  tex	        all
 org.vim.Macvim  tf          all
 org.vim.Macvim  tftpl       all
@@ -91,5 +94,7 @@ org.vim.Macvim gcode all
 com.colliderli.iina avi all
 com.colliderli.iina mkv all
 com.colliderli.iina mp4 all
+com.colliderli.iina mp3 all
 
-com.apple.QuickTimePlayerX mp3 all
+org.equeim.Tremotesf torrent all
+org.equeim.Tremotesf magnet all

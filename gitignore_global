@@ -9,3 +9,5 @@
 *.iml
 *.tmp
 *.swp
+swmpc.xcodeproj
+.claude/settings.local.json

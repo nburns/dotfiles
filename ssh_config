@@ -9,20 +9,39 @@ Host github.com
 Host feral
     HostName aura.feralhosting.com
     User swimmernick
-    RequestTTY yes
-    RemoteCommand /media/689d/swimmernick/.linuxbrew/bin/tmux new -A -s ssh
+    #RequestTTY yes
+    #RemoteCommand /media/689d/swimmernick/.linuxbrew/bin/tmux new -A -s ssh
+    IdentitiesOnly yes
+    IdentityFile ~/.ssh/feral_rsa
+
+Host feral-plain
+    HostName aura.feralhosting.com
+    User swimmernick
     IdentitiesOnly yes
     IdentityFile ~/.ssh/feral_rsa
 
 Host nas
-    HostName nas.local
+    HostName local.burns.io
     User nick
+    RequestTTY yes
+    RemoteCommand tmux new -A -s ssh
+
+Host krusty-krab
+    HostName krusty-krab.local
+    User nick
+    IdentityFile ~/.ssh/krusty-krab
     RequestTTY yes
     RemoteCommand tmux new -A -s ssh
 
 Host null
     HostName null.local
     User nick
+
+Host void
+    HostName void.local
+    User nick
+    RequestTTY yes
+    RemoteCommand /usr/local/bin/tmux new -A -s ssh
 
 Host desk
     HostName desk.local
@@ -43,6 +62,8 @@ Host garage
 Host basement
     HostName basement.local
     User pi
+    RequestTTY yes
+    RemoteCommand tmux new -A -s ssh
 
 Host camera
     HostName camera.local

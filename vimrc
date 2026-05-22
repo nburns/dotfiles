@@ -46,6 +46,9 @@ Plugin 'stevearc/vim-arduino'
 Plugin 'tpope/vim-haml'
 Plugin 'vim-crystal/vim-crystal'
 Plugin 'vim-scripts/applescript.vim'
+Plugin 'keith/swift.vim'
+"Plugin 'vim-crystal/vim-crystal'
+"Plugin 'sirtaj/vim-openscad'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -240,6 +243,7 @@ autocmd BufWritePost *.js,*.ts,*.tsx,*.jsx silent! !prettier --write <afile>
 "autocmd FileType python autocmd BufWritePost * silent! !autopep8 --aggressive --aggressive --in-place <afile>
 "autocmd FileType python autocmd BufWritePost * silent! !black <afile>
 autocmd BufWritePost *.ex,*.exs silent! !mix format <afile>
+autocmd BufWritePost *.swift silent! !swift format --in-place <afile>
 "autocmd BufWritePost *.sql silent! %!pg_format <afile> | sed \$d
 "autocmd BufWritePost *.sql silent! !prettier --write <afile>; sed -i '' -e '$a\' <afile>
 autocmd FileType xml autocmd BufWritePost * silent! %!xmllint --format --recover <afile>
