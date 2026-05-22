@@ -55,6 +55,7 @@ org.vim.Macvim  pub         all
 org.vim.Macvim  py	        all
 org.vim.Macvim  pyi	        all
 org.vim.Macvim  rake	    all
+org.vim.Macvim  R           all
 org.vim.Macvim  rb	        all
 org.vim.Macvim  rdoc        all
 org.vim.Macvim  rs	        all
