@@ -183,3 +183,27 @@ function fish_prompt --description 'Write out the prompt'
             echo -n -s $_status (current_branch) "$USER" @ "$__fish_prompt_hostname" ' ' "$__fish_prompt_cwd" (prompt_pwd) "$__fish_prompt_normal" '> '
     end
 end
+
+# Global argcomplete handler for python scripts with PYTHON_ARGCOMPLETE_OK
+function __python_argcomplete_condition
+    set -l tokens (commandline -opc)
+    test (count $tokens) -ge 2; or return 1
+    test -f "$tokens[2]"; or return 1
+    grep -qm1 PYTHON_ARGCOMPLETE_OK "$tokens[2]"
+end
+
+function __python_argcomplete
+    set -l tokens (commandline -opc)
+    set -lx _ARGCOMPLETE 1
+    set -lx _ARGCOMPLETE_DFS \t
+    set -lx _ARGCOMPLETE_IFS \n
+    set -lx _ARGCOMPLETE_SUPPRESS_SPACE 1
+    set -lx _ARGCOMPLETE_SHELL fish
+    set -lx COMP_LINE (commandline -p)
+    set -lx COMP_POINT (string length (commandline -cp))
+    set -lx COMP_TYPE
+    $tokens[1] $tokens[2] 8>&1 9>&2 1>/dev/null 2>&1
+end
+
+complete -c python -n __python_argcomplete_condition -f -a '(__python_argcomplete)'
+complete -c python3 -n __python_argcomplete_condition -f -a '(__python_argcomplete)'

@@ -4,6 +4,8 @@
 
 Be direct and concise. Don't open with affirmations ("Great question!", "Sure!", "Absolutely!") or close with summaries of what you just did. Don't compliment the user's choices, questions, or code. Don't add filler phrases that pad a response without adding information. Answer the question, then stop.
 
+Never apologize, make excuses, or reference what the user said or did to explain an omission or mistake. If something was missed, just do it. Don't say "you said X so I only did Y" or "my bad for not catching that" - fix it silently and move on.
+
 ## Read Project Documentation First
 
 Before planning or writing any code in a project, read available project documentation to understand the codebase, conventions, and contribution expectations. Look for and read files such as `README` (any extension or none), `CONTRIBUTING`, `AGENTS`, `CLAUDE.md`, `docs/`, architecture documents, and any other project-level docs present in the repository — regardless of file extension (`.md`, `.rst`, `.txt`, plain files, etc.). This ensures plans and implementations align with the project's established patterns, constraints, and guidelines rather than making assumptions that conflict with documented decisions.
@@ -50,6 +52,19 @@ When generating messages or payloads in a structured format (JSON, YAML, etc.), 
 
 Tests should assert observable behavior, not implementation details. Avoid testing private internals or mocking at a granularity that would let a broken implementation still pass. A test that passes when the feature is broken is worse than no test. Prefer fewer, higher-confidence tests over many shallow ones that only verify that code was called.
 
+## Comments
+
+Never use an em dash (—) in comments. Use a plain ASCII hyphen (-) instead.
+
 ## Vendor and Provider Neutrality
 
 Never suggest, prefer, or default to a specific vendor, service, or provider — for AI models, APIs, cloud platforms, databases, or any other external dependency — unless the user has already made that choice or the project is explicitly locked to one. Always leave the choice to the user. Do not name classes, variables, files, or modules after a specific vendor or product (e.g. avoid `ClaudeClient`, `StripeHelper`, `aws_service.py`) unless the code is specifically and exclusively for that provider and the user has named it that way themselves. Use generic, capability-describing names (e.g. `LLMClient`, `payment_service.py`, `storage_backend`) by default.
+
+## Shell Search Tools
+
+Prefer `rg` (ripgrep) over `grep -r` and `fd` over `find` for searching the codebase. They are faster, respect `.gitignore` by default, and produce less noisy output — which also reduces token
+  usage from large irrelevant result sets.
+
+- Use `rg -l` when only the matching filenames are needed, not the lines themselves.
+- Use `git diff --stat` when only the list of changed files is needed, not the full diff.
+- Use `rg --type py` / `rg --type ts` etc. instead of `--include` glob patterns.
