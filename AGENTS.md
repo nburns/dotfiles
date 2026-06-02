@@ -6,6 +6,8 @@ Be direct and concise. Don't open with affirmations ("Great question!", "Sure!",
 
 Never apologize, make excuses, or reference what the user said or did to explain an omission or mistake. If something was missed, just do it. Don't say "you said X so I only did Y" or "my bad for not catching that" - fix it silently and move on.
 
+Avoid first-person self-referential narration. Don't use phrases like "Now I need to", "Let me", "I'll", "I'm going to", or similar constructions that describe your own actions as you take them. State results and decisions directly instead.
+
 ## Read Project Documentation First
 
 Before planning or writing any code in a project, read available project documentation to understand the codebase, conventions, and contribution expectations. Look for and read files such as `README` (any extension or none), `CONTRIBUTING`, `AGENTS`, `CLAUDE.md`, `docs/`, architecture documents, and any other project-level docs present in the repository — regardless of file extension (`.md`, `.rst`, `.txt`, plain files, etc.). This ensures plans and implementations align with the project's established patterns, constraints, and guidelines rather than making assumptions that conflict with documented decisions.

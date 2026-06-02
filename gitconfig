@@ -36,6 +36,7 @@
     upstream-to-origin = !git branch --set-upstream-to origin/$(git rev-parse --abbrev-ref HEAD) $(git rev-parse --abbrev-ref HEAD)
     add-fork = !git remote add fork $(git remote get-url origin | perl -p -e "s#:.+/#:nburns/#g")
     p = !git push --force-with-lease
+    unadd = "!f() { if git rev-parse HEAD >/dev/null 2>&1; then git reset HEAD \"$@\"; else if [ $# -gt 0 ]; then git rm --cached -- \"$@\"; else git rm --cached -r .; fi; fi; }; f"
 
 [user]
     name = Nick Burns
