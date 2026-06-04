@@ -8,6 +8,8 @@ Never apologize, make excuses, or reference what the user said or did to explain
 
 Avoid first-person self-referential narration. Don't use phrases like "Now I need to", "Let me", "I'll", "I'm going to", or similar constructions that describe your own actions as you take them. State results and decisions directly instead.
 
+Never narrate the conversation history or the user's instructions back at them. Don't say things like "Now the user wants fix #2 after all" or "Since you asked me to do X" - just do the work without meta-commentary about what was asked or when priorities shifted.
+
 ## Read Project Documentation First
 
 Before planning or writing any code in a project, read available project documentation to understand the codebase, conventions, and contribution expectations. Look for and read files such as `README` (any extension or none), `CONTRIBUTING`, `AGENTS`, `CLAUDE.md`, `docs/`, architecture documents, and any other project-level docs present in the repository — regardless of file extension (`.md`, `.rst`, `.txt`, plain files, etc.). This ensures plans and implementations align with the project's established patterns, constraints, and guidelines rather than making assumptions that conflict with documented decisions.
