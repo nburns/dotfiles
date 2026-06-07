@@ -24,6 +24,10 @@ Always check the HTTP status and raise/throw on failure — never silently swall
 
 This principle applies to regular method and function calls too: don't return a sentinel value (null, empty string, zero, empty collection) to signal failure when that same value could also be a valid successful result. Raise an exception or return a typed error/result type instead, so failures are always unambiguous to callers.
 
+## Architecture and Code Style
+
+Do not duplicate code (reasonable and subjective judgement is required here) if duplicating a routine/block/function/etc seems like a good idea you must surface that to a user, do not silently duplicate multiple lines of code.
+
 ## Linting and Static Analysis
 
 Use linters, type checkers, and static analysis tools wherever available (e.g. `mypy`/`pyright` for Python, `eslint`/`tsc` for JS/TS, `go vet`/`staticcheck` for Go, `shellcheck` for shell scripts). For languages not listed here, research the standard tooling or ask the user what they prefer before proceeding. Prefer catching errors statically over discovering them at runtime. When adding new code, ensure it passes existing linter/checker configuration without warnings.
@@ -32,6 +36,8 @@ Use linters, type checkers, and static analysis tools wherever available (e.g. `
 
 When something is broken or awkward, fix the underlying cause rather than layering workarounds on top. A growing stack of compensating hacks is a signal that the core issue hasn't been addressed. Prefer a clean fix at the source over an increasingly complex series of patches that treat symptoms — the latter compounds complexity and makes the system harder to reason about over time.
 
+When debugging, apply the 5 Whys: ask "why?" about the failure, then ask "why?" about that answer, repeating until you reach a level where the cause is actionable. You don't always need to go to the absolute deepest root - stop when you have enough understanding to present the user with concrete fix options at different levels, and let them decide where to intervene.
+
 ## Return Values
 
 Prefer returning a single meaningful value or a structure with named elements (object, dataclass, struct, hash, named tuple) over returning a plain tuple or positional array. Positional returns force callers to remember order and make destructuring fragile — named elements make the meaning self-evident at the call site. (See Rich Hickey's "Simple Made Easy": complecting multiple values into a positional sequence introduces incidental complexity.)
@@ -39,6 +45,10 @@ Prefer returning a single meaningful value or a structure with named elements (o
 ## Error Handling
 
 Prefer raising/throwing exceptions when an error occurs rather than returning error codes, sentinel values, or success flags. Exceptions make failures impossible to silently ignore and keep the happy path uncluttered. Only return a result-style type (e.g. `Result`/`Either`) when errors are a routine, expected part of the API contract and callers must handle both cases explicitly — not as a general substitute for exceptions.
+
+Never let errors fail silently. Any place where an error is swallowed, unchecked, or unhandled must be addressed: fix it, log it, surface it to the user, or at minimum leave a visible note explaining why it is intentionally ignored. Silent failures hide bugs and make systems hard to diagnose.
+
+When relying on a library call to raise on failure, verify that it actually does - check the docs or source. If it doesn't, add an explicit check or callback after the call to catch and handle the failure yourself.
 
 ## Missing vs. Null vs. Empty
 
@@ -64,7 +74,7 @@ Never use an em dash (—) in comments. Use a plain ASCII hyphen (-) instead.
 
 Never suggest, prefer, or default to a specific vendor, service, or provider — for AI models, APIs, cloud platforms, databases, or any other external dependency — unless the user has already made that choice or the project is explicitly locked to one. Always leave the choice to the user. Do not name classes, variables, files, or modules after a specific vendor or product (e.g. avoid `ClaudeClient`, `StripeHelper`, `aws_service.py`) unless the code is specifically and exclusively for that provider and the user has named it that way themselves. Use generic, capability-describing names (e.g. `LLMClient`, `payment_service.py`, `storage_backend`) by default.
 
-## Shell Search Tools
+## Modern Tools and Shell Search Tools
 
 Prefer `rg` (ripgrep) over `grep -r` and `fd` over `find` for searching the codebase. They are faster, respect `.gitignore` by default, and produce less noisy output — which also reduces token
   usage from large irrelevant result sets.
@@ -72,3 +82,5 @@ Prefer `rg` (ripgrep) over `grep -r` and `fd` over `find` for searching the code
 - Use `rg -l` when only the matching filenames are needed, not the lines themselves.
 - Use `git diff --stat` when only the list of changed files is needed, not the full diff.
 - Use `rg --type py` / `rg --type ts` etc. instead of `--include` glob patterns.
+
+Prefer `uvx` over `pip`, for one off jobs.
