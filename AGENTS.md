@@ -70,6 +70,10 @@ Tests should assert observable behavior, not implementation details. Avoid testi
 
 Never use an em dash (—) in comments. Use a plain ASCII hyphen (-) instead.
 
+## Source Control Commits
+
+Never add Claude (or any AI assistant) as a co-author in git commits or other source control metadata. Do not append `Co-Authored-By: Claude ...` or similar lines to commit messages, authors fields, or any other VCS metadata.
+
 ## Vendor and Provider Neutrality
 
 Never suggest, prefer, or default to a specific vendor, service, or provider — for AI models, APIs, cloud platforms, databases, or any other external dependency — unless the user has already made that choice or the project is explicitly locked to one. Always leave the choice to the user. Do not name classes, variables, files, or modules after a specific vendor or product (e.g. avoid `ClaudeClient`, `StripeHelper`, `aws_service.py`) unless the code is specifically and exclusively for that provider and the user has named it that way themselves. Use generic, capability-describing names (e.g. `LLMClient`, `payment_service.py`, `storage_backend`) by default.
