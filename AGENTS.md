@@ -68,11 +68,31 @@ Tests should assert observable behavior, not implementation details. Avoid testi
 
 ## Comments
 
+Default to writing no comments. Only add one when the why is non-obvious: a hidden constraint, a subtle invariant, a workaround for a specific bug, or behavior that would surprise a reader. If removing the comment wouldn't confuse a future reader, don't write it.
+
+Never describe what the code does - well-named identifiers already do that. Never use large decorative text blocks, banners, section dividers, or multi-line comment headers. Keep comments short and plain: one line max in most cases.
+
 Never use an em dash (—) in comments. Use a plain ASCII hyphen (-) instead.
 
 ## Source Control Commits
 
 Never add Claude (or any AI assistant) as a co-author in git commits or other source control metadata. Do not append `Co-Authored-By: Claude ...` or similar lines to commit messages, authors fields, or any other VCS metadata.
+
+## ASCII Box Diagrams
+
+Use Unicode box-drawing characters: `┌` `┐` `└` `┘` for corners, `─` for horizontal edges, `│` for vertical edges. Do not use `-`, `|`, or `+`.
+
+Every box must close on all four sides with strict corner alignment:
+- `┌` and `└` must be in the same column (left wall is vertical)
+- `┐` and `┘` must be in the same column (right wall is vertical)
+- `┌` and `┐` must be on the same line (top edge is horizontal)
+- `└` and `┘` must be on the same line (bottom edge is horizontal)
+
+Walls must be continuous — every cell between two corners on the same edge must be filled with `─` or `│`. The only permitted breaks are for arrows crossing the
+wall or inline text labels. A gap or space in a wall is wrong.
+
+Label outer container boxes in the top edge: `┌─ AWS ─────┐`. Indent contents 2 spaces from the `│` wall. Fix outer wall column positions first, then place inner
+elements relative to those columns.
 
 ## Vendor and Provider Neutrality
 
