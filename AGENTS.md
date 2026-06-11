@@ -119,7 +119,9 @@ elements relative to those columns.
 
 Never suggest, prefer, or default to a specific vendor, service, or provider — for AI models, APIs, cloud platforms, databases, or any other external dependency — unless the user has already made that choice or the project is explicitly locked to one. Always leave the choice to the user. Do not name classes, variables, files, or modules after a specific vendor or product (e.g. avoid `ClaudeClient`, `StripeHelper`, `aws_service.py`) unless the code is specifically and exclusively for that provider and the user has named it that way themselves. Use generic, capability-describing names (e.g. `LLMClient`, `payment_service.py`, `storage_backend`) by default.
 
-## Modern Tools and Shell Search Tools
+## Tools
+
+Use modern/fast tools that conserve token usage.
 
 Prefer `rg` (ripgrep) over `grep -r` and `fd` over `find` for searching the codebase. They are faster, respect `.gitignore` by default, and produce less noisy output — which also reduces token
   usage from large irrelevant result sets.
@@ -127,5 +129,8 @@ Prefer `rg` (ripgrep) over `grep -r` and `fd` over `find` for searching the code
 - Use `rg -l` when only the matching filenames are needed, not the lines themselves.
 - Use `git diff --stat` when only the list of changed files is needed, not the full diff.
 - Use `rg --type py` / `rg --type ts` etc. instead of `--include` glob patterns.
+- Use `ast-grep` instead of `sed` or manual edits when mass updating files.
+
+Use tools that are new standards and work faster/better than what they're replacing.
 
 Prefer `uvx` over `pip`, for one off jobs.
