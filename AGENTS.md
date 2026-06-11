@@ -32,6 +32,27 @@ Do not duplicate code (reasonable and subjective judgement is required here) if 
 
 Use linters, type checkers, and static analysis tools wherever available (e.g. `mypy`/`pyright` for Python, `eslint`/`tsc` for JS/TS, `go vet`/`staticcheck` for Go, `shellcheck` for shell scripts). For languages not listed here, research the standard tooling or ask the user what they prefer before proceeding. Prefer catching errors statically over discovering them at runtime. When adding new code, ensure it passes existing linter/checker configuration without warnings.
 
+## Code Navigation & Editing
+
+Prefer language-aware tools over text-based ones (grep/sed/awk) for understanding and modifying code.
+
+- Use an LSP server for go-to-definition, find-references, hover types, rename, and diagnostics. Check if it's installed before starting; if missing, install it (`<install command>`) and verify (`<server> --version`).
+- Use static analysis / AST tools for structural search and edits:
+  - Search: `ast-grep` (semantic pattern matching) instead of `grep` for code structure.
+  - Refactor/rename: LSP rename or `ast-grep --rewrite` instead of `sed`.
+  - Lint/types: the project's linter and type checker (`<linter>`, `<typechecker>`) for diagnostics.
+- Reserve grep/sed for non-code text (logs, config, plain strings) or quick one-off lookups where structure doesn't matter.
+- Rationale: text tools miss scope, shadowing, and syntax boundaries; semantic tools understand the code's structure and won't produce malformed edits.
+
+## Language Server (LSP)
+
+Use an LSP server for code navigation, diagnostics, and refactoring rather than relying on text search alone.
+
+- Check whether the LSP server is installed before starting work.
+- If missing, install it: `<install command>`
+- Verify it runs: `<server> --version`
+- Use it for: go-to-definition, find-references, hover types, rename, and diagnostics.
+
 ## Fix Root Causes, Not Symptoms
 
 When something is broken or awkward, fix the underlying cause rather than layering workarounds on top. A growing stack of compensating hacks is a signal that the core issue hasn't been addressed. Prefer a clean fix at the source over an increasingly complex series of patches that treat symptoms — the latter compounds complexity and makes the system harder to reason about over time.
